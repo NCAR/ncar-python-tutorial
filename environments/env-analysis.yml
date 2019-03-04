@@ -1,0 +1,69 @@
+name: analysis
+channels:
+- conda-forge
+- nesii/label/dev-esmf
+- defaults
+dependencies:
+- python=3.6
+- pip=18.1
+# core pydata
+- numpy
+- scipy
+- pandas
+- xarray
+- dask
+- distributed
+- bottleneck
+- numba
+- scikit-learn
+- scikit-image
+- statsmodels
+- metpy
+- eofs
+# serialization
+- h5py
+- h5netcdf
+- netcdf4
+- rasterio
+- zarr
+# visualization
+- matplotlib
+- seaborn
+- bokeh
+- cartopy
+- holoviews
+- cmocean
+# misc
+- intake
+- pytest
+- cf_units
+- cftime
+- gsw # https://teos-10.github.io/GSW-Python/install.html
+- esmpy
+- psutil
+- datashader
+- nomkl
+- lz4
+- tabulate
+- tornado
+- tqdm
+- fastparquet
+- s3fs
+- zict
+- python-blosc
+- pandoc
+- pandocfilters
+- cytoolz
+- toolz
+- dask-searchcv
+- gcsfs
+- nodejs
+- mpi4py
+- pip:
+  - watermark
+  - seawater
+  - xesmf
+  - git+https://github.com/dask/dask-jobqueue.git
+  - git+https://github.com/matt-long/xcollection.git
+  - git+https://github.com/matt-long/esmlab.git
+  - git+https://github.com/matt-long/intake-cesm.git
