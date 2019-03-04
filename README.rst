@@ -15,17 +15,22 @@ Getting started
   conda env create -f environments/conda-base.yml
   conda env create -f environments/env-analysis.yml
 
-3. Start Jupyter Lab
+3. Copy configuration file:
 
 .. code:: bash
-  
+
+   cp notebooks/jobqueue.yaml ~/.config/dask/.
+
+4. Start Jupyter Lab
+
+.. code:: bash
+
   cd scripts
   jlab-ch
 
 or
 
 .. code:: bash
-  
+
   cd scripts
   jlab-dav
-
