@@ -10,14 +10,22 @@ Getting started
 
 2. Create environments
 
-.. code:: 
+.. code:: bash
 
   conda env create -f environments/conda-base.yml
   conda env create -f environments/env-analysis.yml
 
 3. Start Jupyter Lab
 
-.. code::
+.. code:: bash
   
   cd scripts
   jlab-ch
+
+or
+
+.. code:: bash
+  
+  cd scripts
+  jlab-dav
+
