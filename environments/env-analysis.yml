@@ -77,9 +77,9 @@ dependencies:
   - cfgrib 
   - click 
   - git+https://github.com/dask/dask-jobqueue.git
-  - git+https://github.com/matt-long/esmlab.git
-  - git+https://github.com/matt-long/intake-cesm.git
-  - git+https://github.com/matt-long/xcollection.git
+  - git+https://github.com/NCAR/esmlab.git
+  - git+https://github.com/NCAR/intake-cesm.git
+  - git+https://github.com/NCAR/xcollection.git
   - nbdime
   - seawater
   - watermark
