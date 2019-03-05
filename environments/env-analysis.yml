@@ -54,6 +54,7 @@ dependencies:
 - intake-xarray
 - ipykernel
 - lz4
+- memory_profiler
 - mpi4py
 - nodejs
 - nomkl
@@ -64,6 +65,8 @@ dependencies:
 - pynio 
 - pytest
 - python-blosc
+- python-graphviz
+- snakeviz
 - tabulate
 - toolz
 - tornado==5.1.1
