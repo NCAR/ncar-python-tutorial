@@ -15,6 +15,15 @@ Getting started
   conda env create -f environments/conda-base.yml
   conda env create -f environments/env-analysis.yml
 
+Once you've created the above environments, you will need to run the ``post_build`` 
+script in order to build JupyterLab extensions.
+
+.. code:: bash
+  
+  conda activate base
+  ./environments/post_build
+
+
 3. Copy configuration file:
 
 .. code:: bash
