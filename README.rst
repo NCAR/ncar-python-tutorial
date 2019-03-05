@@ -6,7 +6,12 @@ Getting started
 
 1. Get miniconda and install
 
-   https://docs.conda.io/en/latest/miniconda.html
+  https://docs.conda.io/en/latest/miniconda.html
+
+  .. code:: bash
+
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+    bash miniconda.sh
 
 2. Create environments
 
