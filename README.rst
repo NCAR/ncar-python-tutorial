@@ -41,12 +41,15 @@ script in order to build JupyterLab extensions.
 
 4. Start Jupyter Lab
 
+To use the Cheyenne compute nodes:
+
 .. code:: bash
 
   cd scripts
   jlab-ch
 
-or
+
+To use the DAV system:
 
 .. code:: bash
 
