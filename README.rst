@@ -8,9 +8,9 @@ Clone this repository and follow the instructions below.
 
 1. Get miniconda and install
 
-  https://docs.conda.io/en/latest/miniconda.html
+https://docs.conda.io/en/latest/miniconda.html
 
-  We suggest manually adding the miniconda path to your dot files. 
+We suggest manually adding the miniconda path to your dot files. 
   
 .. code:: bash
 
