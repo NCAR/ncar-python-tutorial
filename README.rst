@@ -10,7 +10,9 @@ Clone this repository and follow the instructions below.
 
   https://docs.conda.io/en/latest/miniconda.html
 
-  .. code:: bash
+  We suggest manually adding the miniconda path to your dot files. 
+  
+.. code:: bash
 
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
     bash miniconda.sh
