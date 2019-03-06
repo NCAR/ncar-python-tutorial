@@ -4,6 +4,8 @@ NCAR-pangeo-tutorial
 Getting started
 ~~~~~~~~~~~~~~~
 
+Clone this repository and follow the instructions below.
+
 1. Get miniconda and install
 
   https://docs.conda.io/en/latest/miniconda.html
