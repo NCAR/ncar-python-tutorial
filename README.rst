@@ -7,6 +7,7 @@ Getting started
 Clone this repository and follow the instructions below.
 
 1. Get miniconda and install
+++++++++++++++++++++++++++++
 
 https://docs.conda.io/en/latest/miniconda.html
 
@@ -18,6 +19,7 @@ We suggest manually adding the miniconda path to your dot files.
     bash miniconda.sh
 
 2. Create environments
+++++++++++++++++++++++
 
 .. code:: bash
 
@@ -34,12 +36,14 @@ script in order to build JupyterLab extensions.
 
 
 3. Copy configuration file:
++++++++++++++++++++++++++++
 
 .. code:: bash
 
    cp notebooks/jobqueue.yaml ~/.config/dask/.
 
 4. Start Jupyter Lab
+++++++++++++++++++++
 
 To use the Cheyenne compute nodes:
 
