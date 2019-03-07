@@ -80,7 +80,7 @@ To use the Cheyenne compute nodes:
 .. code:: bash
 
   cd scripts
-  jlab-ch
+  ./jlab-ch
 
 
 To use the DAV system:
@@ -88,7 +88,7 @@ To use the DAV system:
 .. code:: bash
 
   cd scripts
-  jlab-dav
+  ./jlab-dav
 
 These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running.
 
