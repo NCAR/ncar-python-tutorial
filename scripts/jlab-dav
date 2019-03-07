@@ -263,12 +263,18 @@ while [ -z "${ADDRESS}" ]; do
 done
 
 echo
+echo "----------------------------------------------------------------------"
 echo "Execute on local machine:"
 echo "ssh -N -L ${jlab_port}:localhost:${jlab_port} -L ${dash_port}:${BatchHost}:${dash_port} ${USER}@$(hostname).ucar.edu"
+echo
+echo "Go to:"
+echo "localhost:${jlab_port}"
+echo "in a local browser."
+echo "----------------------------------------------------------------------"
+echo
 
 ssh -f -o ExitOnForwardFailure=yes -N -L ${jlab_port}:${BatchHost}:${PORT} \
     -L ${dash_port}:${BatchHost}:${dash_port} ${BatchHost}
 
-echo
 echo "Job log: ${LOGFILE}"
 tail -f ${LOGFILE}
