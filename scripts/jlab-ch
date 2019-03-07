@@ -16,7 +16,7 @@ NODES=1
 CORES=1
 LOAD_MATLAB=
 MATLAB_VERSION=R2018a
-MATLAB_API_PATH=/glade/work/mclong/matlab-python/${MATLAB_VERSION}/lib/python3.6/site-packages
+MATLAB_API_PATH=/glade/u/home/mclong/matlab-python/${MATLAB_VERSION}/lib/python3.5/site-packages
 
 #-- define usage
 usage () {
