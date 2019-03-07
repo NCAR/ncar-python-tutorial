@@ -41,7 +41,8 @@ LOGFILE=${WORKDIR}/jlab-log.dav.%J
 
 LOAD_MATLAB=
 MATLAB_VERSION=R2018a
-MATLAB_API_PATH=/glade/work/mclong/matlab-python/${MATLAB_VERSION}/lib/python3.6/site-packages
+MATLAB_API_PATH=/glade/u/home/mclong/matlab-python/${MATLAB_VERSION}/lib/python3.5/site-packages
+
 jid=
 
 usage () {
@@ -188,7 +189,7 @@ unset LD_LIBRARY_PATH
 
 # matlab
 if [ ! -z "${LOAD_MATLAB}" ]; then
-  export PYTHONPATH=${MATLAB_API_PATH}
+  export PYTHONPATH=${MATLAB_API_PATH}:${PYTHONPATH}
   module load matlab/${MATLAB_VERSION}
 fi
 

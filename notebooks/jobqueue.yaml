@@ -1,6 +1,6 @@
 distributed:
-#  dashboard:
-#    link: http://{host}/proxy/{port}/status
+  dashboard:
+    link: http://{host}/proxy/{port}/status
   scheduler:
     bandwidth: 1000000000     # GB MB/s estimated worker-worker bandwidth
   worker:
