@@ -54,8 +54,7 @@ If you are interested in using Matlab in JupyterLab, consider creating the follo
 
   conda env create -f environments/env-py-matlab.yml
 
-(This requires building the Matlab Python API; see scripts/build-matlab-api.
-Scripts are setup to use API's in ~/matlab-python or ~mclong/matlab-python)
+(Using Matlab requires building the Matlab Python API; see scripts/build-matlab-api.  Scripts are setup to use API's built in ~/matlab-python or ~mclong/matlab-python.)
 
 Once you've created the above environments, you will need to run the ``post_build``
 script in order to build JupyterLab extensions.
@@ -91,6 +90,11 @@ To use the DAV system:
   cd scripts
   ./jlab-dav
 
-These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running.
+These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running. Once you have made this SSH connection, open a browser on your local machine and go to the address: localhost:8888 (or whichever port specified in the jlab script).
 
-Once you have made this SSH connection, open a browser on you local machine and go to the address: localhost:8888 (or whichever port  specified in the jlab script).
+If you want to use Matlab, you must add a flag to enable the module load; for instance:
+
+.. code:: bash
+
+  cd scripts
+  ./jlab-dav --matlab
