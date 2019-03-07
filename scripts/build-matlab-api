@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+MATLAB_VERSION=$1
+
+if [ -z "${MATLAB_VERSION}" ]; then
+  MATLAB_VERSION=R2018a
+fi
+
+module load matlab/${MATLAB_VERSION}
+
+matlabroot=$(which matlab | xargs dirname)'
+echo ${matlabroot}
