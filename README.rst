@@ -52,7 +52,7 @@ If you are interested in using Matlab in JupyterLab, consider creating the follo
 
 .. code:: bash
 
-  conda env create -f environments/env-matlab.yml
+  conda env create -f environments/env-py-matlab.yml
 
 (This requires building the Matlab Python API; see scripts/build-matlab-api.
 Scripts are setup to use API's in ~/matlab-python or ~mclong/matlab-python)
