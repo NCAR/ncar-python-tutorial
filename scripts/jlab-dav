@@ -8,6 +8,12 @@
 #    ssh -N -L 8888:localhost:8888 cheyenne5.ucar.edu
 # 4. open browser: http://localhost:8888
 
+# If JOB_ACCOUNT is still not set, then use defaults
+if [ -z "${JOB_ACCOUNT}" ]; then
+  source /glade/u/apps/ch/opt/usr/bin/getacct.sh
+fi
+
+
 WALLTIME=24:00:00
 PARTITION=dav
 MEMORY=8GB
@@ -15,7 +21,7 @@ CONSTRAINT=casper
 
 notebook_dir=${HOME}
 jlab_port=8888
-dash_port=8787
+#dash_port=8787
 PYTHON_PATH=$(which python | xargs dirname)
 
 #-- make sure the working directory exists
@@ -110,11 +116,6 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ -z ${jid} ]]; then
-  # If JOB_ACCOUNT is still not set, then use defaults
-  if [ -z "${JOB_ACCOUNT}" ]; then
-    source /glade/u/apps/ch/opt/usr/bin/getacct.sh
-    fi
-
   if [ -z ${WALLTIME} ]; then
     echo "ERROR: WALLTIME not set."
     exit 1
@@ -123,7 +124,6 @@ if [[ -z ${jid} ]]; then
     echo "ERROR: PARTITION not set."
     exit 1
   fi
-
   if [ -z ${MEMORY} ]; then
     echo "ERROR: MEMORY not set."
     exit 1
@@ -154,7 +154,6 @@ if [[ -z ${jid} ]]; then
   fi
 
 
-
   echo "Launching notebook server"
   if [ ! -z "${LOAD_MATLAB}" ]; then
     echo "  *Loading Matlab kernel version: ${MATLAB_VERSION}*"
@@ -169,7 +168,7 @@ if [[ -z ${jid} ]]; then
 
 stro=$(sbatch << EOF
 #!/bin/bash
-#SBATCH -J jupyterlab
+#SBATCH -J jlab-dav
 #SBATCH -n 1
 #SBATCH --ntasks-per-node=1
 #SBATCH -p ${PARTITION}
@@ -282,16 +281,14 @@ done
 echo
 echo "----------------------------------------------------------------------"
 echo "Execute on local machine:"
-echo "ssh -N -L ${jlab_port}:localhost:${jlab_port} -L ${dash_port}:${BatchHost}:${dash_port} ${USER}@$(hostname).ucar.edu"
+echo "ssh -N -L ${jlab_port}:localhost:${jlab_port} ${USER}@$(hostname).ucar.edu" #-L ${dash_port}:${BatchHost}:${dash_port}
 echo
-echo "Go to:"
-echo "localhost:${jlab_port}"
-echo "in a local browser."
+echo "Open a browser on your local machine and type in the address bar:"
+echo "http://localhost:${jlab_port}"
 echo "----------------------------------------------------------------------"
 echo
 
-ssh -f -o ExitOnForwardFailure=yes -N -L ${jlab_port}:${BatchHost}:${PORT} \
-    -L ${dash_port}:${BatchHost}:${dash_port} ${BatchHost}
+ssh -f -o ExitOnForwardFailure=yes -N -L ${jlab_port}:${BatchHost}:${PORT} ${BatchHost}
 
 echo "Job log: ${LOGFILE}"
 tail -f ${LOGFILE}
