@@ -17,4 +17,3 @@ dependencies:
   - pip:
     - dask_labextension # https://github.com/dask/dask-labextension
     - jupyter-server-proxy
-    - matlab_kernel

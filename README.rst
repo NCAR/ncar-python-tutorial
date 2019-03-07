@@ -39,7 +39,7 @@ First update the conda base environment.
 
 .. code:: bash
 
-  conda env update -f environments/conda-base.yml
+  conda env update -f environments/env-conda-base.yml
 
 
 Next create a new environment call "analysis" (this can take 10-15 min).
@@ -47,6 +47,12 @@ Next create a new environment call "analysis" (this can take 10-15 min).
 .. code:: bash
 
   conda env create -f environments/env-analysis.yml
+
+If you are interested in using Matlab in JupyterLab, consider creating the following environment.
+
+.. code:: bash
+
+  conda env create -f environments/env-matlab.yml
 
 Once you've created the above environments, you will need to run the ``post_build``
 script in order to build JupyterLab extensions.
