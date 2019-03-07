@@ -203,9 +203,14 @@ while [ -z "${ADDRESS}" ]; do
 done
 
 echo
+echo "----------------------------------------------------------------------"
 echo "Execute on local machine:"
 echo "ssh -N -L ${jlab_port}:${exec_host}:${PORT} -L ${dash_port}:${exec_host}:8787 ${USER}@$(hostname).ucar.edu"
-
+echo
+echo "Go to:"
+echo "localhost:${jlab_port}"
+echo "in a local browser."
+echo "----------------------------------------------------------------------"
 echo
 echo "Job log: ${LOGFILE}"
 tail -f ${LOGFILE}
