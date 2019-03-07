@@ -54,7 +54,8 @@ If you are interested in using Matlab in JupyterLab, consider creating the follo
 
   conda env create -f environments/env-matlab.yml
 
-(This requires building the Matlab Python API; scripts are hardwired to use a build by @matt-long.)
+(This requires building the Matlab Python API; see scripts/build-matlab-api.
+Scripts are setup to use API's in ~/matlab-python or ~mclong/matlab-python)
 
 Once you've created the above environments, you will need to run the ``post_build``
 script in order to build JupyterLab extensions.

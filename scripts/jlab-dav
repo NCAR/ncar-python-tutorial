@@ -41,7 +41,6 @@ LOGFILE=${WORKDIR}/jlab-log.dav.%J
 
 LOAD_MATLAB=
 MATLAB_VERSION=R2018a
-MATLAB_API_PATH=/glade/u/home/mclong/matlab-python/${MATLAB_VERSION}/lib/python3.5/site-packages
 
 jid=
 
@@ -137,6 +136,24 @@ if [[ -z ${jid} ]]; then
     echo "ERROR: PORT not set."
     exit 1
   fi
+
+  if [ ! -z "${LOAD_MATLAB}" ]; then
+    source activate py-matlab
+    python_version=$(python --version | awk '{print $2}' | awk -F. '{print $1 "." $2}')
+    MATLAB_API_PATH=~/matlab-python/${MATLAB_VERSION}/lib/python${python_version}/site-packages
+    if [ ! -d ${MATLAB_API_PATH} ]; then
+      MATLAB_API_PATH=~mclong/matlab-python/${MATLAB_VERSION}/lib/python${python_version}/site-packages
+      if [ ! -d ${MATLAB_API_PATH} ]; then
+        echo "ERROR:"
+        echo "  Matlab API for ${MATLAB_VERSION} not found;"
+        echo "  build API using build-matlab-api script:"
+        echo "  >>> ./build-matlab-api ${MATLAB_VERSION}"
+        exit 1
+      fi
+    fi
+  fi
+
+
 
   echo "Launching notebook server"
   if [ ! -z "${LOAD_MATLAB}" ]; then
