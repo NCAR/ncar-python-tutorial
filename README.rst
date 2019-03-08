@@ -70,7 +70,10 @@ script in order to build JupyterLab extensions.
 
 .. code:: bash
 
-   cp notebooks/jobqueue.yaml ~/.config/dask/.
+   ./config/copy_config
+
+This adds a file to your home directory: ``~/.config/dask/jobqueue.yaml``.
+Consider opening this file in a text editor and changing the lines specifying project number: remove the comment and add your preferred project number. 
 
 4. Start Jupyter Lab
 ++++++++++++++++++++
