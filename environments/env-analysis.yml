@@ -81,5 +81,6 @@ dependencies:
   - git+https://github.com/NCAR/intake-cesm.git
   - git+https://github.com/NCAR/xcollection.git
   - nbdime
+  - ncar-jobqueue
   - seawater
   - watermark
