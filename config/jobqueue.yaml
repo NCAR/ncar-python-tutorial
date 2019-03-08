@@ -14,7 +14,7 @@ distributed:
 
 jobqueue:
   pbs:
-    project: NCGD0011
+#    project: NCGD0011
     name: dask-worker
     cores: 36                   # Total number of cores per job
     memory: '109GB'             # Total amount of memory per job
@@ -23,10 +23,10 @@ jobqueue:
     queue: regular
     walltime: '04:00:00'
     resource-spec: select=1:ncpus=36:mem=109GB
-    local-directory: "/glade/scratch/$USER/dask-tmp"
+    local-directory: /glade/scratch/${USER}/dask-tmp
 
   slurm:
-    project: NCGD0011
+#    project: NCGD0011
     name: dask-worker
     cores: 1                    # Total number of cores per job
     memory: '25GB'              # Total amount of memory per job
@@ -34,4 +34,4 @@ jobqueue:
     interface: ib0
     walltime: '06:00:00'
     job-extra: {-C casper}
-#    local-directory: "/glade/scratch/$USER/dask-tmp"
+    local-directory: /glade/scratch/${USER}/dask-tmp
