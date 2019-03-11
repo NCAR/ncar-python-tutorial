@@ -103,7 +103,7 @@ fi
 if [[ ! -d ${WORKDIR} ]]; then
   mkdir -vp ${WORKDIR}
 fi
-LOGFILE=${WORKDIR}/jlab-log.ch.$(date +%Y%m%dT%H%M%S)
+LOGFILE=${WORKDIR}/jlab-ch.jlab-log.$(date +%Y%m%dT%H%M%S)
 
 
 if [ ! -z "${LOAD_MATLAB}" ]; then
@@ -144,6 +144,8 @@ s=$(qsub << EOF
 #PBS -A ${job_account}
 #PBS -l select=${NODES}:ncpus=${CORES}:mpiprocs=${CORES}:mem=${memory}
 #PBS -l walltime=${walltime}
+#PBS -o ${WORKDIR}/
+#PBS -e ${WORKDIR}/
 #PBS -j oe
 
 # setup environment

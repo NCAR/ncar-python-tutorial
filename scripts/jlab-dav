@@ -31,7 +31,7 @@ fi
 if [[ ! -d ${WORKDIR} ]]; then
   mkdir -vp ${WORKDIR}
 fi
-LOGFILE=${WORKDIR}/jlab-log.dav.%J
+LOGFILE=${WORKDIR}/jlab-dav.jlab-log.$(date +%Y%m%dT%H%M%S)
 
 #-- matlab kernel
 # https://github.com/Calysto/matlab_kernel
@@ -176,8 +176,8 @@ stro=$(sbatch << EOF
 #SBATCH -t ${WALLTIME}
 #SBATCH --mem ${MEMORY}
 #SBATCH -C ${CONSTRAINT}
-#SBATCH -e ${LOGFILE}
-#SBATCH -o ${LOGFILE}
+#SBATCH -e ${WORKDIR}/jlab-dav.e%J
+#SBATCH -o ${WORKDIR}/jlab-dav.o%J
 
 # setup shell
 if [ -z \$MODULEPATH_ROOT ]; then
@@ -210,7 +210,7 @@ if [ ! -z "${LOAD_MATLAB}" ]; then
 fi
 
 cd ${notebook_dir}
-jupyter lab --no-browser --notebook-dir ${notebook_dir} --ip=\$(hostname)
+jupyter lab --no-browser --notebook-dir ${notebook_dir} --ip=\$(hostname) >& ${LOGFILE}
 EOF
   )
   jid=$(echo ${stro} | awk '{print $4}')
