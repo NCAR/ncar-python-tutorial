@@ -1,6 +1,5 @@
 name: cesm1-le
 collection_type: cesm
-overwrite_existing: false
 include_cache_dir: true
 data_sources:
   CTRL:

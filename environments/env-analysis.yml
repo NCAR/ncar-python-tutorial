@@ -29,30 +29,31 @@ dependencies:
 - rasterio
 - zarr
 # visualization
-- basemap 
+- basemap
 - bokeh
 - cartopy
 - cmocean
 - datashader
 - geoviews
 - holoviews
-- hvplot 
+- hvplot
 - matplotlib
-- panel 
+- panel
 - seaborn
-# Misc 
+# Misc
 - cf_units
 - cftime
 - cytoolz
 - datashader
 - esmpy
 - fastparquet
-- geopandas 
-- graphviz 
+- geopandas
+- graphviz
 - gsw # https://teos-10.github.io/GSW-Python/install.html
 - intake
 - intake-xarray
 - ipykernel
+- ipywidgets
 - lz4
 - memory_profiler
 - mpi4py
@@ -62,7 +63,7 @@ dependencies:
 - pandocfilters
 - papermill
 - psutil
-- pynio 
+- pynio
 - pytest
 - python-blosc
 - python-graphviz
@@ -74,8 +75,8 @@ dependencies:
 - xesmf
 - zict
 - pip:
-  - cfgrib 
-  - click 
+  - cfgrib
+  - click
   - git+https://github.com/dask/dask-jobqueue.git
   - git+https://github.com/NCAR/esmlab.git
   - git+https://github.com/NCAR/intake-cesm.git
