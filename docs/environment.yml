@@ -1,0 +1,12 @@
+name: tutorial
+channels:
+  - conda-forge
+dependencies:
+  - nbsphinx
+  - numpydoc
+  - python=3.7
+  - recommonmark
+  - sphinx_rtd_theme
+  - sphinx>=1.6
+  - pip:
+    - sphinx_copybutton
