@@ -5,6 +5,7 @@ dependencies:
   - nbsphinx
   - numpydoc
   - python=3.7
+  - ipython
   - recommonmark
   - sphinx_rtd_theme
   - sphinx>=1.6
