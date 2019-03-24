@@ -13,7 +13,8 @@ please open an issue at the GitHub `main repository <http://github.com/NCAR/NCAR
 .. toctree::
    :maxdepth: 2
    :caption: Tutorial Contents
-
+   
+   setup
    notebooks/00-getting-started-with-python-for-people-in-a-hurry.ipynb
 
 
