@@ -5,20 +5,46 @@ NCAR Pangeo Tutorial
 First Time Setup
 -----------------
 
-Clone this repository and follow the instructions below.
+This tutorial covers the installation and setup of a Python environment on:
 
-1. Get miniconda and install
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Cheyenne/DAV 
+- CGD machines 
+
+Throughout this tutorial, we will be using miniconda which provides 
+prepackaged Python environments with automated installers, the package manager ``conda``.
 
 https://docs.conda.io/en/latest/miniconda.html
 
-We suggest manually adding the miniconda path to your dot files (answer "no" to the last question).
 
+1. Clone NCAR Pangeo Tutorial Repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: bash 
+
+   git clone https://github.com/NCAR/NCAR-pangeo-tutorial
+
+
+2. Get miniconda and install
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-    bash miniconda.sh
+    bash miniconda.sh    # Follow the prompts on the installer screens.
+
+If you are unsure about any setting, accept the defaults. You can change them later. 
+
+
+.. NOTE::
+
+  To make the changes take effect, close and then re-open your Terminal window.
+
+
+To verify that conda is available on your system, you can try
+
+.. code:: bash 
+
+   conda --version 
 
 After install, update conda:
 
@@ -33,8 +59,13 @@ And configure the shell, replacing {SHELL} in the command below with your shell 
    conda init {SHELL}
 
 
-2. Create environments
+3. Create environments
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+Conda allows you to set up virtual Python environments for different projects, 
+in which different versions of the required dependencies are installed.
+With this approach, it is easy to maintain multiple environments with different configurations. 
+
 
 First update the conda base environment.
 
@@ -57,6 +88,10 @@ If you are interested in using Matlab in JupyterLab, consider creating the follo
 
 (Using Matlab requires building the Matlab Python API; see scripts/build-matlab-api.  Scripts are setup to use API's built in ~/matlab-python or ~mclong/matlab-python.)
 
+To use one of these environments, we need to activate it using the command ``conda activate ENV_NAME``, and to 
+deactivate an environment, we use ``conda deactivate``. 
+
+
 Once you've created the above environments, you will need to run the ``post_build``
 script in order to build JupyterLab extensions.
 
@@ -66,7 +101,12 @@ script in order to build JupyterLab extensions.
   ./environments/post_build
 
 
-3. Copy configuration file:
+To manage environments, the ``conda env``, ``conda info``, and ``conda list`` commands
+are helpful tools. The ``conda info`` command can be used to list available environments (same as ``conda env list``).
+
+
+
+4. Copy configuration file:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
@@ -76,15 +116,39 @@ script in order to build JupyterLab extensions.
 This adds a file to your home directory: ``~/.config/dask/jobqueue.yaml``.
 Consider opening this file in a text editor and changing the lines specifying project number: remove the comment and add your preferred project number. 
 
-4. Start Jupyter Lab
+5. Start Jupyter Lab
 ~~~~~~~~~~~~~~~~~~~~~
 
-To use the Cheyenne compute nodes:
+To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
+This jupyter hub is accessible at ``https://jupyterhub.ucar.edu/ch``. 
+You must have a Cheyenne account. The spawning screen will look like this (below):
+but with your project account specified.
 
-.. code:: bash
+.. image:: https://i.imgur.com/gLugukz.png
+   :alt: JHUB
+   :align: center
 
-  cd scripts
-  ./jlab-ch
+- Specify your project account 
+- You can also change the queue and other settings
+
+Once your session is active: 
+
+- Create a new notebook:
+
+.. image:: https://i.imgur.com/pXpwUXC.png
+   :alt: launch
+   :align: center
+
+
+- Select which kernel to use:
+
+.. image:: https://i.imgur.com/q8LDBCj.png
+   :alt: prompt
+   :align: center
+
+.. image:: https://i.imgur.com/zoGymUm.png
+   :alt: select-kernel
+   :align: center
 
 
 To use the DAV system:
