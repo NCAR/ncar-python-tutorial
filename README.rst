@@ -5,11 +5,6 @@ NCAR Pangeo Tutorial
 First Time Setup
 -----------------
 
-Clone this repository and follow the instructions below.
-
-1. Get miniconda and install
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 This tutorial covers the installation and setup of a Python environment on:
 
 - Cheyenne/DAV and/or CGD platforms
@@ -19,15 +14,25 @@ prepackaged Python environments with automated installers, the package manager `
 
 https://docs.conda.io/en/latest/miniconda.html
 
-We suggest manually adding the miniconda path to your dot files (answer "no" to the last question).
 
+1. Clone NCAR Pangeo Tutorial Repository
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: bash 
+
+   git clone https://github.com/NCAR/NCAR-pangeo-tutorial
+
+
+2. Get miniconda and install
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
     bash miniconda.sh    # Follow the prompts on the installer screens.
 
-If you are unsure about any setting, accept the defaults. You can change them later.
+If you are unsure about any setting, accept the defaults. You can change them later. 
+We suggest manually adding the miniconda path to your dot files (answer "no" to the last question).
 
 .. NOTE::
 
@@ -53,7 +58,7 @@ And configure the shell, replacing {SHELL} in the command below with your shell 
    conda init {SHELL}
 
 
-2. Create environments
+3. Create environments
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Conda allows us to set up virtual Python environments for different projects, 
@@ -100,7 +105,7 @@ are helpful tools. The ``conda info`` command can be used to list available envi
 
 
 
-3. Copy configuration file:
+4. Copy configuration file:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
@@ -110,16 +115,36 @@ are helpful tools. The ``conda info`` command can be used to list available envi
 This adds a file to your home directory: ``~/.config/dask/jobqueue.yaml``.
 Consider opening this file in a text editor and changing the lines specifying project number: remove the comment and add your preferred project number. 
 
-4. Start Jupyter Lab
+5. Start Jupyter Lab
 ~~~~~~~~~~~~~~~~~~~~~
 
-To use the Cheyenne compute nodes:
+To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
+This jupyter hub is accessible at ``https://jupyterhub.ucar.edu/ch``
 
-.. code:: bash
+.. image:: https://i.imgur.com/gLugukz.png
+   :alt: JHUB
+   :align: center
 
-  cd scripts
-  ./jlab-ch
+- Specify your project account 
+- You can also change the queue and other settings
 
+Once your session is active: 
+
+- Create a new notebook:
+
+.. image:: https://i.imgur.com/pXpwUXC.png
+   :alt: launch
+   :align: center
+
+- Select which kernel to use:
+
+.. image:: https://i.imgur.com/q8LDBCj.png
+   :alt: prompt
+   :align: center
+
+.. image:: https://i.imgur.com/zoGymUm.png
+   :alt: select-kernel
+   :align: center
 
 To use the DAV system:
 
