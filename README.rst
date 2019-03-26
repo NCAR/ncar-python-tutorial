@@ -33,7 +33,7 @@ https://docs.conda.io/en/latest/miniconda.html
     bash miniconda.sh    # Follow the prompts on the installer screens.
 
 If you are unsure about any setting, accept the defaults. You can change them later. 
-We suggest manually adding the miniconda path to your dot files (answer "no" to the last question).
+
 
 .. NOTE::
 
