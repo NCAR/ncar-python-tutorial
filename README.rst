@@ -10,6 +10,13 @@ Clone this repository and follow the instructions below.
 1. Get miniconda and install
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+This tutorial covers the installation and setup of a Python environment on:
+
+- Cheyenne/DAV and/or CGD platforms
+
+Throughout this tutorial, we will be using miniconda which provides 
+prepackaged Python environments with automated installers, the package manager ``conda``.
+
 https://docs.conda.io/en/latest/miniconda.html
 
 We suggest manually adding the miniconda path to your dot files (answer "no" to the last question).
@@ -19,6 +26,12 @@ We suggest manually adding the miniconda path to your dot files (answer "no" to 
 
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
     bash miniconda.sh
+
+To verify that conda is available on your system, you can try
+
+.. code:: bash 
+
+   conda --version 
 
 After install, update conda:
 
@@ -35,6 +48,11 @@ And configure the shell, replacing {SHELL} in the command below with your shell 
 
 2. Create environments
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+Conda allows us to set up virtual Python environments for different projects, 
+in which different versions of the required dependencies are installed.
+With this approach, it is easy to maintain multiple environments with different configurations. 
+
 
 First update the conda base environment.
 
@@ -57,6 +75,10 @@ If you are interested in using Matlab in JupyterLab, consider creating the follo
 
 (Using Matlab requires building the Matlab Python API; see scripts/build-matlab-api.  Scripts are setup to use API's built in ~/matlab-python or ~mclong/matlab-python.)
 
+To use one of these environments, we need to activate it using the command ``conda activate ENV_NAME``, and to 
+deactivate an environment, we use ``conda deactivate``. 
+
+
 Once you've created the above environments, you will need to run the ``post_build``
 script in order to build JupyterLab extensions.
 
@@ -64,6 +86,11 @@ script in order to build JupyterLab extensions.
 
   conda activate base
   ./environments/post_build
+
+
+To manage environments, the ``conda env``, ``conda info``, and ``conda list`` commands
+are helpful tools. The ``conda info`` command can be used to list available environments (same as ``conda env list``).
+
 
 
 3. Copy configuration file:
