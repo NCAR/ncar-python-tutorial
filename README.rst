@@ -1,13 +1,14 @@
-NCAR-pangeo-tutorial
---------------------
+====================
+NCAR Pangeo Tutorial
+====================
 
-Getting started
-~~~~~~~~~~~~~~~
+First Time Setup
+-----------------
 
 Clone this repository and follow the instructions below.
 
 1. Get miniconda and install
-++++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 https://docs.conda.io/en/latest/miniconda.html
 
@@ -33,7 +34,7 @@ And configure the shell, replacing {SHELL} in the command below with your shell 
 
 
 2. Create environments
-++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 First update the conda base environment.
 
@@ -66,7 +67,7 @@ script in order to build JupyterLab extensions.
 
 
 3. Copy configuration file:
-+++++++++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: bash
 
@@ -76,7 +77,7 @@ This adds a file to your home directory: ``~/.config/dask/jobqueue.yaml``.
 Consider opening this file in a text editor and changing the lines specifying project number: remove the comment and add your preferred project number. 
 
 4. Start Jupyter Lab
-++++++++++++++++++++
+~~~~~~~~~~~~~~~~~~~~~
 
 To use the Cheyenne compute nodes:
 
