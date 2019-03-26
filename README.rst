@@ -7,7 +7,8 @@ First Time Setup
 
 This tutorial covers the installation and setup of a Python environment on:
 
-- Cheyenne/DAV and/or CGD platforms
+- Cheyenne/DAV 
+- CGD machines 
 
 Throughout this tutorial, we will be using miniconda which provides 
 prepackaged Python environments with automated installers, the package manager ``conda``.
@@ -61,7 +62,7 @@ And configure the shell, replacing {SHELL} in the command below with your shell 
 3. Create environments
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Conda allows us to set up virtual Python environments for different projects, 
+Conda allows you to set up virtual Python environments for different projects, 
 in which different versions of the required dependencies are installed.
 With this approach, it is easy to maintain multiple environments with different configurations. 
 
@@ -119,7 +120,9 @@ Consider opening this file in a text editor and changing the lines specifying pr
 ~~~~~~~~~~~~~~~~~~~~~
 
 To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
-This jupyter hub is accessible at ``https://jupyterhub.ucar.edu/ch``
+This jupyter hub is accessible at ``https://jupyterhub.ucar.edu/ch``. 
+You must have a Cheyenne account. The spawning screen will look like this (below):
+but with your project account specified.
 
 .. image:: https://i.imgur.com/gLugukz.png
    :alt: JHUB
@@ -136,6 +139,7 @@ Once your session is active:
    :alt: launch
    :align: center
 
+
 - Select which kernel to use:
 
 .. image:: https://i.imgur.com/q8LDBCj.png
@@ -145,6 +149,7 @@ Once your session is active:
 .. image:: https://i.imgur.com/zoGymUm.png
    :alt: select-kernel
    :align: center
+
 
 To use the DAV system:
 
