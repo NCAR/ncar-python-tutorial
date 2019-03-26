@@ -133,7 +133,7 @@ but with your project account specified.
 
 Once your session is active: 
 
-- Create a new notebook:
+- Create a new notebook: ``File ➤ New ➤ Notebook``
 
 .. image:: https://i.imgur.com/pXpwUXC.png
    :alt: launch
