@@ -25,7 +25,14 @@ We suggest manually adding the miniconda path to your dot files (answer "no" to 
 .. code:: bash
 
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-    bash miniconda.sh
+    bash miniconda.sh    # Follow the prompts on the installer screens.
+
+If you are unsure about any setting, accept the defaults. You can change them later.
+
+.. NOTE::
+
+  To make the changes take effect, close and then re-open your Terminal window.
+
 
 To verify that conda is available on your system, you can try
 
