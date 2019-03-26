@@ -15,8 +15,8 @@ please open an issue at the GitHub `main repository <http://github.com/NCAR/NCAR
    :caption: Tutorial Contents
    
    setup
-   notebooks/00-getting-started-with-python-for-people-in-a-hurry.ipynb
-   notebooks/numpy/01-intro-to-numpy.ipynb
+   notebooks/00-python-guide-for-people-in-a-hurry.ipynb
+   notebooks/numpy/01-numpy-guide.ipynb
 
 
 Indices and tables
