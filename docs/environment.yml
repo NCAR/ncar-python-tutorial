@@ -10,5 +10,10 @@ dependencies:
   - sphinx_rtd_theme
   - sphinx>=1.6
   - jupyterlab
+  - dask
+  - xarray
+  - numpy
+  - watermark
+  - netcdf4
   - pip:
     - sphinx_copybutton
