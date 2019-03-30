@@ -1,7 +1,3 @@
-====================
-NCAR Pangeo Tutorial
-====================
-
 First Time Setup
 -----------------
 
