@@ -15,7 +15,7 @@ please open an issue at the GitHub `main repository <http://github.com/NCAR/NCAR
    :caption: Tutorial Contents
    
    setup
-   notebooks/00-python-guide-for-people-in-a-hurry
+   notebooks/python/00-python-guide-for-people-in-a-hurry
    notebooks/numpy/01-numpy-guide
    notebooks/xarray/01-xarray-introduction
    notebooks/xarray/02-xarray-betterplotting
