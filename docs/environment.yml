@@ -9,5 +9,6 @@ dependencies:
   - recommonmark
   - sphinx_rtd_theme
   - sphinx>=1.6
+  - jupyterlab
   - pip:
     - sphinx_copybutton
