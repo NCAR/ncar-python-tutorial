@@ -32,6 +32,8 @@ please open an issue at the GitHub `main repository <http://github.com/NCAR/NCAR
    :caption: Xarray 
    
    notebooks/xarray/01-xarray-introduction
+   notebooks/xarray/02-xarray-advanced-plotting
+
 
 
 Indices and tables
