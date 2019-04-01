@@ -32,7 +32,11 @@ https://docs.conda.io/en/latest/miniconda.html
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
     bash miniconda.sh    # Follow the prompts on the installer screens.
 
-If you are unsure about any setting, accept the defaults. You can change them later. 
+If you are unsure about any setting, accept the defaults. We recommend adding the miniconda path to your PATH variable manually. For a bash user, this would entail adding something like the following to your .bashrc file:
+
+.. code:: bash
+   
+   export PATH=/path/to/installation/miniconda3/bin:${PATH}
 
 
 .. NOTE::
