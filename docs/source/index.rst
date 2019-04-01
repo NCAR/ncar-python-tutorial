@@ -22,17 +22,17 @@ please open an issue at the GitHub `main repository <http://github.com/NCAR/NCAR
 
 .. toctree::
    :maxdepth: 1
-   :caption: NumPy Guide
+   :caption: NumPy
 
    notebooks/numpy/01-numpy-guide
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Xarray Guide
+   :caption: Xarray 
    
    notebooks/xarray/01-xarray-introduction
-   notebooks/xarray/02-xarray-betterplotting
+
 
 Indices and tables
 ==================
