@@ -41,7 +41,7 @@ If you are unsure about any setting, accept the defaults. We recommend adding th
 
 .. NOTE::
 
-  To make the changes take effect, close and then re-open your Terminal window.
+  To make the changes take effect, logout and log back in.
 
 
 To verify that conda is available on your system, you can try
