@@ -1,4 +1,4 @@
 conda:
-  file: environments/env-analysis.yml
+  file: environments/docs.yml
 python:
   version: 3
