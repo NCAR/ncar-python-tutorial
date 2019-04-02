@@ -1,66 +1,19 @@
 name: docs
 channels:
-- conda-forge
-- defaults
+  - conda-forge
 dependencies:
-- python=3.7
-# core pydata
-- bottleneck
-- dask
-- distributed
-- jupyterlab
-- nbsphinx
-- numpy
-- numpydoc
-- pandas
-- recommonmark
-- scipy
-- sphinx_rtd_theme
-- sphinx>=1.6
-- watermark
-- xarray
-# serialization
-- h5py
-- netcdf4
-- numcodecs
-- rasterio
-- zarr
-# visualization
-- basemap
-- bokeh
-- cartopy
-- cmocean
-- datashader
-- geoviews
-- holoviews
-- hvplot
-- matplotlib
-- panel
-- seaborn
-# Misc
-- cf_units
-- cftime
-- datashader
-- esmpy
-- graphviz
-- intake
-- intake-xarray
-- ipykernel
-- ipywidgets
-- lz4
-- memory_profiler
-- nodejs
-- papermill
-- psutil
-- pynio
-- pytest
-- python-blosc
-- python-graphviz
-- snakeviz
-- tornado
-- tqdm
-- xesmf
-- pip:
-  - cfgrib
-  - git+https://github.com/NCAR/esmlab.git
-  - git+https://github.com/NCAR/intake-esm.git
+  - dask
+  - ipython
+  - jupyterlab
+  - nbsphinx
+  - netcdf4
+  - numpy
+  - numpydoc
+  - python=3.7
+  - recommonmark
+  - sphinx_rtd_theme
+  - sphinx>=1.6
+  - watermark
+  - xarray
+  - pip:
+    - sphinx_copybutton
