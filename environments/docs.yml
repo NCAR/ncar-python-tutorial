@@ -4,6 +4,7 @@ channels:
 dependencies:
   - jupyterlab
   - nbsphinx
+  - dask
   - netcdf4
   - numpy==1.16.2
   - numpydoc
