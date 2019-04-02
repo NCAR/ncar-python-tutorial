@@ -15,5 +15,7 @@ dependencies:
   - xarray==0.12
   - matplotlib==3.0.3
   - zarr
+  - seaborn
   - pip:
     - sphinx_copybutton
+    - cartopy
