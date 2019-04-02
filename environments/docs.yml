@@ -2,21 +2,18 @@ name: docs
 channels:
   - conda-forge
 dependencies:
-  - dask
-  - ipython
   - jupyterlab
   - nbsphinx
   - netcdf4
-  - numpy
+  - numpy==1.16.2
   - numpydoc
   - python=3.7
   - recommonmark
   - sphinx_rtd_theme
   - sphinx>=1.6
   - watermark
-  - xarray
+  - xarray==0.12
   - matplotlib==3.0.3
-  - cartopy==0.17.0
   - zarr
   - pip:
     - sphinx_copybutton
