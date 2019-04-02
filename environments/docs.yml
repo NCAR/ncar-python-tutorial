@@ -15,5 +15,10 @@ dependencies:
   - sphinx>=1.6
   - watermark
   - xarray
+  - matplotlib
+  - cartopy
+  - holoviews
+  - geoviews
+  - hvplot
   - pip:
     - sphinx_copybutton
