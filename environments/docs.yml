@@ -18,6 +18,4 @@ dependencies:
   - seaborn
   - pip:
     - sphinx_copybutton
-    - hvplot
-    - geoviews
-    - holoviews
+    
