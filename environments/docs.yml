@@ -16,8 +16,8 @@ dependencies:
   - matplotlib==3.0.3
   - zarr
   - seaborn
-  - hvplot
-  - geoviews
-  - holoviews
   - pip:
     - sphinx_copybutton
+    - hvplot
+    - geoviews
+    - holoviews

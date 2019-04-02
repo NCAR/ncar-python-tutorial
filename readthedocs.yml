@@ -2,3 +2,4 @@ conda:
   file: environments/docs.yml
 python:
   version: 3
+  use_system_site_packages: true
