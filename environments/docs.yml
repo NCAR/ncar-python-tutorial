@@ -4,19 +4,14 @@ channels:
 dependencies:
   - jupyterlab
   - nbsphinx
-  - dask
-  - netcdf4
-  - numpy==1.16.2
   - numpydoc
   - python=3.7
   - recommonmark
   - sphinx_rtd_theme
   - sphinx>=1.6
   - watermark
-  - xarray==0.12
-  - matplotlib==3.0.3
-  - zarr
-  - seaborn
+  - pip
+  - numpy
   - pip:
     - sphinx_copybutton
     

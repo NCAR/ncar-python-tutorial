@@ -1,4 +1,11 @@
+version: 2
+
+build:
+  image: latest
+
 conda:
-  file: environments/docs.yml
+  environment: environments/docs.yml
+
 python:
-  version: 3
+  version: 3.7
+  system_packages: true
