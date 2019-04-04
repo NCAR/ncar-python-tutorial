@@ -4,8 +4,8 @@ channels:
 - nesii/label/dev-esmf
 - defaults
 dependencies:
-- python=3.6
-- pip=18.1
+- python=3.7
+- pip
 # core pydata
 - bottleneck
 - dask
@@ -20,7 +20,7 @@ dependencies:
 - scikit-learn
 - scipy
 - statsmodels
-- xarray
+- xarray>=0.12
 # serialization
 - h5netcdf
 - h5py
@@ -74,12 +74,13 @@ dependencies:
 - tqdm
 - xesmf
 - zict
+- dask-jobqueue 
 - pip:
   - cfgrib
   - click
-  - git+https://github.com/dask/dask-jobqueue.git
   - git+https://github.com/NCAR/esmlab.git
-  - git+https://github.com/NCAR/intake-cesm.git
+  - git+https://github.com/NCAR/intake-esm.git
+  - git+https://github.com/NCAR/esmlab-regrid.git
   - git+https://github.com/NCAR/xcollection.git
   - nbdime
   - ncar-jobqueue

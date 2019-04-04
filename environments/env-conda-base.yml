@@ -5,15 +5,14 @@ channels:
 dependencies:
   - python=3.7
   - pip
-  - jupyter
   - jupyterlab
   - jupyter_dashboards
   - ipywidgets
   - notebook
   - nodejs
+  - widgetsnbextension
   - nb_conda_kernels
-  - pytest
-  - tornado=5.1.1
+  - tornado
   - pip:
     - dask_labextension # https://github.com/dask/dask-labextension
     - jupyter-server-proxy
