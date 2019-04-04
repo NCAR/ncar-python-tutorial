@@ -107,3 +107,4 @@ notebooks/dask-*
 notebooks/xarray/rasm_test.nc
 notebooks/xarray/data/19*.nc
 notebooks/xarray/data/*.zarr
+_build/
