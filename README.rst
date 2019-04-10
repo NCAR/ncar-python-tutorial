@@ -80,6 +80,13 @@ Next create a new environment call "analysis" (this can take 10-15 min).
 
   conda env create -f environments/env-analysis.yml
 
+Note that some version of CESM do not support Python 3, but support for Python 2 is going away. 
+In case you need a Python 2 environment, you can create one as follows.
+
+.. code:: bash
+
+   conda env create -f environments/env-py2.yml
+
 If you are interested in using Matlab in JupyterLab, consider creating the following environment.
 
 .. code:: bash
