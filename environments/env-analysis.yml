@@ -62,6 +62,7 @@ dependencies:
 - pandoc
 - pandocfilters
 - papermill
+- pint==0.8.1 # pin version: https://github.com/Unidata/MetPy/issues/998
 - psutil
 - pynio
 - pytest
@@ -78,6 +79,7 @@ dependencies:
   - cfgrib
   - click
   - git+https://github.com/dask/dask-jobqueue.git
+  - git+https://github.com/NCAR/esmlab-regrid.git
   - git+https://github.com/NCAR/esmlab.git
   - git+https://github.com/NCAR/intake-cesm.git
   - git+https://github.com/NCAR/xcollection.git
