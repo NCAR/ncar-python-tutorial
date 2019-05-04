@@ -14,5 +14,5 @@ dependencies:
   - numpy
   - pip:
     - sphinx_copybutton
-    - git+https://github.com/NCAR/sphinx_xdev_theme.git
+    - git+https://github.com/andersy005/sphinx_xdev_theme.git
     
