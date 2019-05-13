@@ -59,6 +59,7 @@ dependencies:
 - lz4
 - memory_profiler
 - mpi4py
+- nc-time-axis
 - nodejs
 - nomkl
 - pandoc
