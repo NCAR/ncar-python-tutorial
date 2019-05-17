@@ -37,8 +37,13 @@ If you are unsure about any setting, accept the defaults. We recommend adding th
 
 .. NOTE::
 
-  To make the changes take effect, logout and log back in.
+To make the changes take effect, logout and log back in.
+  
+Change into the newly created NCAR-pangeo-tutorial directory
 
+.. code:: bash 
+
+   cd /path/to/NCAR-pangeo-tutorial
 
 To verify that conda is available on your system, you can try
 
