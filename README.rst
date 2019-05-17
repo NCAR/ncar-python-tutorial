@@ -43,7 +43,7 @@ Change into the newly created NCAR-pangeo-tutorial directory
 
 .. code:: bash 
 
-   cd ./NCAR-pangeo-tutorial/
+   cd /path/to/NCAR-pangeo-tutorial
 
 To verify that conda is available on your system, you can try
 
