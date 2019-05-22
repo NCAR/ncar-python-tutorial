@@ -4,7 +4,6 @@ First Time Setup
 This tutorial covers the installation and setup of a Python environment on:
 
 - Cheyenne/DAV 
-- CGD machines 
 
 Throughout this tutorial, we will be using miniconda which provides 
 prepackaged Python environments with automated installers, the package manager ``conda``.
