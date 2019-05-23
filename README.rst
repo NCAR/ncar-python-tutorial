@@ -56,6 +56,11 @@ After install, update conda:
 
     conda update -n base -c defaults conda
 
+
+.. NOTE::
+ 
+The following step may not be necessary with more recent version of the miniconda script.
+
 And configure the shell, replacing {SHELL} in the command below with your shell (i.e., bash, tcsh,...):
 
 .. code:: bash
