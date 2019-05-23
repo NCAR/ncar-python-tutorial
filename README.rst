@@ -126,9 +126,9 @@ are helpful tools. The ``conda info`` command can be used to list available envi
 4. Copy configuration file:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. Note::
+.. note::
    
-   Don't do this on the CGD machines!
+   **The configuration file currently contains defaults that are appropriate for Cheyenne/DAV; don't do this step on the CGD machines!**
 
 .. code:: bash
 
@@ -187,3 +187,10 @@ If you want to use Matlab, you must add a flag to enable the module load; for in
 
   cd scripts
   ./jlab-dav --matlab
+
+
+On Hobart, you can do the following.
+.. code:: bash
+
+  cd scripts
+  ./jlab-hobart
