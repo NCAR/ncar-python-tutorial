@@ -21,8 +21,6 @@ Possible options are:
  -q,--queue: queue [default: ${queue}]
  -d,--directory: notebook directory
  -p,--port: [default: ${jlab_port}]
- --matlab: run matlab kernel
- --matlab-version: matlab version [default: ${MATLAB_VERSION}]
 EOF
 exit
 }
@@ -44,10 +42,6 @@ while [[ $# -gt 0 ]]; do
     -d|--directory)
       notebook_dir="${2}"
       shift 2
-      ;;
-    --add-workers)
-      add_workers=true
-      shift
       ;;
     -p|--port)
       jlab_port="${2}"
