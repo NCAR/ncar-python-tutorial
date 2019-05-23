@@ -4,6 +4,7 @@ First Time Setup
 This tutorial covers the installation and setup of a Python environment on:
 
 - Cheyenne/DAV 
+- CGD machines
 
 Throughout this tutorial, we will be using miniconda which provides 
 prepackaged Python environments with automated installers, the package manager ``conda``.
@@ -59,7 +60,7 @@ After install, update conda:
 
 .. NOTE::
  
-The following step may not be necessary with more recent version of the miniconda script.
+   The following step may not be necessary with more recent version of the miniconda script.
 
 And configure the shell, replacing {SHELL} in the command below with your shell (i.e., bash, tcsh,...):
 
@@ -124,6 +125,10 @@ are helpful tools. The ``conda info`` command can be used to list available envi
 
 4. Copy configuration file:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. Note::
+   
+   Don't do this on the CGD machines!
 
 .. code:: bash
 
