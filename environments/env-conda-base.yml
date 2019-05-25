@@ -12,7 +12,7 @@ dependencies:
   - nodejs
   - widgetsnbextension
   - nb_conda_kernels
-  - tornado
+  - tornado=5.1.1
   - pip:
     - dask_labextension # https://github.com/dask/dask-labextension
     - jupyter-server-proxy
