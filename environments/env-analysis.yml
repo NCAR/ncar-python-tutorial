@@ -10,17 +10,19 @@ dependencies:
 - bottleneck
 - dask
 - dask-mpi
+- dask-jobqueue 
 - distributed
 - eofs
 - metpy
 - numba
 - numpy
+- cupy
 - pandas
 - scikit-image
 - scikit-learn
 - scipy
 - statsmodels
-- xarray
+- xarray>=0.12
 # serialization
 - h5netcdf
 - h5py
@@ -77,16 +79,17 @@ dependencies:
 - tqdm
 - xesmf
 - zict
+- git
 - pip:
   - cfgrib
   - click
-  - git+https://github.com/dask/dask-jobqueue.git
   - git+https://github.com/NCAR/esmlab-regrid.git
   - git+https://github.com/NCAR/esmlab.git
-  - git+https://github.com/NCAR/intake-cesm.git
+  - git+https://github.com/NCAR/intake-esm.git
   - git+https://github.com/NCAR/xcollection.git
   - git+https://github.com/NCAR/pop-tools.git
   - nbdime
   - ncar-jobqueue
   - seawater
   - watermark
+  - sparse 

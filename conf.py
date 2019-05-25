@@ -11,7 +11,6 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-
 import sys
 import os
 import datetime
@@ -46,6 +45,8 @@ extensions = [
 extlinks = {
     
 }
+
+ 
 
 current_year = datetime.datetime.now().year 
 current_month = datetime.datetime.now().month
@@ -125,6 +126,7 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 html_theme = 'sphinx_rtd_theme'
+html_logo = 'assets/img/nsf.png'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -138,6 +140,7 @@ html_theme = 'sphinx_rtd_theme'
 # "<project> v<release> documentation".
 html_title = 'The Hitchhiker\'s Guide to Pangeo Toolboxes'
 
+
 # A shorter title for the navigation bar.  Default is the same as html_title.
 # html_short_title = None
 
@@ -148,12 +151,12 @@ html_title = 'The Hitchhiker\'s Guide to Pangeo Toolboxes'
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-# html_favicon = None
+# html_favicon = 
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_build/html/_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.

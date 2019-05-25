@@ -50,11 +50,18 @@ To verify that conda is available on your system, you can try
 
    conda --version 
 
-After install, update conda:
+
+After Miniconda is installed, you will want to update and set up Conda so that it
+installs packages from a trusted ``channel``.  Within the Python community,
+the ``conda-forge`` channel is considered the most trusted source of packages
+that will work together.  So, we enable the use of the ``conda-forge`` channel
+for all packages with the following:
+
 
 .. code:: bash
 
-    conda update -n base -c defaults conda
+    conda config --add channels conda-forge
+    conda update -n base conda
 
 
 .. NOTE::
@@ -134,6 +141,7 @@ are helpful tools. The ``conda info`` command can be used to list available envi
    ./config/copy_config
 
 This adds a file to your home directory: ``~/.config/dask/jobqueue.yaml``.
+
 Consider opening this file in a text editor and changing the lines specifying project number: remove the comment and add your preferred project number. 
 
 5. Start Jupyter Lab
@@ -169,6 +177,10 @@ Once your session is active:
 .. image:: https://i.imgur.com/zoGymUm.png
    :alt: select-kernel
    :align: center
+
+
+Detailed info on using JupyterLab via NCAR's JupyterHub is 
+available @ https://ncar-hackathons.github.io/python-general/jupyter/jhub.html
 
 
 To use the DAV system:
