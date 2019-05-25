@@ -45,6 +45,7 @@ dependencies:
 # Misc
 - cf_units
 - cftime
+- nc-time-axis
 - cytoolz
 - datashader
 - esmpy
@@ -86,6 +87,7 @@ dependencies:
   - git+https://github.com/NCAR/esmlab.git
   - git+https://github.com/NCAR/intake-esm.git
   - git+https://github.com/NCAR/xcollection.git
+  - git+https://github.com/NCAR/pop-tools.git
   - nbdime
   - ncar-jobqueue
   - seawater

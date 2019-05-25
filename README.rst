@@ -4,7 +4,6 @@ First Time Setup
 This tutorial covers the installation and setup of a Python environment on:
 
 - Cheyenne/DAV 
-- CGD machines 
 
 Throughout this tutorial, we will be using miniconda which provides 
 prepackaged Python environments with automated installers, the package manager ``conda``.
@@ -37,8 +36,13 @@ If you are unsure about any setting, accept the defaults. We recommend adding th
 
 .. NOTE::
 
-  To make the changes take effect, logout and log back in.
+To make the changes take effect, logout and log back in.
+  
+Change into the newly created NCAR-pangeo-tutorial directory
 
+.. code:: bash 
+
+   cd /path/to/NCAR-pangeo-tutorial
 
 To verify that conda is available on your system, you can try
 
@@ -51,6 +55,11 @@ After install, update conda:
 .. code:: bash
 
     conda update -n base -c defaults conda
+
+
+.. NOTE::
+ 
+   The following step may not be necessary with more recent version of the miniconda script.
 
 And configure the shell, replacing {SHELL} in the command below with your shell (i.e., bash, tcsh,...):
 
@@ -116,6 +125,10 @@ are helpful tools. The ``conda info`` command can be used to list available envi
 4. Copy configuration file:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+   
+   **The configuration file currently contains defaults that are appropriate for Cheyenne/DAV; don't do this step on the CGD machines!**
+
 .. code:: bash
 
    ./config/copy_config
@@ -173,3 +186,11 @@ If you want to use Matlab, you must add a flag to enable the module load; for in
 
   cd scripts
   ./jlab-dav --matlab
+
+
+On Hobart, you can do the following.
+
+.. code:: bash
+
+  cd scripts
+  ./jlab-hobart
