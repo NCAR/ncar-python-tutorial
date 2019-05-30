@@ -182,7 +182,7 @@ Once your session is active:
 
 
 Detailed info on using JupyterLab via NCAR's JupyterHub is 
-available @ https://ncar-hackathons.github.io/python-general/jupyter/jhub.html
+available @ https://ncar-hackathons.github.io/jupyterlab-tutorial/jhub.html
 
 
 To use the DAV system:
