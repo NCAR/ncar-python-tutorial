@@ -10,6 +10,8 @@ prepackaged Python environments with automated installers, the package manager `
 
 https://docs.conda.io/en/latest/miniconda.html
 
+The following instructions are intended to be carried out on Cheyenne. Steps 1-3 can also be done on your laptop to install Python and associated environments there locally. 
+
 
 1. Clone NCAR Pangeo Tutorial Repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -200,9 +202,10 @@ If you want to use Matlab, you must add a flag to enable the module load; for in
   ./jlab-dav --matlab
 
 
-On Hobart, you can do the following.
+On your local machine, you can simply do the following.
 
 .. code:: bash
 
-  cd scripts
-  ./jlab-hobart
+   jupyter lab
+
+
