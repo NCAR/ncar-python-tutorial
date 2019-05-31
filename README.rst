@@ -10,24 +10,76 @@ prepackaged Python environments with automated installers, the package manager `
 
 https://docs.conda.io/en/latest/miniconda.html
 
+
 The following instructions are intended to be carried out on Cheyenne. Steps 1-3 can also be done on your laptop to install Python and associated environments there locally. 
+
+
+Let's start by logging in to the Cheyenne system.
+
 
 
 1. Clone NCAR Pangeo Tutorial Repository
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+Run the following commmand to clone this repo to your Cheyenne/Glade file space:
+
+``git clone https://github.com/NCAR/NCAR-pangeo-tutorial``
+
 .. code:: bash 
 
-   git clone https://github.com/NCAR/NCAR-pangeo-tutorial
+   abanihi@cheyenne2: ~/workdir $ git clone https://github.com/NCAR/NCAR-pangeo-tutorial
+   Cloning into 'NCAR-pangeo-tutorial'...
+   remote: Enumerating objects: 24, done.
+   remote: Counting objects: 100% (24/24), done.
+   remote: Compressing objects: 100% (20/20), done.
+   remote: Total 586 (delta 12), reused 7 (delta 4), pack-reused 562
+   Receiving objects: 100% (586/586), 17.34 MiB | 5.58 MiB/s, done.
+   Resolving deltas: 100% (312/312), done.
 
 
 2. Get miniconda and install
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Download miniconda with the following command: 
+
+- ``wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh``
+
+.. code:: bash
+    
+    abanihi@cheyenne2: ~/workdir $ cd NCAR-pangeo-tutorial/
+    abanihi@cheyenne2: ~/workdir/NCAR-pangeo-tutorial $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+   --2019-05-31 16:47:41--  https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+   Resolving repo.anaconda.com (repo.anaconda.com)... 104.16.131.3, 104.16.130.3, 2606:4700::6810:8303, ...
+   Connecting to repo.anaconda.com (repo.anaconda.com)|104.16.131.3|:443... connected.
+   HTTP request sent, awaiting response... 200 OK
+   Length: 70348401 (67M) [application/x-sh]
+   Saving to: ‘miniconda.sh’
+
+   100%[======================================================================================================================================================================================================================================>] 70,348,401   137MB/s   in 0.5s
+
+   2019-05-31 16:47:42 (137 MB/s) - ‘miniconda.sh’ saved [70348401/70348401]
+   
+- To install miniconda, run the following command and follow the prompts on the isntaller screens:
+   
+   ``chmod +x miniconda.sh && ./miniconda.sh``
+   
+   Or 
+   
+   ``bash miniconda.sh`` for bash users
+   
+   
 .. code:: bash
 
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-    bash miniconda.sh    # Follow the prompts on the installer screens.
+    abanihi@cheyenne2: ~/workdir/NCAR-pangeo-tutorial $ bash miniconda.sh
+
+      Welcome to Miniconda3 4.6.14
+
+      In order to continue the installation process, please review the license
+      agreement.
+      Please, press ENTER to continue
+      >>>
+      
 
 If you are unsure about any setting, accept the defaults. We recommend adding the miniconda path to your PATH variable manually. For a bash user, this would entail adding something like the following to your .bashrc file:
 
