@@ -14,8 +14,8 @@ https://docs.conda.io/en/latest/miniconda.html
 The following instructions are intended to be carried out on Cheyenne. Steps 1-3 can also be done on your laptop to install Python and associated environments there locally. 
 
 
-Let's start by logging in to the Cheyenne system.
-
+0. Log in to the Cheyenne System
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 1. Clone NCAR Pangeo Tutorial Repository
