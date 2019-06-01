@@ -163,7 +163,7 @@ If you are interested in using Matlab in JupyterLab, consider creating the follo
 
   conda env create -f environments/env-py-matlab.yml
 
-(Using Matlab requires building the Matlab Python API; see scripts/build-matlab-api.  Scripts are setup to use API's built in ~/matlab-python or ~mclong/matlab-python.)
+(Using Matlab requires building the Matlab Python API; see scripts/build-matlab-api.  Scripts are set up to use API's built in ``~/matlab-python`` or ``~mclong/matlab-python``.)
 
 To use one of these environments, we need to activate it using the command ``conda activate ENV_NAME``, and to 
 deactivate an environment, we use ``conda deactivate``. 
@@ -275,10 +275,10 @@ available @ https://ncar-hackathons.github.io/jupyterlab-tutorial/notebook_need_
 5.2. DAV (Casper)
 ++++++++++++++++++++
 
-Launching JupyterLab on DAV system is a bit different (there will be a JupyterHub deployment on the DAV system in the coming months (stay tuned))
+Launching JupyterLab on DAV system is a bit different (there will be a JupyterHub deployment on the DAV system in the coming months (stay tuned)). 
 
 
-For the time being, in order to run Jupyter Lab on the DAV system, you will need to use SSH tunnelling scripts provided in ``scripts/jlab-dav``
+For the time being, in order to run Jupyter Lab on the DAV system, you will need to use SSH tunneling scripts provided in ``scripts/jlab-dav``
 
 
 - From one of Cheyenne's logging nodes, run the following command:
@@ -290,7 +290,7 @@ For the time being, in order to run Jupyter Lab on the DAV system, you will need
   ./jlab-dav
   
 
-These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running. Once you have made this SSH connection, open a browser on your local machine and go to the address: localhost:8888 (or whichever port specified in the jlab script).
+These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running. Once you have made this SSH connection, open your prefered browser on your local machine and go to the address: localhost:8888 (or whichever port specified in the jlab script).
 
 If you want to use Matlab, you must add a flag to enable the module load; for instance:
 
