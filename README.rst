@@ -201,19 +201,51 @@ Consider opening this file in a text editor and changing the lines specifying pr
 5. Start Jupyter Lab
 ~~~~~~~~~~~~~~~~~~~~~
 
-To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
-This jupyter hub is accessible at ``https://jupyterhub.ucar.edu/ch``. 
-You must have a Cheyenne account. The spawning screen will look like this (below):
-but with your project account specified.
+5.1. Cheyenne
+++++++++++++++
 
-.. image:: https://i.imgur.com/gLugukz.png
-   :alt: JHUB
+
+To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
+
+In a browser on your ``local machine``, head over to ``https://jupyterhub.ucar.edu/ch``. Once this page is fully loaded, you will a log in screen:
+
+- ``Login``
+
+
+.. image:: assets/img/login.png
+   :alt: JHUB-LOGIN
    :align: center
 
-- Specify your project account 
-- You can also change the queue and other settings
 
-Once your session is active: 
+
+- ``Launch a Job``
+
+
+Once you are successfully authenticated, you will be automatically redirected to a job spawning page that looks like this:
+
+.. image:: assets/img/job.png
+   :alt: JHUB-JOB
+   :align: center
+
+
+You can specify your project account, you can also change the queue and other settings.
+When you are ready, click the ``Spawn`` button to submit your job.  When your job is up and running, you will see this screen:
+
+
+.. image:: assets/img/spawner.png
+   :alt: JHUB-SPAWNER
+   :align: center
+
+
+
+When your jupyter notebook server is up and running you will be redirected to a new page similar to:
+
+.. image:: assets/img/launcher.png
+   :alt: JHUB-LAUNCHER
+   :align: center
+
+Once your session is active, yu can start creating and using Jupyter notebooks:
+
 
 - Create a new notebook: ``File ➤ New ➤ Notebook``
 
@@ -233,16 +265,29 @@ Once your session is active:
    :align: center
 
 
-Detailed info on using JupyterLab via NCAR's JupyterHub is 
-available @ https://ncar-hackathons.github.io/jupyterlab-tutorial/jhub.html
+Detailed info on using JupyterLab is 
+available @ https://ncar-hackathons.github.io/jupyterlab-tutorial/notebook_need_to_know.html
 
 
-To use the DAV system:
+
+
+5.2. DAV (Casper)
+++++++++++++++++++++
+
+Launching JupyterLab on DAV system is a bit different (there will be a JupyterHub deployment deployment on DAV system in the coming months)
+
+
+To use the DAV system, you will need to use SSH tunnel scripts provided in ``scripts/jlab-dav``
+
+
+- From one of Cheyenne's logging nodes, run the following command:
+
 
 .. code:: bash
 
   cd scripts
   ./jlab-dav
+  
 
 These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running. Once you have made this SSH connection, open a browser on your local machine and go to the address: localhost:8888 (or whichever port specified in the jlab script).
 
@@ -254,10 +299,22 @@ If you want to use Matlab, you must add a flag to enable the module load; for in
   ./jlab-dav --matlab
 
 
-On your local machine, you can simply do the following.
+
+
+
+
+
+5.3. Running JupyterLab Locally
++++++++++++++++++++++++++++++++++
+
+For those interested in running JupyterLab on their local machine, after installing conda and creating a conda environment with required libraries including JupyterLab, you can simply do the following and follow the printed instructions on the console:
 
 .. code:: bash
 
    jupyter lab
+
+
+``This command allows the user to run jupyter lab on their local machine only (no access to Cheyenne, DAV, or any other remote system)``. 
+
 
 
