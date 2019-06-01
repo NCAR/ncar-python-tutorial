@@ -207,7 +207,7 @@ Consider opening this file in a text editor and changing the lines specifying pr
 
 To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
 
-In a browser on your ``local machine``, head over to ``https://jupyterhub.ucar.edu/ch``. Once this page is fully loaded, you will a log in screen:
+Open your prefered browser (Chrome, Firefox, Safari, etc...) on your ``local machine``, and head over to ``https://jupyterhub.ucar.edu/ch``. Once this page is fully loaded, you will a log in screen:
 
 - ``Login``
 
