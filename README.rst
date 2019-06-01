@@ -229,7 +229,8 @@ Once you are successfully authenticated, you will be automatically redirected to
 
 
 You can specify your project account, you can also change the queue and other settings.
-When you are ready, click the ``Spawn`` button to submit your job.  When your job is up and running, you will see this screen:
+
+When you are ready, click the ``Spawn`` button to submit your job.  When your job is up and running, you will see this page:
 
 
 .. image:: assets/img/spawner.png
@@ -238,7 +239,7 @@ When you are ready, click the ``Spawn`` button to submit your job.  When your jo
 
 
 
-When your jupyter notebook server is up and running you will be redirected to a new page similar to:
+When your Jupyter Lab server is up and running you will be redirected to a new page similar to:
 
 .. image:: assets/img/launcher.png
    :alt: JHUB-LAUNCHER
@@ -277,7 +278,7 @@ available @ https://ncar-hackathons.github.io/jupyterlab-tutorial/notebook_need_
 Launching JupyterLab on DAV system is a bit different (there will be a JupyterHub deployment on the DAV system in the coming months (stay tuned))
 
 
-To use the DAV system, you will need to use SSH tunnelling scripts provided in ``scripts/jlab-dav``
+For the time being, in order to run Jupyter Lab on the DAV system, you will need to use SSH tunnelling scripts provided in ``scripts/jlab-dav``
 
 
 - From one of Cheyenne's logging nodes, run the following command:
@@ -300,21 +301,20 @@ If you want to use Matlab, you must add a flag to enable the module load; for in
 
 
 
-
-
-
-
 5.3. Running JupyterLab Locally
 +++++++++++++++++++++++++++++++++
 
-For those interested in running JupyterLab on their local machine, after installing conda and creating a conda environment with required libraries including JupyterLab, you can simply do the following and follow the printed instructions on the console:
+For those interested in running JupyterLab on their local machine, after installing conda and creating a conda environment with required libraries including JupyterLab, you can simply run the following command, and follow the printed instructions on the console:
 
 .. code:: bash
 
    jupyter lab
 
 
-``This command allows the user to run jupyter lab on their local machine only (no access to Cheyenne, DAV, or any other remote system)``. 
+.. note::
+
+   ``This command allows the user to run jupyter lab on their local machine only (no access to Cheyenne, DAV, or any other remote system)``. 
+   
 
 
 
