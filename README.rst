@@ -274,10 +274,10 @@ available @ https://ncar-hackathons.github.io/jupyterlab-tutorial/notebook_need_
 5.2. DAV (Casper)
 ++++++++++++++++++++
 
-Launching JupyterLab on DAV system is a bit different (there will be a JupyterHub deployment deployment on DAV system in the coming months)
+Launching JupyterLab on DAV system is a bit different (there will be a JupyterHub deployment on the DAV system in the coming months (stay tuned))
 
 
-To use the DAV system, you will need to use SSH tunnel scripts provided in ``scripts/jlab-dav``
+To use the DAV system, you will need to use SSH tunnelling scripts provided in ``scripts/jlab-dav``
 
 
 - From one of Cheyenne's logging nodes, run the following command:
