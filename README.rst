@@ -60,7 +60,7 @@ Download miniconda with the following command:
 
    2019-05-31 16:47:42 (137 MB/s) - ‘miniconda.sh’ saved [70348401/70348401]
    
-- To install miniconda, run the following command and follow the prompts on the isntaller screens:
+- To install miniconda, run the following command and follow the prompts on the installer screen:
    
    ``chmod +x miniconda.sh && ./miniconda.sh``
    
@@ -207,7 +207,7 @@ Consider opening this file in a text editor and changing the lines specifying pr
 
 To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
 
-Open your prefered browser (Chrome, Firefox, Safari, etc...) on your ``local machine``, and head over to ``https://jupyterhub.ucar.edu/ch``. Once this page is fully loaded, you will a log in screen:
+Open your preferred browser (Chrome, Firefox, Safari, etc...) on your ``local machine``, and head over to ``https://jupyterhub.ucar.edu/ch``. Once this page is fully loaded, you will a log in screen:
 
 - ``Login``
 
@@ -290,7 +290,9 @@ For the time being, in order to run Jupyter Lab on the DAV system, you will need
   ./jlab-dav
   
 
-These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running. Once you have made this SSH connection, open your prefered browser on your local machine and go to the address: localhost:8888 (or whichever port specified in the jlab script).
+These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running. 
+
+Once you have made this SSH connection, open your preferred browser on your local machine and go to the address: localhost:8888 (or whichever port specified in the jlab script).
 
 If you want to use Matlab, you must add a flag to enable the module load; for instance:
 
