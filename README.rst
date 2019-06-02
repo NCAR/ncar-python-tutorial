@@ -81,18 +81,30 @@ Download miniconda with the following command:
       >>>
       
 
-If you are unsure about any setting, accept the defaults. We recommend adding the miniconda path to your PATH variable manually. For a bash user, this would entail adding something like the following to your .bashrc file:
+If you are unsure about any setting, accept the defaults. We recommend adding the miniconda path to your PATH variable manually. 
+
+
+- For a ``bash user``, this would entail adding something like the following to your .bashrc file:
 
 .. code:: bash
    
    export PATH=/path/to/installation/miniconda3/bin:${PATH}
 
 
+- For ``csh/tcsh users``, add the following to your ``.tcshrc``:
+
+.. code:: bash
+
+    source /path/to/installation/miniconda3/etc/profile.d/conda.csh
+
+since the more standard approach ``setenv PATH $PATH\:/path/to/installation/miniconda3`` for ``csh/tcsh`` doesn’t work for the time being.
+
 .. NOTE::
 
-To make the changes take effect, logout and log back in.
+``To make the changes take effect, logout and log back in.``
+
   
-Change into the newly created NCAR-pangeo-tutorial directory
+Once you are logged back in, change into the newly created NCAR-pangeo-tutorial directory
 
 .. code:: bash 
 
