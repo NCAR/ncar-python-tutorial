@@ -188,6 +188,19 @@ script in order to build JupyterLab extensions.
 
   conda activate base
   ./environments/post_build
+  
+
+Finally, you will need to download additional plotting assets (for cartopy) such as coastlines, etc., by executing the following script:
+
+
+.. code:: bash
+   
+   conda activate analysis
+   ./environments/post_build
+   python scripts/download_cartopy_assets.py --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
+   
+ 
+This last step is only necessary for certain special aspects of cartopy to work, namely the plotting of coastlines at different resolutions, etc.
 
 
 To manage environments, the ``conda env``, ``conda info``, and ``conda list`` commands
@@ -209,6 +222,8 @@ are helpful tools. The ``conda info`` command can be used to list available envi
 This adds a file to your home directory: ``~/.config/dask/jobqueue.yaml``.
 
 Consider opening this file in a text editor and changing the lines specifying project number: remove the comment and add your preferred project number. 
+
+
 
 5. Start Jupyter Lab
 ~~~~~~~~~~~~~~~~~~~~~
