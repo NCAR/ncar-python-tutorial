@@ -16,7 +16,6 @@ dependencies:
 - metpy
 - numba
 - numpy
-- cupy
 - pandas
 - scikit-image
 - scikit-learn
