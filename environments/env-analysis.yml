@@ -85,6 +85,7 @@ dependencies:
   - git+https://github.com/NCAR/intake-cesm.git
   - git+https://github.com/NCAR/xcollection.git
   - git+https://github.com/NCAR/pop-tools.git
+  - globus-cli
   - nbdime
   - ncar-jobqueue
   - seawater
