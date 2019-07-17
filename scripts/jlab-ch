@@ -152,6 +152,8 @@ s=$(qsub << EOF
 module purge
 unset LD_LIBRARY_PATH
 
+export JUPYTER_RUNTIME_DIR=${WORKDIR}
+
 # load matlab
 if [ ! -z "${LOAD_MATLAB}" ]; then
   export PYTHONPATH=${MATLAB_API_PATH}
