@@ -163,7 +163,7 @@ cd ${notebook_dir}
 jupyter lab --no-browser --notebook-dir ${notebook_dir} --ip=\$(hostname) >& ${LOGFILE}
 EOF
 )
-sjob=${s%.*}
+sjob=${s%%.*}
 echo "submitted job: ${sjob} to queue ${queue}"
 
 trap ctrl_c INT
