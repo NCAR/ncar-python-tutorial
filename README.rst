@@ -14,8 +14,8 @@ https://docs.conda.io/en/latest/miniconda.html
 The following instructions are intended to be carried out on Cheyenne. Steps 1-3 can also be done on your laptop to install Python and associated environments there locally. 
 
 
-Let's start by logging in to the Cheyenne system.
-
+0. Log in to the Cheyenne System
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 1. Clone NCAR Pangeo Tutorial Repository
@@ -60,7 +60,7 @@ Download miniconda with the following command:
 
    2019-05-31 16:47:42 (137 MB/s) - ‘miniconda.sh’ saved [70348401/70348401]
    
-- To install miniconda, run the following command and follow the prompts on the isntaller screens:
+- To install miniconda, run the following command and follow the prompts on the installer screen:
    
    ``chmod +x miniconda.sh && ./miniconda.sh``
    
@@ -81,18 +81,30 @@ Download miniconda with the following command:
       >>>
       
 
-If you are unsure about any setting, accept the defaults. We recommend adding the miniconda path to your PATH variable manually. For a bash user, this would entail adding something like the following to your .bashrc file:
+If you are unsure about any setting, accept the defaults. We recommend adding the miniconda path to your PATH variable manually. 
+
+
+- For a ``bash user``, this would entail adding something like the following to your .bashrc file:
 
 .. code:: bash
    
    export PATH=/path/to/installation/miniconda3/bin:${PATH}
 
 
+- For ``csh/tcsh users``, add the following to your ``.tcshrc``:
+
+.. code:: bash
+
+    source /path/to/installation/miniconda3/etc/profile.d/conda.csh
+
+since the more standard approach ``setenv PATH $PATH\:/path/to/installation/miniconda3`` for ``csh/tcsh`` doesn’t work for the time being.
+
 .. NOTE::
 
-To make the changes take effect, logout and log back in.
+``To make the changes take effect, logout and log back in.``
+
   
-Change into the newly created NCAR-pangeo-tutorial directory
+Once you are logged back in, change into the newly created NCAR-pangeo-tutorial directory
 
 .. code:: bash 
 
@@ -163,7 +175,7 @@ If you are interested in using Matlab in JupyterLab, consider creating the follo
 
   conda env create -f environments/env-py-matlab.yml
 
-(Using Matlab requires building the Matlab Python API; see scripts/build-matlab-api.  Scripts are setup to use API's built in ~/matlab-python or ~mclong/matlab-python.)
+(Using Matlab requires building the Matlab Python API; see scripts/build-matlab-api.  Scripts are set up to use API's built in ``~/matlab-python`` or ``~mclong/matlab-python``.)
 
 To use one of these environments, we need to activate it using the command ``conda activate ENV_NAME``, and to 
 deactivate an environment, we use ``conda deactivate``. 
@@ -176,6 +188,19 @@ script in order to build JupyterLab extensions.
 
   conda activate base
   ./environments/post_build
+  
+
+Finally, you will need to download additional plotting assets (for cartopy) such as coastlines, etc., by executing the following script:
+
+
+.. code:: bash
+   
+   conda activate analysis
+   ./environments/post_build
+   python scripts/download_cartopy_assets.py --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
+   
+ 
+This last step is only necessary for certain special aspects of cartopy to work, namely the plotting of coastlines at different resolutions, etc.
 
 
 To manage environments, the ``conda env``, ``conda info``, and ``conda list`` commands
@@ -198,22 +223,57 @@ This adds a file to your home directory: ``~/.config/dask/jobqueue.yaml``.
 
 Consider opening this file in a text editor and changing the lines specifying project number: remove the comment and add your preferred project number. 
 
+
+
 5. Start Jupyter Lab
 ~~~~~~~~~~~~~~~~~~~~~
 
-To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
-This jupyter hub is accessible at ``https://jupyterhub.ucar.edu/ch``. 
-You must have a Cheyenne account. The spawning screen will look like this (below):
-but with your project account specified.
+5.1. Cheyenne
+++++++++++++++
 
-.. image:: https://i.imgur.com/gLugukz.png
-   :alt: JHUB
+
+To use the Cheyenne compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment. 
+
+Open your preferred browser (Chrome, Firefox, Safari, etc...) on your ``local machine``, and head over to ``https://jupyterhub.ucar.edu/ch``. Once this page is fully loaded, you will see a login screen:
+
+- ``Login``
+
+
+.. image:: assets/img/login.png
+   :alt: JHUB-LOGIN
    :align: center
 
-- Specify your project account 
-- You can also change the queue and other settings
 
-Once your session is active: 
+
+- ``Launch a Job``
+
+
+Once you are successfully authenticated, you will be automatically redirected to a job spawning page that looks like this:
+
+.. image:: assets/img/job.png
+   :alt: JHUB-JOB
+   :align: center
+
+
+You can specify your project account, you can also change the queue and other settings.
+
+When you are ready, click the ``Spawn`` button to submit your job.  When your job is up and running, you will see this page:
+
+
+.. image:: assets/img/spawner.png
+   :alt: JHUB-SPAWNER
+   :align: center
+
+
+
+When your Jupyter Lab server is up and running you will be redirected to a new page similar to:
+
+.. image:: assets/img/launcher.png
+   :alt: JHUB-LAUNCHER
+   :align: center
+
+Once your session is active, yu can start creating and using Jupyter notebooks:
+
 
 - Create a new notebook: ``File ➤ New ➤ Notebook``
 
@@ -233,18 +293,33 @@ Once your session is active:
    :align: center
 
 
-Detailed info on using JupyterLab via NCAR's JupyterHub is 
-available @ https://ncar-hackathons.github.io/jupyterlab-tutorial/jhub.html
+Detailed info on using JupyterLab is 
+available @ https://ncar-hackathons.github.io/jupyterlab-tutorial/notebook_need_to_know.html
 
 
-To use the DAV system:
+
+
+5.2. DAV (Casper)
+++++++++++++++++++++
+
+Launching JupyterLab on DAV system is a bit different (there will be a JupyterHub deployment on the DAV system in the coming months (stay tuned)). 
+
+
+For the time being, in order to run Jupyter Lab on the DAV system, you will need to use SSH tunneling scripts provided in ``scripts/jlab-dav``
+
+
+- From one of Cheyenne's logging nodes, run the following command:
+
 
 .. code:: bash
 
   cd scripts
   ./jlab-dav
+  
 
-These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running. Once you have made this SSH connection, open a browser on your local machine and go to the address: localhost:8888 (or whichever port specified in the jlab script).
+These scripts print instructions for how to SSH into the machine with an SSH tunnel that enables connecting to the compute node where JupyterLab is running. 
+
+Once you have made this SSH connection, open your preferred browser on your local machine and go to the address: localhost:8888 (or whichever port specified in the jlab script).
 
 If you want to use Matlab, you must add a flag to enable the module load; for instance:
 
@@ -254,10 +329,21 @@ If you want to use Matlab, you must add a flag to enable the module load; for in
   ./jlab-dav --matlab
 
 
-On your local machine, you can simply do the following.
+
+5.3. Running JupyterLab Locally
++++++++++++++++++++++++++++++++++
+
+For those interested in running JupyterLab on their local machine, after installing conda and creating a conda environment with required libraries including JupyterLab, you can simply run the following command, and follow the printed instructions on the console:
 
 .. code:: bash
 
    jupyter lab
+
+
+.. note::
+
+   ``This command allows the user to run jupyter lab on their local machine only (no access to Cheyenne, DAV, or any other remote system)``. 
+   
+
 
 
