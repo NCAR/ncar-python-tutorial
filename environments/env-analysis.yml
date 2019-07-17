@@ -23,6 +23,7 @@ dependencies:
 - scipy
 - statsmodels
 - xarray>=0.12
+- cython
 # serialization
 - h5netcdf
 - h5py
