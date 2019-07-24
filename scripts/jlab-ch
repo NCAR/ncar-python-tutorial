@@ -152,6 +152,8 @@ s=$(qsub << EOF
 module purge
 unset LD_LIBRARY_PATH
 
+export JUPYTER_RUNTIME_DIR=${WORKDIR}
+
 # load matlab
 if [ ! -z "${LOAD_MATLAB}" ]; then
   export PYTHONPATH=${MATLAB_API_PATH}
@@ -163,7 +165,7 @@ cd ${notebook_dir}
 jupyter lab --no-browser --notebook-dir ${notebook_dir} --ip=\$(hostname) >& ${LOGFILE}
 EOF
 )
-sjob=${s%.*}
+sjob=${s%%.*}
 echo "submitted job: ${sjob} to queue ${queue}"
 
 trap ctrl_c INT

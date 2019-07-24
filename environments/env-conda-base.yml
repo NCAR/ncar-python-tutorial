@@ -10,6 +10,7 @@ dependencies:
   - ipywidgets
   - notebook
   - nodejs
+  - rise
   - widgetsnbextension
   - nb_conda_kernels
   - tornado=5.1.1
