@@ -116,6 +116,10 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ -z ${jid} ]]; then
+  if [ -z ${JOB_ACCOUNT} ]; then
+    echo "ERROR: JOB_ACCOUNT not set."
+    exit 1
+  fi
   if [ -z ${WALLTIME} ]; then
     echo "ERROR: WALLTIME not set."
     exit 1
