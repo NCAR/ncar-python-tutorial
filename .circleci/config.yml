@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build-job:
+    docker:
+      - image: circleci/python:3.7
+
+    steps:
+      - checkout
+      - run:
+          name: Dummy Test
+          command: |
+            pip install --user pytest
+            pytest -v setup/test.py
+
+
+workflows:
+  version: 2
+  default:
+    jobs:
+      - build-job
