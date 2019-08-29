@@ -5,17 +5,3 @@ set -xeo pipefail
 wget $INSTALLER -O miniconda.sh
 chmod +x miniconda.sh
 ./miniconda.sh -b -p $INSTALL_DIR
-export PATH="$INSTALL_DIR/bin:$PATH"
-conda config --add channels conda-forge
-
-conda env update -f $BASE_ENV_YML -q
-conda env update -f $ANALYSIS_ENV_YML -q
-
-
-conda info -a
-
-if [ -z "$INIT_SHELL" ]; then
-   echo "INIT_SHELL is unset. Skipping conda init INIT_SHELL";
-else
-  conda init $INIT_SHELL;
-fi
