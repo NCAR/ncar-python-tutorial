@@ -33,6 +33,7 @@ dependencies:
 - intake-xarray
 - ipywidgets
 - jupyterlab
+- line_profiler
 - lz4
 - matplotlib
 - memory_profiler
@@ -67,7 +68,6 @@ dependencies:
 - statsmodels
 - tabulate
 - toolz
-- tornado
 - tqdm
 - watermark
 - xarray>=0.12
@@ -76,7 +76,6 @@ dependencies:
 - xhistogram
 - xrft
 - zarr
-- zict
 - pip:
   - cfgrib
   - git+https://github.com/NCAR/pop-tools.git
@@ -85,4 +84,3 @@ dependencies:
   - ncar-jobqueue
   - seawater
   - sparse
-  - line-profiler
