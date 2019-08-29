@@ -19,18 +19,3 @@ if [ -z "$INIT_SHELL" ]; then
 else
   conda init $INIT_SHELL;
 fi
-
-# Install jupyterlab extensions
-conda activate base
-jupyter labextension install @jupyter-widgets/jupyterlab-manager \
-                             dask-labextension \
-                             jupyterlab-nvdashboard
-
-conda activate analysis
-jupyter labextension install @jupyter-widgets/jupyterlab-manager \
-                             @pyviz/jupyterlab_pyviz
-
-
-
-# Download Cartopy plotting assets
-python ./download_cartopy_assets.py --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
