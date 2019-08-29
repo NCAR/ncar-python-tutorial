@@ -30,11 +30,11 @@ def install_miniconda3():
 
     conda_path = detect_existing_executable("conda")
     if conda_path is not None:
-        print(f"Found an existing Conda installation at: {conda_path}")
-        print("Skipping Conda installation...")
+        print(f"*********Found an existing Conda installation at: {conda_path} **********")
+        print("**********Skipping Conda installation...*************")
 
     else:
-        print("Downloading Miniconda...")
+        print("*********** Downloading Miniconda... ****************")
         plat = detect_platform()
 
         if plat["system"] in installers:
@@ -47,10 +47,13 @@ def install_miniconda3():
                 print("Installing Conda...")
                 cmd = ["./miniconda.sh", "-b", "-p", "$HOME/miniconda"]
                 subprocess.check_call(cmd)
-                env = os.environ.copy()
-                env["PATH"] = f"{os.environ['HOME']}/miniconda/bin" + env["PATH"]
-                subprocess.Popen(["which", "conda"], env=env)
-                print("Miniconda installation completed successfully.")
+
+            env = os.environ.copy()
+            env["PATH"] = f"{os.environ['HOME']}/miniconda/bin:" + env["PATH"]
+            subprocess.Popen(["conda", "init", "bash"], env=env)
+            assert detect_existing_executable("conda") is not None
+            subprocess.Popen(["source", "~/.bashrc"])
+            print("******** Miniconda installation completed successfully. ****************")
 
 
 def main():
