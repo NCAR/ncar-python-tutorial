@@ -30,8 +30,8 @@ def install_miniconda3():
 
     conda_path = detect_existing_executable("conda")
     if conda_path is not None:
-        print(f"*********Found an existing Conda installation at: {conda_path} **********")
-        print("**********Skipping Conda installation...*************")
+        print(f"********* Found an existing Conda installation at: {conda_path} **********")
+        print("********** Skipping Conda installation... *************")
 
     else:
         print("*********** Downloading Miniconda... ****************")
@@ -44,7 +44,7 @@ def install_miniconda3():
                 subprocess.check_call(cmd)
                 subprocess.call(["chmod", "+x", "miniconda.sh"])
 
-                print("************ Installing Conda... *****************")
+                print(f"************ Installing Conda on {plat['node']} *****************")
                 cmd = ["./miniconda.sh", "-b", "-p", "$HOME/miniconda"]
                 subprocess.check_call(cmd)
 
@@ -54,6 +54,9 @@ def install_miniconda3():
             )
             print(output.communicate()[0].strip().decode())
             print("******** Miniconda installation completed successfully. ****************")
+
+        else:
+            raise RuntimeError("Unsupported Platform..")
 
 
 def main():
