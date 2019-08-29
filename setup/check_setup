@@ -34,7 +34,7 @@ def main():
         except ImportError:
             missing_modules.append(mod)
 
-    cartopy_assets = Path("~/.local/share/cartopy")
+    cartopy_assets = Path("~/.local/share/cartopy").expanduser()
     try:
         assert cartopy_assets.exists()
     except AssertionError:
