@@ -36,27 +36,19 @@ def install_miniconda3():
     else:
         print("*********** Downloading Miniconda... ****************")
         plat = detect_platform()
-
         if plat["system"] in installers:
             with tmpdir():
-
-                cmd = ["wget", installers[plat["system"]], "-O", "miniconda.sh"]
-                subprocess.check_call(cmd)
-                subprocess.call(["chmod", "+x", "miniconda.sh"])
-
-                print(f"************ Installing Conda on {plat['node']} *****************")
-                cmd = ["./miniconda.sh", "-b", "-p", "$HOME/miniconda"]
-                subprocess.check_call(cmd)
-
-            conda = f"{os.environ['HOME']}/miniconda/bin/conda"
-            output = subprocess.Popen(
-                f"{conda} init bash; . ~/.bashrc", shell=True, stdout=subprocess.PIPE
-            )
-            print(output.communicate()[0].strip().decode())
+                my_env = os.environ.copy()
+                my_env["INSTALLER"] = installers[plat["system"]]
+                my_env["INSTALL_DIR"] = f'{my_env["HOME"]}/miniconda3'
+                process_output = subprocess.Popen(
+                    "./install_conda", env=my_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+                )
+                print(process_output.communicate()[0].strip().decode())
             print("******** Miniconda installation completed successfully. ****************")
 
         else:
-            raise RuntimeError("Unsupported Platform..")
+            raise RuntimeError("Unsupported Platform...")
 
 
 def main():
