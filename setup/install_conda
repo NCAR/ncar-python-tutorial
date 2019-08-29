@@ -11,6 +11,22 @@ conda config --add channels conda-forge
 conda env update -f $BASE_ENV_YML -q
 conda env update -f $ANALYSIS_ENV_YML -q
 
+
+# Install jupyterlab extensions
+conda activate base
+jupyter labextension install @jupyter-widgets/jupyterlab-manager \
+                             dask-labextension \
+                             jupyterlab-nvdashboard
+
+conda activate analysis
+jupyter labextension install @jupyter-widgets/jupyterlab-manager \
+                             @pyviz/jupyterlab_pyviz
+
+
+
+# Download Cartopy plotting assets
+python ./download_cartopy_assets.py --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
+
 conda info -a
 
 if [ -z "$INIT_SHELL" ]; then

@@ -13,3 +13,4 @@ dependencies:
   - pip:
     - dask_labextension
     - jupyter-server-proxy
+    - jupyterlab-nvdashboard
