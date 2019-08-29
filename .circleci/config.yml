@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Conda and Check setup
+          name: Install Conda and Create environments
           command: |
             ./setup/configure
       - run:
@@ -17,7 +17,7 @@ jobs:
           command: |
             export PATH="$HOME/miniconda3/bin:$PATH"
             conda info -a
-            conda activate analysis
+            source activate analysis
             ./setup/check_setup
 
 workflows:
