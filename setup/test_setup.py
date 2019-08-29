@@ -1,2 +1,2 @@
-def dummy_test():
+def test_dummy():
     assert 2 == 2

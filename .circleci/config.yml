@@ -11,7 +11,7 @@ jobs:
           name: Dummy Test
           command: |
             pip install --user pytest
-            pytest -v setup/test.py
+            pytest -v setup
 
 
 workflows:
