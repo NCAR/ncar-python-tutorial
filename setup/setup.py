@@ -44,15 +44,14 @@ def install_miniconda3():
                 subprocess.check_call(cmd)
                 subprocess.call(["chmod", "+x", "miniconda.sh"])
 
-                print("Installing Conda...")
+                print("************ Installing Conda... *****************")
                 cmd = ["./miniconda.sh", "-b", "-p", "$HOME/miniconda"]
                 subprocess.check_call(cmd)
 
             env = os.environ.copy()
             env["PATH"] = f"{os.environ['HOME']}/miniconda/bin:" + env["PATH"]
-            subprocess.Popen(["conda", "init", "bash"], env=env)
+            subprocess.Popen("conda init bash; . ~/.bashrc", shell=True)
             assert detect_existing_executable("conda") is not None
-            subprocess.Popen(["source", "~/.bashrc"])
             print("******** Miniconda installation completed successfully. ****************")
 
 
