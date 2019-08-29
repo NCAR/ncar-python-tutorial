@@ -11,8 +11,6 @@ jobs:
           name: Install Conda
           command: |
             ./setup/setup.py
-            source ~/.bashrc
-            conda info
       - run:
           name: Running Tests
           command: |
