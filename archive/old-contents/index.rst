@@ -15,10 +15,10 @@ please open an issue at the GitHub `main repository <http://github.com/NCAR/NCAR
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started with Python
-   
+
    setup
    notebooks/python/00-python-guide-for-people-in-a-hurry
-   
+
 
 .. toctree::
    :maxdepth: 1
@@ -29,8 +29,8 @@ please open an issue at the GitHub `main repository <http://github.com/NCAR/NCAR
 
 .. toctree::
    :maxdepth: 1
-   :caption: Xarray 
-   
+   :caption: Xarray
+
    notebooks/xarray/01-xarray-introduction
    notebooks/xarray/02-xarray-advanced-plotting
 

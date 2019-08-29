@@ -10,7 +10,7 @@ dependencies:
 - bottleneck
 - dask
 - dask-mpi
-- dask-jobqueue 
+- dask-jobqueue
 - distributed
 - eofs
 - metpy
@@ -76,14 +76,13 @@ dependencies:
 - snakeviz
 - tabulate
 - toolz
-- tornado==5.1.1
+- tornado
 - tqdm
 - xesmf
 - zict
 - git
 - pip:
   - cfgrib
-  - click
   - git+https://github.com/NCAR/esmlab-regrid.git
   - git+https://github.com/NCAR/esmlab.git
   - git+https://github.com/NCAR/intake-esm.git
@@ -94,4 +93,4 @@ dependencies:
   - ncar-jobqueue
   - seawater
   - watermark
-  - sparse 
+  - sparse
