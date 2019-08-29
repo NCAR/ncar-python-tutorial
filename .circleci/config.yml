@@ -4,6 +4,8 @@ jobs:
   build-job:
     docker:
       - image: circleci/python:3.7
+    environment:
+      BASH_ENV: ~/.bashrc
 
     steps:
       - checkout
@@ -15,8 +17,6 @@ jobs:
           name: Running Tests
           command: |
             pip install --user pytest
-            $HOME/miniconda/bin/conda init bash
-            source ~/.bashrc
             pytest -v setup
 
 
