@@ -12,6 +12,12 @@ jobs:
           name: Install Conda and Check setup
           command: |
             ./setup/configure
+      - run:
+          name: Running Tests
+          command: |
+            export PATH="$HOME/miniconda3/bin:$PATH"
+            conda info -a
+            conda activate analysis
             ./setup/check_setup
 
 workflows:

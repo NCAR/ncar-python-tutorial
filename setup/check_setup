@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import importlib
+from pathlib import Path
 
 
 def check_conda():
@@ -10,7 +11,10 @@ def check_conda():
 
 def main():
 
-    assert check_conda()
+    try:
+        assert check_conda()
+    except AssertionError:
+        raise AssertionError("Conda binary is missing from $PATH")
 
     required_modules = [
         "numpy",
@@ -29,6 +33,12 @@ def main():
 
         except ImportError:
             missing_modules.append(mod)
+
+    cartopy_assets = Path("~/.local/share/cartopy")
+    try:
+        assert cartopy_assets.exists()
+    except AssertionError:
+        raise AssertionError("Cartopy plotting assets are missing")
 
     if missing_modules:
         print("The following modules are required but not installed:")
