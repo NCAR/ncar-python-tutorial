@@ -39,7 +39,6 @@ dependencies:
 - metpy
 - mpi4py
 - nc-time-axis
-- nc-time-axis
 - netcdf4
 - nodejs
 - numba
@@ -86,3 +85,4 @@ dependencies:
   - ncar-jobqueue
   - seawater
   - sparse
+  - line-profiler

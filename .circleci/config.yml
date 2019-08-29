@@ -9,15 +9,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Conda
+          name: Install Conda and Check setup
           command: |
             ./setup/configure
-      - run:
-          name: Running Tests
-          command: |
-            pip install --user pytest
-            pytest -v setup
-
+            ./setup/check_setup
 
 workflows:
   version: 2
