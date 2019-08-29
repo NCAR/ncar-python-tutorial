@@ -8,9 +8,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Dummy Test
+          name: Install Conda
           command: |
             pip install --user pytest
+            ./setup/setup.py
             pytest -v setup
 
 
