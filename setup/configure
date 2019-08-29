@@ -4,6 +4,8 @@ import subprocess
 from tempfile import TemporaryDirectory as tmpdir
 import os
 
+here = os.path.abspath(os.path.dirname(__file__))
+
 
 def detect_platform():
     import platform
@@ -41,8 +43,9 @@ def install_miniconda3():
                 my_env = os.environ.copy()
                 my_env["INSTALLER"] = installers[plat["system"]]
                 my_env["INSTALL_DIR"] = f'{my_env["HOME"]}/miniconda3'
+                install_script = os.path.join(here, "install_conda")
                 process_output = subprocess.Popen(
-                    "./install_conda", env=my_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+                    install_script, env=my_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE
                 )
                 print(process_output.communicate()[0].strip().decode())
             print("******** Miniconda installation completed successfully. ****************")
