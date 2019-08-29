@@ -14,4 +14,3 @@ dependencies:
   - numpy
   - pip:
     - sphinx_copybutton
-    
