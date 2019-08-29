@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import importlib
-from pathlib import Path
+
+# from pathlib import Path
 
 
 def check_conda():
@@ -34,11 +35,11 @@ def main():
         except ImportError:
             missing_modules.append(mod)
 
-    cartopy_assets = Path("~/.local/share/cartopy").expanduser()
-    try:
-        assert cartopy_assets.exists()
-    except AssertionError:
-        raise AssertionError("Cartopy plotting assets are missing")
+    # cartopy_assets = Path("~/.local/share/cartopy").expanduser()
+    # try:
+    #     assert cartopy_assets.exists()
+    # except AssertionError:
+    #     raise AssertionError("Cartopy plotting assets are missing")
 
     if missing_modules:
         print("The following modules are required but not installed:")
