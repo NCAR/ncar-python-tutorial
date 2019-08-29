@@ -36,7 +36,9 @@ def install_miniconda3():
         print("********** Skipping Conda installation... *************")
 
     else:
-        print("*********** Downloading Miniconda... ****************")
+        print(
+            "****** Installing Miniconda and Creating environments (this can take 5-10 min) *******"
+        )
         plat = detect_platform()
         if plat["system"] in installers:
             my_env = os.environ.copy()
@@ -51,6 +53,13 @@ def install_miniconda3():
             my_env["BASE_ENV_YML"] = os.path.join(here, "env-conda-base.yml")
             my_env["ANALYSIS_ENV_YML"] = os.path.join(here, "env-analysis.yml")
 
+            default_shell = my_env.get("SHELL", None)
+            supported_shells = {"bash", "fish", "powershell", "tcsh", "xonsh", "zsh"}
+            if default_shell:
+                default_shell = default_shell.split("/")[-1]
+                if default_shell in supported_shells:
+                    my_env["INIT_SHELL"] = default_shell
+
             with tmpdir():
 
                 install_script = os.path.join(here, "install_conda")
@@ -60,6 +69,7 @@ def install_miniconda3():
                 )
                 print(process_output.communicate()[0].strip().decode())
             print("******** Miniconda installation completed successfully. ****************")
+            print("==> For changes to take effect, close and re-open your current shell. <==")
 
         else:
             raise RuntimeError("Unsupported Platform...")
