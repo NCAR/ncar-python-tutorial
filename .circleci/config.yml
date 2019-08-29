@@ -10,8 +10,14 @@ jobs:
       - run:
           name: Install Conda
           command: |
-            pip install --user pytest
             ./setup/setup.py
+            source ~/.bashrc
+            conda info
+      - run:
+          name: Running Tests
+          command: |
+            pip install --user pytest
+            source ~/.bashrc
             pytest -v setup
 
 
