@@ -2,6 +2,6 @@
 
 set -xeo pipefail
 
-wget $INSTALLER -O miniconda.sh
+wget $INSTALLER -O miniconda.sh -q
 chmod +x miniconda.sh
 ./miniconda.sh -b -p $INSTALL_DIR

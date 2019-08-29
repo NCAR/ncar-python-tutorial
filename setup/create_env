@@ -5,8 +5,9 @@ set -xeo pipefail
 export PATH="$INSTALL_DIR/bin:$PATH"
 conda config --add channels conda-forge
 
-conda env update -f $BASE_ENV_YML -q
-conda env update -f $ANALYSIS_ENV_YML -q
+conda update -q conda
+conda env update -q -f $BASE_ENV_YML
+conda env update -q -f $ANALYSIS_ENV_YML
 
 
 conda info -a
