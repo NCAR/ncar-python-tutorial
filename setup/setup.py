@@ -52,7 +52,7 @@ def install_miniconda3():
             output = subprocess.Popen(
                 f"{conda} init bash; . ~/.bashrc", shell=True, stdout=subprocess.PIPE
             )
-            print(output.communicate()[0].strip())
+            print(output.communicate()[0].strip().decode())
             print("******** Miniconda installation completed successfully. ****************")
 
 

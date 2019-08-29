@@ -15,7 +15,7 @@ jobs:
           name: Running Tests
           command: |
             pip install --user pytest
-            conda init bash
+            ./$HOME/miniconda/bin/conda init bash
             source ~/.bashrc
             pytest -v setup
 
