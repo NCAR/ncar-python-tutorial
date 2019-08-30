@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+
+import subprocess
+from tempfile import TemporaryDirectory as tmpdir
+import os
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+
+def detect_platform():
+    import platform
+
+    p = {}
+    p["system"] = platform.system().lower()
+    p["node"] = platform.node().lower()
+    return p
+
+
+def detect_existing_executable(name):
+    """ Check Wether `name` is on PATH. """
+    from distutils.spawn import find_executable
+
+    return find_executable(name)
+
+
+def run_script(script, my_env):
+
+    process_output = subprocess.Popen(
+        script, env=my_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
+
+    out, err = process_output.communicate()
+    print(out.strip().decode())
+    print(err.strip().decode())
+
+
+def install_miniconda3():
+
+    installers = {
+        "linux": "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh",
+        "darwin": "https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh",
+    }
+
+    conda_path = detect_existing_executable("conda")
+    my_env = os.environ.copy()
+    my_env["BASE_ENV_YML"] = os.path.join(here, "env-conda-base.yml")
+    my_env["ANALYSIS_ENV_YML"] = os.path.join(here, "env-analysis.yml")
+    default_shell = my_env.get("SHELL", None)
+    supported_shells = {"bash", "fish", "powershell", "tcsh", "xonsh", "zsh"}
+    if default_shell:
+        default_shell = default_shell.split("/")[-1]
+        if default_shell in supported_shells:
+            my_env["INIT_SHELL"] = default_shell
+
+    if conda_path is not None:
+        print(
+            f"************** Found an existing Conda installation at: {conda_path} **************"
+        )
+        print("***************** Skipping Conda installation... *****************")
+
+    else:
+        print("***************** Installing Miniconda  *****************")
+        plat = detect_platform()
+        if plat["system"] in installers:
+            my_env["INSTALLER"] = installers[plat["system"]]
+            if plat["node"].startswith("casper") or plat["node"].startswith("cheyenne"):
+                install_dir = f'/glade/work/{my_env["USER"]}/miniconda3'
+            else:
+                install_dir = f'{my_env["HOME"]}/miniconda3'
+
+            my_env["INSTALL_DIR"] = install_dir
+
+            with tmpdir():
+
+                install_script = os.path.join(here, "install_conda")
+                run_script(install_script, my_env)
+
+        else:
+            raise RuntimeError("Unsupported Platform...")
+
+    print(
+        "************** Creating/Updating conda environments (this can take 5-10 min) ***********"
+    )
+    env_update_script = os.path.join(here, "create_env")
+    run_script(env_update_script, my_env)
+    post_build_script = os.path.join(here, "post_build")
+    my_env["CARTOPY_ASSET_SCRIPT"] = os.path.join(here, "download_cartopy_assets.py")
+    print("*************** Running post build script ********************")
+    run_script(post_build_script, my_env)
+    print("*************** Setup completed successfully. ****************")
+    print("==> For changes to take effect, close and re-open your current shell. <==")
+
+
+def main():
+
+    install_miniconda3()
+
+
+if __name__ == "__main__":
+    main()

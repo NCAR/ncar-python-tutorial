@@ -1,0 +1,86 @@
+name: analysis
+channels:
+- conda-forge
+- nesii/label/dev-esmf
+- defaults
+dependencies:
+- basemap
+- bokeh
+- bottleneck
+- cartopy
+- cf_units
+- cftime
+- cmocean
+- cython
+- dask
+- dask-jobqueue
+- dask-mpi
+- datashader
+- eofs
+- esmlab
+- esmpy
+- fastparquet
+- geopandas
+- geoviews
+- graphviz
+- gsw # https://teos-10.github.io/GSW-Python/install.html
+- h5netcdf
+- h5py
+- holoviews
+- hvplot
+- intake
+- intake-esm
+- intake-xarray
+- ipywidgets
+- jupyterlab
+- line_profiler
+- lz4
+- matplotlib
+- memory_profiler
+- metpy
+- mpi4py
+- nc-time-axis
+- netcdf4
+- nodejs
+- numba
+- numcodecs
+- numpy
+- pandas
+- pandoc
+- pandocfilters
+- panel
+- pint
+- pip
+- psutil
+- pynio
+- pyresample
+- pytest
+- python-blosc
+- python-graphviz
+- python=3.7
+- rasterio
+- satpy
+- scikit-image
+- scikit-learn
+- scipy
+- seaborn
+- snakeviz
+- statsmodels
+- tabulate
+- toolz
+- tqdm
+- watermark
+- xarray>=0.12
+- xesmf
+- xgcm
+- xhistogram
+- xrft
+- zarr
+- pip:
+  - cfgrib
+  - git+https://github.com/NCAR/pop-tools.git
+  - globus-cli
+  - nbdime
+  - ncar-jobqueue
+  - seawater
+  - sparse
