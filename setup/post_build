@@ -10,7 +10,8 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager \
                              dask-labextension \
                              jupyterlab-nvdashboard
 
-jupyter labextension update --all && jupyter labextension list
+jupyter labextension update --all
+
 
 source activate analysis
 jupyter labextension install @jupyter-widgets/jupyterlab-manager \
@@ -19,7 +20,8 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager \
 
 
 
-jupyter labextension update --all && jupyter labextension list
+jupyter labextension update --all
+
 
 
 if [ "$(ls -A ~/.local/share/cartopy)" ]; then

@@ -52,9 +52,12 @@ For changes to take effect, close and re-open your current shell.
 ### Step 4: Run the setup verification script
 
 
-From the `ncar-python-tutorial` directory:
+- Check conda info with:
+  ```bash
+  conda info -a
+  ```
 
-- Activate the newly created analysis enviroment:
+- From the `ncar-python-tutorial` directory, activate the newly created analysis enviroment:
   ```bash
   conda activate analysis
   ```
@@ -63,3 +66,19 @@ From the `ncar-python-tutorial` directory:
   ```bash
   ./setup/check_setup
   ```
+
+- Check that all Jupyterlab extensions were properly installed:
+  ```bash
+  $ jupyter labextension list
+  ```
+
+  You will see something along the lines of the following output:
+  ```console
+  JupyterLab v1.1.1
+  Known labextensions:
+     app dir: /Users/abanihi/opt/miniconda3/envs/analysis/share/jupyter/lab
+          @jupyter-widgets/jupyterlab-manager v1.0.2  enabled  OK
+          @pyviz/jupyterlab_pyviz v0.8.0  enabled  OK
+          dask-labextension v1.0.1  enabled  OK
+          nbdime-jupyterlab v1.0.0  enabled  OK
+    ```
