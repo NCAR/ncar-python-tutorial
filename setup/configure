@@ -17,7 +17,7 @@ def detect_platform():
 
 
 def detect_existing_executable(name):
-    """ Check Wether `name` is on PATH. """
+    """ Check Whether `name` is on PATH. """
     from distutils.spawn import find_executable
 
     return find_executable(name)
@@ -30,18 +30,20 @@ def run_script(script, my_env):
     )
 
     out, err = process_output.communicate()
-    print(out.strip().decode())
-    print(err.strip().decode())
+    out, err = out.strip().decode(), err.strip().decode()
+    if process_output.returncode != 0:
+        raise RuntimeError(f"{script} script failed: {process_output.returncode} {out} {err}")
+
+    print(out)
 
 
-def install_miniconda3():
+def prepare_env():
 
     installers = {
         "linux": "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh",
         "darwin": "https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh",
     }
 
-    conda_path = detect_existing_executable("conda")
     my_env = os.environ.copy()
     my_env["BASE_ENV_YML"] = os.path.join(here, "env-conda-base.yml")
     my_env["ANALYSIS_ENV_YML"] = os.path.join(here, "env-analysis.yml")
@@ -52,9 +54,10 @@ def install_miniconda3():
         if default_shell in supported_shells:
             my_env["INIT_SHELL"] = default_shell
 
+    conda_path = detect_existing_executable("conda")
     if conda_path is not None:
         print(
-            f"************** Found an existing Conda installation at: {conda_path} **************"
+            f"************** Found an existing Conda installation in: {conda_path} **************"
         )
         print("***************** Skipping Conda installation... *****************")
 
@@ -92,8 +95,7 @@ def install_miniconda3():
 
 
 def main():
-
-    install_miniconda3()
+    prepare_env()
 
 
 if __name__ == "__main__":
