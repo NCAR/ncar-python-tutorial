@@ -5,14 +5,14 @@ set -xeo pipefail
 export PATH="$INSTALL_DIR/bin:$PATH"
 
 # Install jupyterlab extensions
-conda activate base
+source activate base
 jupyter labextension install @jupyter-widgets/jupyterlab-manager \
                              dask-labextension \
                              jupyterlab-nvdashboard
 
 jupyter labextension update --all && jupyter labextension list
 
-conda activate analysis
+source activate analysis
 jupyter labextension install @jupyter-widgets/jupyterlab-manager \
                              @pyviz/jupyterlab_pyviz \
                              nbdime-jupyterlab
@@ -20,5 +20,12 @@ jupyter labextension install @jupyter-widgets/jupyterlab-manager \
 
 
 jupyter labextension update --all && jupyter labextension list
-# Download Cartopy plotting assets
-python $CARTOPY_ASSET_SCRIPT --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
+
+
+if [ "$(ls -A ~/.local/share/cartopy)" ]; then
+   echo "Cartopy plotting assets exist already"
+
+else
+    # Download Cartopy plotting assets
+    python $CARTOPY_ASSET_SCRIPT --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
+fi

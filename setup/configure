@@ -3,6 +3,7 @@
 import subprocess
 from tempfile import TemporaryDirectory as tmpdir
 import os
+from pathlib import Path
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -84,6 +85,7 @@ def prepare_env():
     print(
         "************** Creating/Updating conda environments (this can take 5-10 min) ***********"
     )
+    my_env["INSTALL_DIR"] = Path(conda_path).parent.parent.as_posix()
     env_update_script = os.path.join(here, "create_env")
     run_script(env_update_script, my_env)
     post_build_script = os.path.join(here, "post_build")
