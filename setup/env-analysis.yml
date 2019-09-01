@@ -20,6 +20,7 @@ dependencies:
 - esmlab
 - esmpy
 - fastparquet
+- folium
 - geopandas
 - geoviews
 - graphviz
@@ -31,7 +32,9 @@ dependencies:
 - intake
 - intake-esm
 - intake-xarray
+- ipyleaflet
 - ipywidgets
+- jupyter_contrib_nbextensions
 - jupyterlab
 - line_profiler
 - lz4
@@ -52,6 +55,7 @@ dependencies:
 - pint
 - pip
 - psutil
+- pyarrow
 - pynio
 - pyresample
 - pytest

@@ -7,8 +7,8 @@ export PATH="$INSTALL_DIR/bin:$PATH"
 # Install jupyterlab extensions
 source activate base
 jupyter labextension install @jupyter-widgets/jupyterlab-manager \
-                             dask-labextension \
-                             jupyterlab-nvdashboard
+                             @jupyterlab/toc \
+                             dask-labextension
 
 jupyter labextension update --all
 
@@ -16,7 +16,8 @@ jupyter labextension update --all
 source activate analysis
 jupyter labextension install @jupyter-widgets/jupyterlab-manager \
                              @pyviz/jupyterlab_pyviz \
-                             nbdime-jupyterlab
+                             nbdime-jupyterlab \
+                             jupyter-leaflet
 
 
 
