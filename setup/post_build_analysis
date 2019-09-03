@@ -21,5 +21,6 @@ if [ "$(ls -A ~/.local/share/cartopy)" ]; then
 
 else
     # Download Cartopy plotting assets
+    mkdir -p ~/.local/share/cartopy
     python $CARTOPY_ASSET_SCRIPT --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
 fi
