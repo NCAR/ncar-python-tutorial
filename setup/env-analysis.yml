@@ -9,6 +9,7 @@ dependencies:
 - bottleneck
 - cartopy
 - cf_units
+- cfgrib
 - cftime
 - cmocean
 - cython
@@ -23,6 +24,7 @@ dependencies:
 - folium
 - geopandas
 - geoviews
+- globus-cli
 - graphviz
 - gsw # https://teos-10.github.io/GSW-Python/install.html
 - h5netcdf
@@ -42,6 +44,7 @@ dependencies:
 - memory_profiler
 - metpy
 - mpi4py
+- nbdime
 - nc-time-axis
 - netcdf4
 - nodejs
@@ -68,7 +71,9 @@ dependencies:
 - scikit-learn
 - scipy
 - seaborn
+- seawater
 - snakeviz
+- sparse
 - statsmodels
 - tabulate
 - toolz
@@ -81,10 +86,6 @@ dependencies:
 - xrft
 - zarr
 - pip:
-  - cfgrib
   - git+https://github.com/NCAR/pop-tools.git
-  - globus-cli
-  - nbdime
   - ncar-jobqueue
-  - seawater
-  - sparse
+
