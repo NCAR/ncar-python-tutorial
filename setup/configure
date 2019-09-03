@@ -60,9 +60,9 @@ def prepare_env():
     conda_path = detect_existing_executable("conda")
     if conda_path is not None:
         print(
-            f"************* Found an existing Conda installation in: {conda_path} **************"
+            f"****** Found an existing Conda installation in: {conda_path} ******"
         )
-        print("************* Skipping Conda installation... *****************")
+        print(f"****** Step 1/5: Skipping Conda installation {get_current_time()} ******")
 
     else:
         print(f"****** Step 1/5: Installing Miniconda {get_current_time()} ******")
