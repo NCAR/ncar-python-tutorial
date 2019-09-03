@@ -56,12 +56,12 @@ def prepare_env():
     conda_path = detect_existing_executable("conda")
     if conda_path is not None:
         print(
-            f"************** Found an existing Conda installation in: {conda_path} **************"
+            f"************* Found an existing Conda installation in: {conda_path} **************"
         )
-        print("***************** Skipping Conda installation... *****************")
+        print("************* Skipping Conda installation... *****************")
 
     else:
-        print("***************** Installing Miniconda  *****************")
+        print("************* Step 1/5: Installing Miniconda  *****************")
         plat = detect_platform()
         if plat["system"] in installers:
             my_env["INSTALLER"] = installers[plat["system"]]
@@ -83,21 +83,21 @@ def prepare_env():
     if "INSTALL_DIR" not in my_env:
         my_env["INSTALL_DIR"] = Path(conda_path).parent.parent.as_posix()
     
-    print("*********** Updating `base` conda environment **********************")
+    print("************* Step 2/5: Updating `base` conda environment *******************")
     run_script(os.path.join(here, "update_base_env"), my_env)
     print(
-        "********** Creating/Updating `analysis` conda environment (this can take 5-10 min) ***********"
+        "************* Step 3/5: Creating/Updating `analysis` conda environment (this can take 5-10 min) ***********"
     )
     run_script(os.path.join(here, "update_analysis_env"), my_env)
     
-    print("*********** Running post build script for `base` environment **************")
+    print("************* Step 4/5: Running post build script for `base` environment **************")
     run_script(os.path.join(here, "post_build_base"), my_env)
 
-    print("************ Running post build script for `analysis` environment *****************")
+    print("************* Step 5/5: Running post build script for `analysis` environment ***************")
     my_env["CARTOPY_ASSET_SCRIPT"] = os.path.join(here, "download_cartopy_assets.py")
     run_script(os.path.join(here, "post_build_analysis"), my_env)
 
-    print("*************** Setup completed successfully. ****************")
+    print("************* Setup completed successfully. ****************")
     print("==> For changes to take effect, close and re-open your current shell. <==")
 
 
