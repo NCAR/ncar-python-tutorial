@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -xeo pipefail
+
+export PATH="$INSTALL_DIR/bin:$PATH"
+
+# Install jupyterlab extensions
+source activate base
+jupyter labextension install @jupyter-widgets/jupyterlab-manager \
+                             @jupyterlab/toc \
+                             dask-labextension
+
+jupyter labextension update --all
+
+
+source activate analysis
+jupyter labextension install @jupyter-widgets/jupyterlab-manager \
+                             @pyviz/jupyterlab_pyviz \
+                             nbdime-jupyterlab \
+                             jupyter-leaflet
+
+
+
+jupyter labextension update --all
+
+
+
+if [ "$(ls -A ~/.local/share/cartopy)" ]; then
+   echo "Cartopy plotting assets exist already"
+
+else
+    # Download Cartopy plotting assets
+    python $CARTOPY_ASSET_SCRIPT --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
+fi

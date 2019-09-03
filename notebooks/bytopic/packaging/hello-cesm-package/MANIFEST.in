@@ -1,0 +1,11 @@
+# any additional files to include should be added here
+
+# For the license and changes files
+include LICENSE
+include CHANGELOG.rst
+
+# The tests
+recursive-include tests *.py
+
+# The docs
+recursive-include docs *.rst
