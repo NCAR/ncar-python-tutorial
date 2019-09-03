@@ -8,6 +8,7 @@ export PATH="$INSTALL_DIR/bin:$PATH"
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 conda config --set show_channel_urls True
+conda config --set pip_interop_enabled True
 
 conda update -q conda
 conda env update -q -f $BASE_ENV_YML
