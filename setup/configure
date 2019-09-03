@@ -4,13 +4,15 @@ import subprocess
 from tempfile import TemporaryDirectory as tmpdir
 import os
 from pathlib import Path
-from datetime import datetime 
+from datetime import datetime
 
 here = os.path.abspath(os.path.dirname(__file__))
 
+
 def get_current_time():
     now = datetime.now().strftime("%H:%M:%S")
-    return f'({now})'
+    return f"({now})"
+
 
 def detect_platform():
     import platform
@@ -59,9 +61,7 @@ def prepare_env():
 
     conda_path = detect_existing_executable("conda")
     if conda_path is not None:
-        print(
-            f"****** Found an existing Conda installation in: {conda_path} ******"
-        )
+        print(f"****** Found an existing Conda installation in: {conda_path} ******")
         print(f"****** Step 1/5: Skipping Conda installation {get_current_time()} ******")
 
     else:
@@ -83,21 +83,27 @@ def prepare_env():
 
         else:
             raise RuntimeError("Unsupported Platform...")
-    
+
     if "INSTALL_DIR" not in my_env:
         my_env["INSTALL_DIR"] = Path(conda_path).parent.parent.as_posix()
-    
+
     print(f"****** Step 2/5: Updating `base` environment {get_current_time()} ******")
     run_script(os.path.join(here, "update_base_env"), my_env)
     print(
-        f"****** Step 3/5: Creating/Updating `analysis` environment (this can take several minutes) {get_current_time()} ******"
+        f"****** Step 3/5: Creating/Updating `analysis` environment (this can take several minutes)\
+         {get_current_time()} ******"
     )
     run_script(os.path.join(here, "update_analysis_env"), my_env)
-    
-    print(f"****** Step 4/5: Running post build script for `base` environment {get_current_time()} ******")
-    run_script(os.path.join(here, "post_build_base"), my_env)
 
-    print(f"****** Step 5/5: Running post build script for `analysis` environment (this can take several minutes) {get_current_time()} ******")
+    print(
+        f"****** Step 4/5: Running post build script for `base` environment \
+         {get_current_time()} ******"
+    )
+    run_script(os.path.join(here, "post_build_base"), my_env)
+    print(
+        f"****** Step 5/5: Running post build script for `analysis` environment \
+        (this can take several minutes) {get_current_time()} ******"
+    )
     my_env["CARTOPY_ASSET_SCRIPT"] = os.path.join(here, "download_cartopy_assets.py")
     run_script(os.path.join(here, "post_build_analysis"), my_env)
 
