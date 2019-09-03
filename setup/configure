@@ -9,7 +9,7 @@ from datetime import datetime
 here = os.path.abspath(os.path.dirname(__file__))
 
 def get_current_time():
-    now = str(datetime.now().time()).split(".")[0]
+    now = datetime.now().strftime("%H:%M:%S")
     return f'({now})'
 
 def detect_platform():
