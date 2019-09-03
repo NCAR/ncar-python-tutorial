@@ -11,8 +11,6 @@ conda config --set show_channel_urls True
 
 conda update -q conda
 conda env update -q -f $BASE_ENV_YML
-conda env update -q -f $ANALYSIS_ENV_YML
-
 
 conda info -a
 

@@ -35,8 +35,6 @@ def run_script(script, my_env):
     if process_output.returncode != 0:
         raise RuntimeError(f"{script} script failed: {process_output.returncode} {out} {err}")
 
-    print(out)
-
 
 def prepare_env():
 
@@ -81,19 +79,24 @@ def prepare_env():
 
         else:
             raise RuntimeError("Unsupported Platform...")
-
-    print(
-        "************** Creating/Updating conda environments (this can take 5-10 min) ***********"
-    )
-
+    
     if "INSTALL_DIR" not in my_env:
         my_env["INSTALL_DIR"] = Path(conda_path).parent.parent.as_posix()
-    env_update_script = os.path.join(here, "create_env")
-    run_script(env_update_script, my_env)
-    post_build_script = os.path.join(here, "post_build")
+    
+    print("*********** Updating `base` conda environment **********************")
+    run_script(os.path.join(here, "update_base_env"), my_env)
+    print(
+        "********** Creating/Updating `analysis` conda environment (this can take 5-10 min) ***********"
+    )
+    run_script(os.path.join(here, "update_analysis_env"), my_env)
+    
+    print("*********** Running post build script for `base` environment **************")
+    run_script(os.path.join(here, "post_build_base"), my_env)
+
+    print("************ Running post build script for `analysis` environment *****************")
     my_env["CARTOPY_ASSET_SCRIPT"] = os.path.join(here, "download_cartopy_assets.py")
-    print("*************** Running post build script ********************")
-    run_script(post_build_script, my_env)
+    run_script(os.path.join(here, "post_build_analysis"), my_env)
+
     print("*************** Setup completed successfully. ****************")
     print("==> For changes to take effect, close and re-open your current shell. <==")
 
