@@ -59,11 +59,12 @@ def prepare_env():
 
     conda_path = detect_existing_executable("conda")
     if conda_path is not None:
-        print("****** Found an existing Conda installation in: {} ******".format(conda_path))
-        print("****** Step 1/5: Skipping Conda installation {} ******".format(get_current_time()))
+        print("*** Found an existing Conda installation in: {}".format(conda_path))
+        print("*** {} Step 1/5: Skipping Conda installation".format(get_current_time()))
+        my_env["INSTALL_DIR"] = os.path.abspath(os.path.join(os.path.dirname(conda_path), '..'))
 
     else:
-        print("****** Step 1/5: Installing Miniconda {} ******".format(get_current_time()))
+        print("*** {} Step 1/5: Installing Miniconda".format(get_current_time()))
         plat = detect_platform()
         if plat["system"] in installers:
             my_env["INSTALLER"] = installers[plat["system"]]
@@ -80,30 +81,26 @@ def prepare_env():
         else:
             raise RuntimeError("Unsupported Platform...")
 
-    if "INSTALL_DIR" not in my_env:
-        my_env["INSTALL_DIR"] = os.path.abspath(os.path.join(os.path.dirname(conda_path), '..'))
-
-    print("****** Step 2/5: Updating `base` environment {} ******".format(get_current_time()))
+    print("*** {} Step 2/5: Updating `base` environment".format(get_current_time()))
     run_script(os.path.join(here, "update_base_env"), my_env)
     print(
-        "****** Step 3/5: Creating/Updating `analysis` environment "
-        "(this can take several minutes) {} ******".format(get_current_time())
+        ("*** {} Step 3/5: Creating/Updating `analysis` environment "
+         "(this can take several minutes)").format(get_current_time())
     )
     run_script(os.path.join(here, "update_analysis_env"), my_env)
 
     print(
-        "****** Step 4/5: Running post build script for `base` environment "
-        "{} ******".format(get_current_time())
+        "*** {} Step 4/5: Running post build script for `base` environment".format(get_current_time())
     )
     run_script(os.path.join(here, "post_build_base"), my_env)
     print(
-        "****** Step 5/5: Running post build script for `analysis` environment" 
-        "(this can take several minutes) {} ******".format(get_current_time())
+        ("*** {} Step 5/5: Running post build script for `analysis` environment " 
+         "(this can take several minutes)").format(get_current_time())
     )
     my_env["CARTOPY_ASSET_SCRIPT"] = os.path.join(here, "download_cartopy_assets.py")
     run_script(os.path.join(here, "post_build_analysis"), my_env)
 
-    print("****** Setup completed successfully. {} ******".format(get_current_time()))
+    print("*** {} Setup completed successfully.".format(get_current_time()))
     print("==> For changes to take effect, close and re-open your current shell. <==")
 
 
