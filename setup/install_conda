@@ -1,7 +1,21 @@
 #!/usr/bin/env bash
 
+WGET=`which wget`
+CURL=`which curl`
+
 set -xeo pipefail
 
-wget $INSTALLER -O miniconda.sh -q
+if [ "$WGET" = "" ] && [ "$CURL" = "" ]; then
+  exit 255
+fi
+
+if [ "$WGET" = "" ]; then
+  curl -o miniconda.sh -s $INSTALLER
+else
+  wget $INSTALLER -O miniconda.sh -q
+fi
+
 chmod +x miniconda.sh
+mkdir -p ~/.conda
 ./miniconda.sh -b -p $INSTALL_DIR
+rm miniconda.sh
