@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -xeo pipefail
+
+export PATH="$INSTALL_DIR/bin:$PATH"
+
+conda env update -q -f $ANALYSIS_ENV_YML
