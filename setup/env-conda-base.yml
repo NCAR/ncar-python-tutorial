@@ -2,6 +2,7 @@ name: base
 channels:
   - conda-forge
 dependencies:
+  - dask
   - dask-labextension
   - ipywidgets
   - jupyter_contrib_nbextensions
