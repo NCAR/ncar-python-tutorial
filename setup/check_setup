@@ -71,7 +71,7 @@ def main():
     if failing_extensions:
         print("The following JupyterLab extensions are not installed/enabled:")
         print("    {}".format(", ".join(failing_extensions)))
-        print("\nYou can install and enable them using by running:")
+        print("\nYou can install and enable them by running:")
         print("\n    jupyter labextension install {}".format(" ".join(failing_extensions)))
 
     else:
