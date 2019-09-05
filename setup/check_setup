@@ -1,13 +1,25 @@
 #!/usr/bin/env python3
 import importlib
-
-# from pathlib import Path
+import subprocess
+from pathlib import Path
 
 
 def check_conda():
     from distutils.spawn import find_executable
 
     return find_executable("conda") is not None
+
+
+def verify_extensions(extensions):
+    failing_ext = []
+    for ext in extensions:
+        cmd = ["jupyter", "labextension", "check", ext]
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        p.communicate()
+        if p.returncode != 0:
+            failing_ext.append(ext)
+
+    return failing_ext
 
 
 def main():
@@ -34,12 +46,19 @@ def main():
 
         except ImportError:
             missing_modules.append(mod)
+    extensions = [
+        "@jupyter-widgets/jupyterlab-manager",
+        "@pyviz/jupyterlab_pyviz",
+        "nbdime-jupyterlab",
+        "jupyter-leaflet",
+    ]
+    failing_extensions = verify_extensions(extensions)
 
-    # cartopy_assets = Path("~/.local/share/cartopy").expanduser()
-    # try:
-    #     assert cartopy_assets.exists()
-    # except AssertionError:
-    #     raise AssertionError("Cartopy plotting assets are missing")
+    cartopy_assets = Path("~/.local/share/cartopy").expanduser()
+    try:
+        assert cartopy_assets.exists()
+    except AssertionError:
+        raise AssertionError("Cartopy plotting assets are missing")
 
     if missing_modules:
         print("The following modules are required but not installed:")
@@ -48,6 +67,12 @@ def main():
         print("\n    conda install {}".format(" ".join(missing_modules)))
         print("\nOr you can install them using pip by running:")
         print("\n    pip install {}".format(" ".join(missing_modules)))
+
+    if failing_extensions:
+        print("The following JupyterLab extensions are not installed/enabled:")
+        print("    {}".format(", ".join(failing_extensions)))
+        print("\nYou can install and enable them using by running:")
+        print("\n    jupyter labextension install {}".format(" ".join(failing_extensions)))
 
     else:
         print("Everything looks good!")
