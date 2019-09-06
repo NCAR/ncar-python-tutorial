@@ -41,7 +41,7 @@ $ git clone https://github.com/NCAR/ncar-python-tutorial.git
   $ cd ncar-python-tutorial
   ```
 
-- Run the `configure` script:
+- Run the [`configure`](./setup/configure) script:
 
   ```bash
   $ ./setup/configure
@@ -113,7 +113,7 @@ $ ./setup/jlab/jlab-dav # on Casper
 
 ### Hobart via SSH Tunneling
 
-For those interested in running JupyterLab on CGD's Hobart, you will need to use SSH tunneling script provided in ``setup/jlab/jlab-hobart``
+For those interested in running JupyterLab on CGD's Hobart, you will need to use SSH tunneling script provided in [``setup/jlab/jlab-hobart``](./setup/jlab/jlab-hobart)
 
 ```bash
 $ conda activate base
