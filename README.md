@@ -14,6 +14,7 @@
     - [Hobart via SSH Tunneling](#hobart-via-ssh-tunneling)
     - [Personal Laptop](#personal-laptop)
 
+----
 ## Setup
 
 This tutorial covers the installation and setup of a Python environment on:
@@ -87,6 +88,7 @@ For changes to take effect, close and re-open your current shell.
           dask-labextension v1.0.1  enabled  OK
           nbdime-jupyterlab v1.0.0  enabled  OK
     ```
+---
 
 ## Lauch Jupyter Lab
 
