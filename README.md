@@ -8,11 +8,11 @@
     - [Step 2: Install miniconda and create environments](#step-2-install-miniconda-and-create-environments)
     - [Step 3: Close and re-open your current shell](#step-3-close-and-re-open-your-current-shell)
     - [Step 4: Run the setup verification script](#step-4-run-the-setup-verification-script)
-  - [Lauch Jupyter Lab](#lauch-jupyter-lab)
-    - [Cheyenne or DAV via JupyterHub (https://jupyterhub.ucar.edu/)(Recommended)](#cheyenne-or-dav-via-jupyterhub-httpsjupyterhubucaredurecommended)
-    - [Cheyenne or DAV via SSH Tunneling](#cheyenne-or-dav-via-ssh-tunneling)
-    - [Hobart via SSH Tunneling](#hobart-via-ssh-tunneling)
-    - [Personal Laptop](#personal-laptop)
+  - [Launch Jupyter Lab](#launch-jupyter-lab)
+    - [1. Cheyenne or DAV via JupyterHub (https://jupyterhub.ucar.edu/)(Recommended)](#1-cheyenne-or-dav-via-jupyterhub-httpsjupyterhubucaredurecommended)
+    - [2. Cheyenne or DAV via SSH Tunneling](#2-cheyenne-or-dav-via-ssh-tunneling)
+    - [3. Hobart via SSH Tunneling](#3-hobart-via-ssh-tunneling)
+    - [4. Personal Laptop](#4-personal-laptop)
 
 ----
 ## Setup
@@ -90,9 +90,9 @@ For changes to take effect, close and re-open your current shell.
     ```
 ---
 
-## Lauch Jupyter Lab
+## Launch Jupyter Lab
 
-### Cheyenne or DAV via JupyterHub (https://jupyterhub.ucar.edu/)(Recommended)
+### 1. Cheyenne or DAV via JupyterHub (https://jupyterhub.ucar.edu/)(Recommended)
 
 To use the Cheyenne or DAV compute nodes, we recommend using JupyterLab via NCAR's JupyterHub deployment.
 
@@ -101,7 +101,7 @@ Open your preferred browser (Chrome, Firefox, Safari, etc...) on your ``local ma
 **You will need to authenticate with either your _yubikey_ or your _DUO_ mobile app**
 
 
-### Cheyenne or DAV via SSH Tunneling
+### 2. Cheyenne or DAV via SSH Tunneling
 
 In case you are having issues with jupyterhub.ucar.edu, we've provided utility scripts for launching JupyterLab on both Cheyenne and Casper via SSH Tunneling:
 
@@ -113,7 +113,7 @@ $ ./setup/jlab/jlab-dav # on Casper
 ```
 
 
-### Hobart via SSH Tunneling
+### 3. Hobart via SSH Tunneling
 
 For those interested in running JupyterLab on CGD's Hobart, you will need to use SSH tunneling script provided in [``setup/jlab/jlab-hobart``](./setup/jlab/jlab-hobart)
 
@@ -133,7 +133,7 @@ Possible options are:
 ```
 
 
-### Personal Laptop
+### 4. Personal Laptop
 
 For those interested in running JupyterLab on their local machine, you can simply run the following command, and follow the printed instructions on the console:
 
