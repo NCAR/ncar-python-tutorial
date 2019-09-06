@@ -1,0 +1,298 @@
+#!/bin/bash
+# steps to start jupyter lab on geyser
+# 1. submit job with slurm and start jupyter lab
+#    jupyter lab --no-browser --ip=$(hostname)
+# 2. log into the host node of that job from cheyenne with something like
+#    ssh -N -L 8888:geyser01:8888 geyser01
+# 3. log into cheyenne login node from local machine with
+#    ssh -N -L 8888:localhost:8888 cheyenne5.ucar.edu
+# 4. open browser: http://localhost:8888
+
+# If JOB_ACCOUNT is still not set, then use defaults
+if [ -z "${JOB_ACCOUNT}" ]; then
+  source /glade/u/apps/ch/opt/usr/bin/getacct.sh
+fi
+
+
+WALLTIME=24:00:00
+PARTITION=dav
+MEMORY=8GB
+CONSTRAINT=casper
+
+notebook_dir=${HOME}
+jlab_port=8888
+#dash_port=8787
+PYTHON_PATH=$(which python | xargs dirname)
+
+#-- make sure the working directory exists
+if [[ -z ${WORKDIR} ]]; then
+    WORKDIR=/glade/scratch/${USER}/tmp
+fi
+if [[ ! -d ${WORKDIR} ]]; then
+  mkdir -vp ${WORKDIR}
+fi
+LOGFILE=${WORKDIR}/jlab-dav.jlab-log.$(date +%Y%m%dT%H%M%S)
+
+#-- matlab kernel
+# https://github.com/Calysto/matlab_kernel
+# must install Matlab engine for Python:
+# cd /glade/u/ssg/ys/opt/matlab/R2015b/extern/engines/python
+# python setup.py build --build-base=/glade/u/home/${USER}/matlab-python install --prefix=/glade/u/home/${USER}/matlab-python/R2015b
+# export PYTHONPATH=/glade/u/home/${USER}/matlab-python/R2015b/lib/python2.7/site-packages
+
+# needed to build Matlab Python API
+# MATLABROOT=/gpfs/u/apps/ch/opt/matlab/${MATLAB_VERSION}/extern/engines/python
+# cd ${MATLABROOT}/extern/engines/python
+# python setup.py build --build-base=/glade/work/mclong/matlab-python/bld-R2018a install --prefix=/glade/work/mclong/matlab-python/R2018a
+
+LOAD_MATLAB=
+MATLAB_VERSION=R2018a
+
+jid=
+
+usage () {
+cat << EOF
+Usage: start jupyter lab using SLURM
+Launch jupyter lab using SLURM PARTITION: ${PARTITION}.
+Possible options are:
+ -a,--account: account
+ -w,--walltime: walltime [default: ${WALLTIME}]
+ -m,--memory: amount of memory [default: ${MEMORY}]
+ -d,--directory: notebook directory
+ -c,--constraint: constraint [default: ${CONSTRAINT}]
+ -p,--port: port for jupyter [default: ${jlab_port}]
+ -j,--jid_id: dont't start new notebook server, but connect to one at existing job (make sure you have the right port)
+  --matlab: run matlab kernel
+ --matlab-version: matlab version [default: ${MATLAB_VERSION}]
+EOF
+exit
+}
+
+while [[ $# -gt 0 ]]; do
+  key="${1}"
+  case ${key} in
+    -h|--help)
+      usage ;;
+    -a|--account)
+      JOB_ACCOUNT="${2}"
+      shift 2
+      ;;
+    -m|--memory)
+      MEMORY="${2}"
+      shift 2
+      ;;
+    -w|--walltime)
+      WALLTIME="${2}"
+      shift 2
+      ;;
+    -c|--constraint)
+      CONSTRAINT="${2}"
+      shift 2
+      ;;
+    -d|--directory)
+      notebook_dir="${2}"
+      shift 2
+      ;;
+    -p|--port)
+      jlab_port="${2}"
+      shift 2
+      ;;
+    -j|--job_id)
+      jid="${2}"
+      shift 2
+      ;;
+    --matlab)
+      LOAD_MATLAB=1
+      shift
+      ;;
+    --matlab-version)
+      MATLAB_VERSION="${2}"
+      shift 2
+      ;;
+    *)
+      echo "ERROR unknown argument: ${key}"
+      usage
+  esac
+done
+
+if [[ -z ${jid} ]]; then
+  if [ -z ${JOB_ACCOUNT} ]; then
+    echo "ERROR: JOB_ACCOUNT not set."
+    exit 1
+  fi
+  if [ -z ${WALLTIME} ]; then
+    echo "ERROR: WALLTIME not set."
+    exit 1
+  fi
+  if [ -z ${PARTITION} ]; then
+    echo "ERROR: PARTITION not set."
+    exit 1
+  fi
+  if [ -z ${MEMORY} ]; then
+    echo "ERROR: MEMORY not set."
+    exit 1
+  fi
+  if [ -z ${CONSTRAINT} ]; then
+    echo "ERROR: CONSTRAINT not set."
+    exit 1
+  fi
+  if [ -z ${jlab_port} ]; then
+    echo "ERROR: PORT not set."
+    exit 1
+  fi
+
+  if [ ! -z "${LOAD_MATLAB}" ]; then
+    source activate py-matlab
+    python_version=$(python --version | awk '{print $2}' | awk -F. '{print $1 "." $2}')
+    MATLAB_API_PATH=~/matlab-python/${MATLAB_VERSION}/lib/python${python_version}/site-packages
+    if [ ! -d ${MATLAB_API_PATH} ]; then
+      MATLAB_API_PATH=~mclong/matlab-python/${MATLAB_VERSION}/lib/python${python_version}/site-packages
+      if [ ! -d ${MATLAB_API_PATH} ]; then
+        echo "ERROR:"
+        echo "  Matlab API for ${MATLAB_VERSION} not found;"
+        echo "  build API using build-matlab-api script:"
+        echo "  >>> ./build-matlab-api ${MATLAB_VERSION}"
+        exit 1
+      fi
+    fi
+  fi
+
+
+  echo "Launching notebook server"
+  if [ ! -z "${LOAD_MATLAB}" ]; then
+    echo "  *Loading Matlab kernel version: ${MATLAB_VERSION}*"
+  fi
+  echo "  partition = ${PARTITION}"
+  echo "  memory = ${MEMORY}"
+  echo "  constraint = ${CONSTRAINT}"
+  echo "  account = ${JOB_ACCOUNT}"
+  echo "  port = ${jlab_port}"
+
+  echo
+
+stro=$(sbatch << EOF
+#!/bin/bash
+#SBATCH -J jlab-dav
+#SBATCH -n 1
+#SBATCH --ntasks-per-node=1
+#SBATCH -p ${PARTITION}
+#SBATCH -A ${JOB_ACCOUNT}
+#SBATCH -t ${WALLTIME}
+#SBATCH --mem ${MEMORY}
+#SBATCH -C ${CONSTRAINT}
+#SBATCH -e ${WORKDIR}/jlab-dav.e%J
+#SBATCH -o ${WORKDIR}/jlab-dav.o%J
+
+# setup shell
+if [ -z \$MODULEPATH_ROOT ]; then
+  unset MODULEPATH_ROOT
+else
+  echo "NO MODULEPATH_ROOT TO RESET"
+fi
+if [ -z \$MODULEPATH ]; then
+  unset MODULEPATH
+else
+  echo "NO MODULEPATH TO RESET"
+fi
+if [ -z \$LMOD_SYSTEM_DEFAULT_MODULES ]; then
+  unset LMOD_SYSTEM_DEFAULT_MODULES
+else
+  echo "NO LMOD_SYSTEM_DEFAULT_MODULES TO RESET"
+fi
+source /etc/profile
+export TERM=xterm-256color
+export HOME=/glade/u/home/\${USER}
+export TMPDIR=${TMPDIR}
+export PATH=${PYTHON_PATH}:\${PATH}
+
+unset LD_LIBRARY_PATH
+
+# matlab
+if [ ! -z "${LOAD_MATLAB}" ]; then
+  export PYTHONPATH=${MATLAB_API_PATH}:${PYTHONPATH}
+  module load matlab/${MATLAB_VERSION}
+fi
+
+cd ${notebook_dir}
+jupyter lab --no-browser --notebook-dir ${notebook_dir} --ip=\$(hostname) >& ${LOGFILE}
+EOF
+  )
+  jid=$(echo ${stro} | awk '{print $4}')
+fi
+
+LOGFILE=$(echo ${LOGFILE} | sed -r "s:%J:${jid}:")
+
+trap ctrl_c INT
+function ctrl_c() {
+  echo "killing ${jid}"
+  scancel ${jid}
+  exit 0
+}
+
+echo -n "waiting"
+while [ 1 ]; do
+  #-- get job status
+  control=$(scontrol show job ${jid})
+  if [ $? != 0 ]; then
+    exit 1
+  fi
+  for word in ${control}; do
+    varname=$(echo ${word} | awk -F= '{print $1}')
+    value=$(echo ${word} | awk -F= '{print $2}')
+    if [[ ${varname} =~ BatchHost ]]; then
+      BatchHost=${value}
+    fi
+    if [[ ${varname} =~ JobState ]]; then
+      JobState=${value}
+    fi
+  done
+
+  if [[ -n "${BatchHost}" && ${JobState} =~ RUNNING ]]; then
+    echo .
+    echo ${JobState}
+    echo "Job ID: ${jid}"
+    echo "Job host: ${BatchHost}"
+    break
+  else
+    echo -n ..
+  fi
+  sleep 1
+done
+
+
+#-- wait until log file is there
+echo "waiting for job log to appear: ${LOGFILE}"
+while [ ! -f ${LOGFILE} ]; do
+  sleep 1
+done
+
+#-- wait until address shows up in log
+ADDRESS=
+ELAPSED=0
+while [ -z "${ADDRESS}" ]; do
+  ADDRESS=$(grep -e '^\[.*\]\s*http://.*:' ${LOGFILE} | head -n 1)
+  PORT=$(echo ${ADDRESS#*http://} | awk -F':' '{print $2}' | awk -F'/' '{print $1}')
+  sleep 1
+  ((ELAPSED+=1))
+  if [[ ${ELAPSED} -gt 120 ]]; then
+      echo -e "something went wrong\n---"
+      cat ${LOGFILE}
+      echo "---"
+      ctrl_c
+  fi
+done
+
+echo
+echo "----------------------------------------------------------------------"
+echo "Execute on local machine:"
+echo "ssh -N -L ${jlab_port}:localhost:${jlab_port} ${USER}@$(hostname).ucar.edu" #-L ${dash_port}:${BatchHost}:${dash_port}
+echo
+echo "Open a browser on your local machine and type in the address bar:"
+echo "http://localhost:${jlab_port}"
+echo "----------------------------------------------------------------------"
+echo
+
+ssh -f -o ExitOnForwardFailure=yes -N -L ${jlab_port}:${BatchHost}:${PORT} ${BatchHost}
+
+echo "Job log: ${LOGFILE}"
+tail -f ${LOGFILE}
