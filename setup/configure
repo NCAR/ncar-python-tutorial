@@ -51,8 +51,8 @@ def prepare_env():
     }
 
     my_env = os.environ.copy()
-    my_env["BASE_ENV_YML"] = os.path.join(here, "env-conda-base.yml")
-    my_env["ANALYSIS_ENV_YML"] = os.path.join(here, "env-analysis.yml")
+    my_env["BASE_ENV_YML"] = os.path.join(here, "environments/env-conda-base.yml")
+    my_env["ANALYSIS_ENV_YML"] = os.path.join(here, "environments/env-analysis.yml")
     default_shell = my_env.get("SHELL", None)
     supported_shells = {"bash", "fish", "powershell", "tcsh", "xonsh", "zsh"}
     if default_shell:

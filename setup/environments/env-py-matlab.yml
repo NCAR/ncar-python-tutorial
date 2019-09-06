@@ -1,0 +1,10 @@
+name: py-matlab
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.5
+  - pip
+  - ipykernel
+  - pip:
+    - matlab_kernel
