@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+MATLAB_VERSION=$1
+
+if [ -z "${MATLAB_VERSION}" ]; then
+  MATLAB_VERSION=R2018a
+fi
+
+
+module load matlab/${MATLAB_VERSION}
+matlabroot=$(which matlab | xargs dirname)
+
+cd ${matlabroot}/../extern/engines/python
+
+
+source activate py-matlab
+
+build_base=${HOME}/matlab-python
+install_dir=${build_base}/${MATLAB_VERSION}
+
+python setup.py build --build-base=${build_base} install --prefix=${install_dir}
