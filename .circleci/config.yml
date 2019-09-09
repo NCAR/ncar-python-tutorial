@@ -16,8 +16,8 @@ jobs:
           name: Running Tests
           command: |
             export PATH="$HOME/miniconda3/bin:$PATH"
-            conda info -a
-            source activate analysis
+            conda info
+            source activate analysis-env
             ./setup/check_setup
 
 workflows:

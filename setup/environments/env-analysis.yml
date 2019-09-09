@@ -1,4 +1,4 @@
-name: analysis
+name: analysis-env
 channels:
 - conda-forge
 - defaults
@@ -90,5 +90,4 @@ dependencies:
 - pip:
   - git+https://github.com/NCAR/pop-tools.git
   - ncar-jobqueue
-  - salem 
-
+  - salem
