@@ -1,7 +1,6 @@
 name: analysis
 channels:
 - conda-forge
-- nesii/label/dev-esmf
 - defaults
 dependencies:
 - basemap
@@ -43,6 +42,7 @@ dependencies:
 - matplotlib
 - memory_profiler
 - metpy
+- mpas-analysis
 - mpi4py
 - nbdime
 - nc-time-axis
@@ -58,6 +58,7 @@ dependencies:
 - pint
 - pip
 - psutil
+- psyplot
 - pyarrow
 - pynio
 - pyresample
@@ -79,6 +80,7 @@ dependencies:
 - toolz
 - tqdm
 - watermark
+- wrf-python
 - xarray>=0.12
 - xesmf
 - xgcm
@@ -88,4 +90,5 @@ dependencies:
 - pip:
   - git+https://github.com/NCAR/pop-tools.git
   - ncar-jobqueue
+  - salem 
 
