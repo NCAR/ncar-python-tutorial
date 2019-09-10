@@ -50,11 +50,9 @@ def run_script(script, my_env, return_output=False):
         return out
 
 
-def check_env_name_conflict(env_name, my_env):
+def check_env_name_conflict(output, env_name):
     import json
 
-    cmd = ["conda", "env", "list", "--json"]
-    output = run_script(cmd, my_env, return_output=True)
     output = json.loads(output)["envs"]
 
     f = lambda x: os.path.basename(x)
@@ -107,8 +105,8 @@ def prepare_env(args):
     print("*** {} Step 2/6: Updating `base` environment".format(get_current_time()))
     run_script(os.path.join(here, "update_base_env"), my_env)
     print(("*** {} Step 3/6: Checking for environment name conflict").format(get_current_time()))
-
-    env_exist = check_env_name_conflict("python-tutorial", my_env)
+    output = run_script(os.path.join(here, "check_env_conflict"), my_env, return_output=True)
+    env_exist = check_env_name_conflict(output, "python-tutorial")
 
     if env_exist and args.clobber:
         print(
@@ -121,11 +119,12 @@ def prepare_env(args):
 
     elif env_exist and not args.clobber:
         print(
-            "Unable to proceed to next steps because of an existing"
-            "`python-tutorial` environment "
+            "\n\nUnable to proceed to next steps because of an existing",
+            "`python-tutorial` environment",
+            "and clobber is set to {}".format(args.clobber),
         )
-        print("and clobber is set to {}".format(args.clobber))
-        print("To address this issue, please try one of the following options:")
+
+        print("\nTo address this issue, please try one of the following options:")
         print("\n(1)Create clone environment, and then remove original one:")
         print("\n    conda create --name new_name --clone python-tutorial")
         print("\n    conda remove --name python-tutorial")
