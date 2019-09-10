@@ -47,11 +47,11 @@ def run_script(script, my_env):
         )
 
 
-def check_env_name_conflict(env_name):
+def check_env_name_conflict(env_name, my_env):
     import json
 
     cmd = ["conda", "env", "list", "--json"]
-    output = subprocess.check_output(cmd)
+    output = subprocess.check_output(cmd, env=my_env)
     output = json.loads(output)["envs"]
 
     f = lambda x: os.path.basename(x)
@@ -105,7 +105,7 @@ def prepare_env(args):
     run_script(os.path.join(here, "update_base_env"), my_env)
     print(("*** {} Step 3/6: Checking for environment name conflict").format(get_current_time()))
 
-    env_exist = check_env_name_conflict("python-tutorial")
+    env_exist = check_env_name_conflict("python-tutorial", my_env)
 
     if env_exist and args.clobber:
         print(

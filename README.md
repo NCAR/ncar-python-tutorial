@@ -49,7 +49,7 @@ git clone https://github.com/NCAR/ncar-python-tutorial.git
   ./setup/configure
   ```
 
-  This script will install `conda` package manager if it is unable to find an existing installation. Otherwise, it will update the `base` environment, create an `analysis-env` environment.
+  This script will install `conda` package manager if it is unable to find an existing installation. Otherwise, it will update the `base` environment, create an `python-tutorial` environment.
 
 **NOTE**: Be prepared for the script to take up to 15 minutes to complete.
 
@@ -68,7 +68,7 @@ For changes to take effect, close and re-open your current shell.
 - From the `ncar-python-tutorial` directory, activate the newly created analysis enviroment:
 
   ```bash
-  conda activate analysis-env
+  conda activate python-tutorial
   ```
 
 - Run the setup verification script to confirm that everything is working as expected:
