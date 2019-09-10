@@ -24,3 +24,6 @@ else
     mkdir -p ~/.local/share/cartopy
     python $CARTOPY_ASSET_SCRIPT --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
 fi
+
+# removes tarballs and unused packages
+conda clean -tipsy
