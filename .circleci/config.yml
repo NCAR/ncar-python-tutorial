@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build-job:
+  test-py3:
     docker:
       - image: circleci/python:3.7
 
@@ -28,8 +28,37 @@ jobs:
             source activate python-tutorial
             ./setup/check_setup
 
+  test-py2:
+    docker:
+      - image: circleci/python:2.7
+
+    steps:
+      - checkout
+      - run:
+          name: Fresh conda install without existing environments
+          command: |
+            ./setup/configure
+
+      - run:
+          name: Clobber existing environment
+          command: |
+            export PATH="$HOME/miniconda3/bin:$PATH"
+            conda info
+            ./setup/configure --clobber
+
+      - run:
+          name: Running Tests
+          command: |
+            export PATH="$HOME/miniconda3/bin:$PATH"
+            conda info
+            source activate python-tutorial
+            ./setup/check_setup
+
+
+
 workflows:
   version: 2
   default:
     jobs:
-      - setup-test
+      - test-py3
+      - test-py2
