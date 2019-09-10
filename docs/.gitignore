@@ -1,0 +1,10 @@
+_site/
+*~
+*.swp
+*.aux
+*.bbl
+*.log
+*.out
+*.toc
+.jekyll-metadata
+*.DS_Store

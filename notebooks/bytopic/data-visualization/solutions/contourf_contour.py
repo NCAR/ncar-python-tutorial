@@ -1,0 +1,5 @@
+fig, ax = plt.subplots()
+cf = ax.contourf(X, Y, Z, levels=np.arange(-2, 2, 0.5), cmap='PiYG', extend='both')
+cl = ax.contour(X, Y, Z, levels=np.arange(-2, 2, 0.5), colors='black')
+ax.clabel(cl)
+plt.colorbar(cf)
