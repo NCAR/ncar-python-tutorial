@@ -9,19 +9,27 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Conda and Create environments
+          name: Fresh conda install without existing environments
           command: |
             ./setup/configure
+
+      - run:
+          name: Clobber existing environment
+          command: |
+            export PATH="$HOME/miniconda3/bin:$PATH"
+            conda info
+            ./setup/configure --clobber
+
       - run:
           name: Running Tests
           command: |
             export PATH="$HOME/miniconda3/bin:$PATH"
             conda info
-            source activate analysis-env
+            source activate python-tutorial
             ./setup/check_setup
 
 workflows:
   version: 2
   default:
     jobs:
-      - build-job
+      - setup-test

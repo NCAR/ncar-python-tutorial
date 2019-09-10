@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 
+from __future__ import absolute_import, division, print_function
+
 import subprocess
 import os
 from datetime import datetime
+import argparse
+import sys
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -43,7 +47,20 @@ def run_script(script, my_env):
         )
 
 
-def prepare_env():
+def check_env_name_conflict(env_name):
+    import json
+
+    cmd = ["conda", "env", "list", "--json"]
+    output = subprocess.check_output(cmd)
+    output = json.loads(output)["envs"]
+
+    f = lambda x: os.path.basename(x)
+    envs = set(map(f, output))
+
+    return env_name in envs
+
+
+def prepare_env(args):
 
     installers = {
         "linux": "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh",
@@ -52,7 +69,7 @@ def prepare_env():
 
     my_env = os.environ.copy()
     my_env["BASE_ENV_YML"] = os.path.join(here, "environments/env-conda-base.yml")
-    my_env["ANALYSIS_ENV_YML"] = os.path.join(here, "environments/env-analysis.yml")
+    my_env["TUTORIAL_ENV_YML"] = os.path.join(here, "environments/env-tutorial.yml")
     default_shell = my_env.get("SHELL", None)
     supported_shells = {"bash", "fish", "powershell", "tcsh", "xonsh", "zsh"}
     if default_shell:
@@ -63,11 +80,11 @@ def prepare_env():
     conda_path = detect_existing_executable("conda")
     if conda_path is not None:
         print("*** Found an existing Conda installation in: {}".format(conda_path))
-        print("*** {} Step 1/5: Skipping Conda installation".format(get_current_time()))
+        print("*** {} Step 1/6: Skipping Conda installation".format(get_current_time()))
         my_env["INSTALL_DIR"] = os.path.abspath(os.path.join(os.path.dirname(conda_path), ".."))
 
     else:
-        print("*** {} Step 1/5: Installing Miniconda".format(get_current_time()))
+        print("*** {} Step 1/6: Installing Miniconda".format(get_current_time()))
         plat = detect_platform()
         if plat["system"] in installers:
             my_env["INSTALLER"] = installers[plat["system"]]
@@ -84,38 +101,66 @@ def prepare_env():
         else:
             raise RuntimeError("Unsupported Platform...")
 
-    print("*** {} Step 2/5: Updating `base` environment".format(get_current_time()))
+    print("*** {} Step 2/6: Updating `base` environment".format(get_current_time()))
     run_script(os.path.join(here, "update_base_env"), my_env)
-    print(
-        (
-            "*** {} Step 3/5: Creating/Updating `analysis` environment "
-            "(this can take several minutes)"
-        ).format(get_current_time())
-    )
-    run_script(os.path.join(here, "update_analysis_env"), my_env)
+    print(("*** {} Step 3/6: Checking for environment name conflict").format(get_current_time()))
+
+    env_exist = check_env_name_conflict("python-tutorial")
+
+    if env_exist and args.clobber:
+        print(
+            (
+                "*** {} Step 4/6: Updating existing `python-tutorial` environment "
+                "(this can take several minutes)"
+            ).format(get_current_time())
+        )
+        run_script(os.path.join(here, "update_tutorial_env"), my_env)
+
+    elif env_exist and not args.clobber:
+        print(
+            "Unable to proceed to next steps because of an existing"
+            "`python-tutorial` environment "
+        )
+        print("and clobber is set to {}".format(args.clobber))
+        print("To address this issue, please try one of the following options:")
+        print("\n(1)Create clone environment, and then remove original one:")
+        print("\n    conda create --name new_name --clone python-tutorial")
+        print("\n    conda remove --name python-tutorial")
+        print("\nOr")
+        print("\n(2)you can run the configure script with clobber set to True:")
+        print("\n    ./setup/configure --clobber")
+        sys.exit()
+
+    else:
+        print(
+            (
+                "*** {} Step 4/6: Creating `python-tutorial` environment "
+                "(this can take several minutes)"
+            ).format(get_current_time())
+        )
+        run_script(os.path.join(here, "update_tutorial_env"), my_env)
 
     print(
-        "*** {} Step 4/5: Running post build script for `base` environment".format(
+        "*** {} Step 5/6: Running post build script for `base` environment".format(
             get_current_time()
         )
     )
     run_script(os.path.join(here, "post_build_base"), my_env)
     print(
         (
-            "*** {} Step 5/5: Running post build script for `analysis` environment "
+            "*** {} Step 6/6: Running post build script for `python-tutorial` environment "
             "(this can take several minutes)"
         ).format(get_current_time())
     )
     my_env["CARTOPY_ASSET_SCRIPT"] = os.path.join(here, "download_cartopy_assets.py")
-    run_script(os.path.join(here, "post_build_analysis"), my_env)
+    run_script(os.path.join(here, "post_build_tutorial"), my_env)
 
     print("*** {} Setup completed successfully.".format(get_current_time()))
     print("==> For changes to take effect, close and re-open your current shell. <==")
 
 
-def main():
-    prepare_env()
-
-
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Set up tutorial environment.")
+    parser.add_argument("--clobber", "-c", help="Clobber existing environment", action="store_true")
+    args = parser.parse_args()
+    prepare_env(args)

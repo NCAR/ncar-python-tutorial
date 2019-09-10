@@ -1,4 +1,4 @@
-name: analysis-env
+name: python-tutorial
 channels:
 - conda-forge
 - defaults
