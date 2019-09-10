@@ -32,7 +32,7 @@ def detect_existing_executable(name):
     return find_executable(name)
 
 
-def run_script(script, my_env):
+def run_script(script, my_env, return_output=False):
 
     process_output = subprocess.Popen(
         script, env=my_env, stdout=subprocess.PIPE, stderr=subprocess.PIPE
@@ -46,12 +46,15 @@ def run_script(script, my_env):
             )
         )
 
+    if return_output:
+        return out
+
 
 def check_env_name_conflict(env_name, my_env):
     import json
 
     cmd = ["conda", "env", "list", "--json"]
-    output = subprocess.check_output(cmd, env=my_env)
+    output = run_script(cmd, my_env, return_output=True)
     output = json.loads(output)["envs"]
 
     f = lambda x: os.path.basename(x)
