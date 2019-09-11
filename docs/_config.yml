@@ -3,14 +3,13 @@
 url: "https://ncar.github.io/ncar-python-tutorial"
 baseurl: ""
 
-title: NCAR Hackathons
-description: Instructional material as well as open-ended projects.
+title: NCAR Python Tutorial
+description: Instructional material for the NCAR Python tutorial
 
 # List of links in the navigation bar
-navbar-links:
-  Blog: "blog"
-  Projects: "projects"
-  Resources: "resources"
+#navbar-links:
+#  Projects: "projects"
+#  Resources: "resources"
 
 # Change all these values or delete the ones you don't want (these appear in the footer).
 # Important: you must keep the "name" parameter, everything else you can remove
