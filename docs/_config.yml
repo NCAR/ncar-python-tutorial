@@ -1,7 +1,7 @@
 # url is the full website URL
 # baseurl is the website's URL without the hostname
-url: "https://ncar.github.io/ncar-python-tutorial"
-baseurl: ""
+url: "https://ncar.github.io"
+baseurl: "/ncar-python-tutorial"
 
 title: NCAR Python Tutorial
 description: Instructional material for the NCAR Python tutorial
