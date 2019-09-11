@@ -49,7 +49,9 @@ git clone https://github.com/NCAR/ncar-python-tutorial.git
   ./setup/configure
   ```
 
-  This script will install `conda` package manager if it is unable to find an existing installation. Otherwise, it will update the `base` environment, create an `analysis` environment (if a conda environment called `analysis` exists, it will update packages in it)
+  This script will install `conda` package manager if it is unable to find an existing installation. Otherwise, it will update the `base` environment, create an `python-tutorial` environment.
+
+**NOTE**: Be prepared for the script to take up to 15 minutes to complete.
 
 ### Step 3: Close and re-open your current shell
 
@@ -57,41 +59,26 @@ For changes to take effect, close and re-open your current shell.
 
 ### Step 4: Run the setup verification script
 
-- Check conda info with:
+- Check that *conda info* runs successfully:
 
   ```bash
-  conda info -a
+  conda info
   ```
 
 - From the `ncar-python-tutorial` directory, activate the newly created analysis enviroment:
-  
+
   ```bash
-  conda activate analysis
+  conda activate python-tutorial
   ```
 
 - Run the setup verification script to confirm that everything is working as expected:
-  
+
   ```bash
+  cd ncar-python-tutorial
   ./setup/check_setup
   ```
 
-- Check that all Jupyterlab extensions were properly installed:
-  
-  ```bash
-  jupyter labextension list
-  ```
-
-  You will see something along the lines of the following output:
-
-  ```console
-  JupyterLab v1.1.1
-  Known labextensions:
-     app dir: /Users/abanihi/opt/miniconda3/envs/analysis/share/jupyter/lab
-          @jupyter-widgets/jupyterlab-manager v1.0.2  enabled  OK
-          @pyviz/jupyterlab_pyviz v0.8.0  enabled  OK
-          dask-labextension v1.0.1  enabled  OK
-          nbdime-jupyterlab v1.0.0  enabled  OK
-    ```
+  This step should print **"Everything looks good!"**.
 
 ----
 

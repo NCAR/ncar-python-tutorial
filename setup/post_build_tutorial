@@ -6,7 +6,7 @@ export PATH="$INSTALL_DIR/bin:$PATH"
 
 # Install jupyterlab extensions
 
-source activate analysis
+source activate python-tutorial
 jupyter labextension install @jupyter-widgets/jupyterlab-manager \
                              @pyviz/jupyterlab_pyviz \
                              nbdime-jupyterlab \
@@ -24,3 +24,6 @@ else
     mkdir -p ~/.local/share/cartopy
     python $CARTOPY_ASSET_SCRIPT --output ~/.local/share/cartopy cultural-extra cultural gshhs physical
 fi
+
+# removes tarballs and unused packages
+conda clean -tipsy
