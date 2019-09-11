@@ -96,16 +96,16 @@ def prepare_env(args):
 
             my_env["INSTALL_DIR"] = install_dir
 
-            install_script = os.path.join(here, "install_conda")
+            install_script = os.path.join(here, "conda/install_conda")
             run_script(install_script, my_env)
 
         else:
             raise RuntimeError("Unsupported Platform...")
 
     print("*** {} Step 2/6: Updating `base` environment".format(get_current_time()))
-    run_script(os.path.join(here, "update_base_env"), my_env)
+    run_script(os.path.join(here, "conda/update_base_env"), my_env)
     print(("*** {} Step 3/6: Checking for environment name conflict").format(get_current_time()))
-    output = run_script(os.path.join(here, "check_env_conflict"), my_env, return_output=True)
+    output = run_script(os.path.join(here, "conda/check_env_conflict"), my_env, return_output=True)
     env_exist = check_env_name_conflict(output, "python-tutorial")
 
     if env_exist and args.clobber:
@@ -115,13 +115,13 @@ def prepare_env(args):
                 "(this can take several minutes)"
             ).format(get_current_time())
         )
-        run_script(os.path.join(here, "update_tutorial_env"), my_env)
+        run_script(os.path.join(here, "conda/update_tutorial_env"), my_env)
 
     elif env_exist and not args.clobber:
         print(
-            "\n\nUnable to proceed to next steps because of an existing",
+            "\n\nUnable to proceed to the next steps because of an existing",
             "`python-tutorial` environment",
-            "and clobber is set to {}".format(args.clobber),
+            "with clobber set to {}.".format(args.clobber),
         )
 
         print("\nTo address this issue, please try one of the following options:")
@@ -140,14 +140,14 @@ def prepare_env(args):
                 "(this can take several minutes)"
             ).format(get_current_time())
         )
-        run_script(os.path.join(here, "update_tutorial_env"), my_env)
+        run_script(os.path.join(here, "conda/update_tutorial_env"), my_env)
 
     print(
         "*** {} Step 5/6: Running post build script for `base` environment".format(
             get_current_time()
         )
     )
-    run_script(os.path.join(here, "post_build_base"), my_env)
+    run_script(os.path.join(here, "conda/post_build_base"), my_env)
     print(
         (
             "*** {} Step 6/6: Running post build script for `python-tutorial` environment "
@@ -155,7 +155,7 @@ def prepare_env(args):
         ).format(get_current_time())
     )
     my_env["CARTOPY_ASSET_SCRIPT"] = os.path.join(here, "download_cartopy_assets.py")
-    run_script(os.path.join(here, "post_build_tutorial"), my_env)
+    run_script(os.path.join(here, "conda/post_build_tutorial"), my_env)
 
     print("*** {} Setup completed successfully.".format(get_current_time()))
     print("==> For changes to take effect, close and re-open your current shell. <==")
