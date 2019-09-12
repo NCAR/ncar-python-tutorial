@@ -8,15 +8,15 @@ title: Python Tutorial
 
 The agenda and additional details can be found in the following link.
 
-- [Agenda and Location](/agenda)
+- [Agenda and Location](/ncar-python-tutorial/agenda)
 
 We will be conducting Sprints as part of this tutorial.  For
 more information on these, what they are and how you can participate,
 go to the following link.
 
-- [Sprints and Optional Lectures](/sprints)
+- [Sprints and Optional Lectures](/ncar-python-tutorial/sprints)
 
 Prior to the tutorial, please follow the setup instructions
 in the following link.
 
-- [Setup Instructions](/instructions)
+- [Setup Instructions](/ncar-python-tutorial/instructions)
