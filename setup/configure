@@ -176,10 +176,12 @@ def download_data():
                 local_data_location
             )
         )
-        dst = output_dir
+        dst = output_dir + "/"
         src = os.path.join(local_data_location, "*")
-        cmd = ["ln", "-sf", src, dst]
+        cmd = " ".join(["ln", "-sf", src, dst])
         print(cmd)
+        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        proc.wait()
 
     if plat["node"].startswith("casper") or plat["node"].startswith("cheyenne"):
         local_data_location = local_data_locations["glade"]
