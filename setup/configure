@@ -7,6 +7,7 @@ import os
 from datetime import datetime
 import argparse
 import sys
+from download_data import ftp_download
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -161,8 +162,49 @@ def prepare_env(args):
     print("==> For changes to take effect, close and re-open your current shell. <==")
 
 
+def download_data():
+    output_dir = os.path.abspath(os.path.join(os.path.dirname(here), "data"))
+    local_data_locations = {
+        "glade": "/glade/work/abanihi/aletheia-data/tutorial-data",
+        "hobart": "/ftp/archive/aletheia-data/tutorial-data",
+    }
+    plat = detect_platform()
+
+    def create_symlink(local_data_location):
+        print(
+            "Creating symlink to existing/local tutorial data directory: {}".format(
+                local_data_location
+            )
+        )
+        dst = output_dir
+        src = os.path.join(local_data_location, "*")
+        cmd = ["ln", "-sf", src, dst]
+        print(cmd)
+
+    if plat["node"].startswith("casper") or plat["node"].startswith("cheyenne"):
+        local_data_location = local_data_locations["glade"]
+        create_symlink(local_data_location)
+
+    elif plat["node"].startswith("hobart"):
+        local_data_location = local_data_locations["hobart"]
+        create_symlink(local_data_location)
+
+    else:
+        ftp_download(dir="archive/aletheia-data", filelist=["test.sh"] * 10, output_dir=output_dir)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Set up tutorial environment.")
     parser.add_argument("--clobber", "-c", help="Clobber existing environment", action="store_true")
+    parser.add_argument(
+        "--download",
+        "-d",
+        help="Download tutorial data without setting environment up",
+        action="store_true",
+    )
     args = parser.parse_args()
-    prepare_env(args)
+    if args.download:
+        download_data()
+    else:
+        prepare_env(args)
+        download_data()
