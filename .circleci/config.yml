@@ -52,14 +52,12 @@ jobs:
       - run:
           name: Create env with existing conda installation
           command: |
-            # export PATH="$HOME/miniconda3/bin:$PATH"
             conda info
             ./setup/configure --clobber
 
       - run:
           name: Running Tests
           command: |
-            # export PATH="$HOME/miniconda3/bin:$PATH"
             conda info
             source activate python-tutorial
             ./setup/check_setup
