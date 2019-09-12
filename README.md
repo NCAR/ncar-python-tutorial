@@ -51,7 +51,7 @@ git clone https://github.com/NCAR/ncar-python-tutorial.git
 
   This script does the following:
   - Install `conda` package manager if it is unable to find an existing installation. Otherwise, it will update the `base` environment
-  - Create an `python-tutorial` environment.
+  - Create or Update `python-tutorial` conda environment.
   - Download data if not on Cheyenne or Casper or Hobart. If on Cheyenne or Casper or Hobart, create soft-links to an existing/local data repository.
 
 **NOTE**: Be prepared for the script to take up to 15 minutes to complete.
@@ -80,7 +80,7 @@ For changes to take effect, close and re-open your current shell.
   conda info
   ```
 
-- From the `ncar-python-tutorial` directory, activate the newly created `python-tutorial` enviroment:
+- From the `ncar-python-tutorial` directory, activate `python-tutorial` conda environment:
 
   ```bash
   conda activate python-tutorial
