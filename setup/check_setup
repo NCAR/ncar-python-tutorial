@@ -21,6 +21,9 @@ def check_data():
         "NOAA_NCDC_ERSST_v3b_SST.nc",
         "thetao_Omon_historical_GISS-E2-1-G_r1i1p1f1_gn_185001-185512.nc",
         "woa2013v2-O2-thermocline-ann.nc",
+        "rasm.nc",
+        "air_temperature.nc",
+        "moc.nc",
     ]
     canary_filepaths = [os.path.join(data_dir, f) for f in canary_files]
     files = list(Path(data_dir).rglob("*.nc")) + canary_filepaths
