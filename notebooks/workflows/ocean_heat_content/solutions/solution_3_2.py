@@ -5,7 +5,6 @@ def change_units(ds, variable_str, variable_bounds_str, target_unit_str):
         orig_units.convert,
         ds[variable_bounds_str],
         target_units,
-        dask="parallelized",
         output_dtypes=[ds[variable_bounds_str].dtype],
     )
     return variable_in_new_units
