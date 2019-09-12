@@ -43,15 +43,11 @@ jobs:
 
   test-conda:
     docker:
-      - image: conda/miniconda3:latest
+      - image: continuumio/miniconda3:latest
 
 
     steps:
       - checkout
-      - run:
-          name: Create env with existing conda installation
-          command: |
-            ./setup/configure
 
       - run:
           name: Create env with existing conda installation

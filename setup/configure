@@ -190,7 +190,7 @@ def download_data():
         create_symlink(local_data_location)
 
     else:
-        ftp_download(dir="archive/aletheia-data", filelist=["test.sh"] * 10, output_dir=output_dir)
+        ftp_download(directory="archive/aletheia-data/tutorial-data", output_dir=output_dir)
 
 
 if __name__ == "__main__":

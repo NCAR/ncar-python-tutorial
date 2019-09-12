@@ -2,12 +2,32 @@
 import importlib
 import subprocess
 from pathlib import Path
+import os
+
+here = os.path.abspath(os.path.dirname(__file__))
 
 
 def check_conda():
     from distutils.spawn import find_executable
 
     return find_executable("conda") is not None
+
+
+def check_data():
+    import xarray as xr
+
+    data_dir = os.path.abspath(os.path.join(os.path.dirname(here), "data"))
+    canary_files = [
+        "NOAA_NCDC_ERSST_v3b_SST.nc",
+        "thetao_Omon_historical_GISS-E2-1-G_r1i1p1f1_gn_185001-185512.nc",
+        "woa2013v2-O2-thermocline-ann.nc",
+    ]
+    canary_filepaths = [os.path.join(data_dir, f) for f in canary_files]
+    files = list(Path(data_dir).rglob("*.nc")) + canary_filepaths
+
+    for f in files:
+        dset = xr.open_dataset(f)
+        assert isinstance(dset, xr.Dataset)
 
 
 def verify_extensions(extensions):
@@ -23,6 +43,8 @@ def verify_extensions(extensions):
 
 
 def main():
+
+    check_data()
 
     try:
         assert check_conda()
@@ -46,6 +68,7 @@ def main():
 
         except ImportError:
             missing_modules.append(mod)
+
     extensions = [
         "@jupyter-widgets/jupyterlab-manager",
         "@pyviz/jupyterlab_pyviz",

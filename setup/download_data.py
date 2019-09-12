@@ -31,12 +31,15 @@ def printProgressBar(iteration, total, prefix="", suffix="", decimals=1, bar_len
 
 
 def ftp_download(
-    host="ftp.cgd.ucar.edu", dir="archive/aletheia-data/tutorial-data", filelist=[], output_dir=None
+    host="ftp.cgd.ucar.edu",
+    directory="archive/aletheia-data/tutorial-data",
+    filelist=[],
+    output_dir=None,
 ):
     ftp = FTP()
     ftp.connect(host)
     ftp.login()
-    ftp.cwd(dir)
+    ftp.cwd(directory)
     if not filelist:
         filenames = ftp.nlst()
 
@@ -74,4 +77,4 @@ def ftp_download(
 
 
 if __name__ == "__main__":
-    ftp_download(dir="archive/aletheia-data/", filelist=["test.sh"])
+    ftp_download(directory="archive/aletheia-data/", filelist=["test.sh"])
