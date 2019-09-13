@@ -11,4 +11,5 @@ def limit_depth_of_variables(level_bounds, temperature, depth_limit):
 delta_level_limited, temperature_limited = limit_depth_of_variables(
     ds["lev_bnds"], ds["thetao"], 50
 )
-delta_level_limited, temperature_limited
+print(delta_level_limited, "\n\n")
+print(temperature_limited)
