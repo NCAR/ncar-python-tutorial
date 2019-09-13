@@ -1,3 +1,6 @@
-ds.dims
-ds.coords
-ds.attrs
+print("*** Dimensions")
+print(ds.dims)
+print("\n\n*** Coordinates")
+print(ds.coords)
+print("\n\n*** Attributes")
+print(ds.attrs)
