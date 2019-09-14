@@ -102,16 +102,19 @@ venv.bak/
 
 # mypy
 .mypy_cache/
-notebooks/slurm-*
-notebooks/dask-*
-notebooks/xarray/rasm_test.nc
-notebooks/xarray/data/19*.nc
-notebooks/xarray/data/*.zarr
+
 _build/
 
 setup/jlab/start-jlab
 
 .vscode/
-data/*.nc
-data/*.csv
+data/
+
 *.zarr
+.DS_Store
+
+# Dask stuff
+slurm-*
+dask-*
+worker-*
+*.lock
