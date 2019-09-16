@@ -115,6 +115,6 @@ data/
 
 # Dask stuff
 slurm-*
-dask-*
+dask-work*
 worker-*
 *.lock
