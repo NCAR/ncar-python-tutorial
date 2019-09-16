@@ -25,7 +25,7 @@ This tutorial covers the installation and setup of a Python environment on:
 - CGD's Hobart
 - Personal laptop/desktop with a UNIX-variant Operating System
 
-**NOTE:** For windows users, setup scripts provided in this repository don't work on Windows machines for the time being. You may want to follow the instructions available [here](https://conda.io/projects/conda/en/latest/user-guide/install/windows.html) to install miniconda.
+**NOTE:** For windows users, setup scripts provided in this repository don't work on Windows machines for the time being.
 
 ### Step 1: Clone NCAR Python Tutorial Repository
 
