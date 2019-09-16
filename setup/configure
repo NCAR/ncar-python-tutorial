@@ -90,12 +90,7 @@ def prepare_env(args):
         plat = detect_platform()
         if plat["system"] in installers:
             my_env["INSTALLER"] = installers[plat["system"]]
-            if plat["node"].startswith("casper") or plat["node"].startswith("cheyenne"):
-                install_dir = "/glade/work/{}/miniconda3".format(my_env["USER"])
-            else:
-                install_dir = "{}/miniconda3".format(my_env["HOME"])
-
-            my_env["INSTALL_DIR"] = install_dir
+            my_env["INSTALL_DIR"] = args.prefix
 
             install_script = os.path.join(here, "conda/install_conda")
             run_script(install_script, my_env)
@@ -196,14 +191,34 @@ def download_data():
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Set up tutorial environment.")
-    parser.add_argument("--clobber", "-c", help="Clobber existing environment", action="store_true")
+    plat = detect_platform()
+    if plat["node"].startswith("casper") or plat["node"].startswith("cheyenne"):
+        default_install_dir = "/glade/work/{}/miniconda3".format(os.environ["USER"])
+    else:
+        default_install_dir = "{}/miniconda3".format(os.environ["HOME"])
+
+    parser = argparse.ArgumentParser(
+        description="Set up tutorial environment.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--clobber",
+        "-c",
+        help="Whether to clobber existing environment",
+        default=False,
+        action="store_true",
+    )
     parser.add_argument(
         "--download",
         "-d",
+        default=False,
         help="Download tutorial data without setting environment up",
         action="store_true",
     )
+    parser.add_argument(
+        "--prefix", "-p", default=default_install_dir, help="Miniconda3 install location"
+    )
+
     args = parser.parse_args()
     if args.download:
         download_data()
