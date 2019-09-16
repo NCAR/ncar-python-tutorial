@@ -23,9 +23,9 @@ The bulk of this tutorial will be held in the NCAR Mesa Laboratory's Main Semina
 | 11:30 | Real World Example: OHC Part 4        |
 | 12:00 | _Lunch_                               |
 | 13:00 | Real World Example: ENSO index        |
-| 13:30 | Real World Example: Oxygen trends     |
+| 13:30 | Real World Example: Gmet              |
 | 14:00 | Real World Example: MetPy             |
-| 14:30 | _Optional Real World Example_         |
+| 14:30 | _Optional: Oxygen Trends_             |
 | 15:00 | _Break_                               |
 | 15:30 | Sprint Pitches                        |
 | 16:00 | _Discussion, Questions & Planning_    |
