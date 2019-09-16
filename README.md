@@ -73,7 +73,7 @@ Default values for ``--prefix`` argument are:
 - Cheyenne or Casper: `/glade/work/$USER/miniconda3`
 
 **NOTE**:
-In case the default `prefix` is not appropriate for you (due to limited storage), feel free to specify a different installation location such as a `project` workspace on a shared filesystem like GLADE or Hobart's filesystem.
+In case the default `prefix` is not appropriate for you (due to limited storage), feel free to specify a different miniconda install location. For instance, this install location may be a `project` workspace on a shared filesystem like GLADE or Hobart's filesystem.
 
 The `configure` script does the following:
 
