@@ -1,4 +1,4 @@
-![https://circleci.com/gh/NCAR/ncar-python-tutorial/tree/master](https://img.shields.io/circleci/project/github/NCAR/ncar-python-tutorial/master.svg?style=for-the-badge&logo=circleci)
+[![CircleCI](https://img.shields.io/circleci/project/github/NCAR/ncar-python-tutorial/master.svg?style=for-the-badge&logo=circleci)](https://circleci.com/gh/NCAR/ncar-python-tutorial/tree/master)
 
 # NCAR Python Tutorial
 
@@ -25,7 +25,7 @@ This tutorial covers the installation and setup of a Python environment on:
 - CGD's Hobart
 - Personal laptop/desktop with a UNIX-variant Operating System
 
-**NOTE:** For windows users, setup scripts provided in this repository don't work on Windows machines for the time being. You may want to follow the instructions available [here](https://conda.io/projects/conda/en/latest/user-guide/install/windows.html).
+**NOTE:** For windows users, setup scripts provided in this repository don't work on Windows machines for the time being. You may want to follow the instructions available [here](https://conda.io/projects/conda/en/latest/user-guide/install/windows.html) to install miniconda.
 
 ### Step 1: Clone NCAR Python Tutorial Repository
 
@@ -45,28 +45,41 @@ git clone https://github.com/NCAR/ncar-python-tutorial.git
 
 - Run the [`configure`](./setup/configure) script:
 
+  **NOTE**: Be prepared for the script to take up to 15 minutes to complete.
+
   ```bash
   ./setup/configure
   ```
 
-  This script does the following:
-  - Install `conda` package manager if it is unable to find an existing installation. Otherwise, it will update the `base` environment
-  - Create or Update `python-tutorial` conda environment.
-  - Download data if not on Cheyenne or Casper or Hobart. If on Cheyenne or Casper or Hobart, create soft-links to an existing/local data repository.
-
-**NOTE**: Be prepared for the script to take up to 15 minutes to complete.
-
 ```bash
 $ ./setup/configure --help
-usage: configure [-h] [--clobber] [--download]
+usage: configure [-h] [--clobber] [--download] [--prefix PREFIX]
 
 Set up tutorial environment.
 
 optional arguments:
-  -h, --help      show this help message and exit
-  --clobber, -c   Clobber existing environment
-  --download, -d  Download tutorial data without setting environment up
+  -h, --help            show this help message and exit
+  --clobber, -c         Whether to clobber existing environment (default:
+                        False)
+  --download, -d        Download tutorial data without setting environment up
+                        (default: False)
+  --prefix PREFIX, -p PREFIX
+                        Miniconda3 install location)
 ```
+
+Default values for ``--prefix`` argument are:
+
+- Personal laptop / Hobart: `$HOME/miniconda3`
+- Cheyenne or Casper: `/glade/work/$USER/miniconda3`
+
+**NOTE**:
+In case the default `prefix` is not appropriate for you (due to limited storage), feel free to specify a different installation location such as a `project` workspace on a shared filesystem like GLADE or Hobart's filesystem.
+
+The `configure` script does the following:
+
+- Install `conda` package manager if it is unable to find an existing installation. Otherwise, it will update the `base` environment
+- Create or Update `python-tutorial` conda environment.
+- Download data if not on Cheyenne or Casper or Hobart. If on Cheyenne or Casper or Hobart, create soft-links to an existing/local data repository.
 
 ### Step 3: Close and re-open your current shell
 
@@ -102,7 +115,6 @@ For changes to take effect, close and re-open your current shell.
 ### 1. Cheyenne or DAV via JupyterHub (Recommended)
 
 - JupyterHub link: https://jupyterhub.ucar.edu/
-
 
 To use the Cheyenne or DAV compute nodes,we recommend using JupyterLab via NCAR's JupyterHub deployment.
 
