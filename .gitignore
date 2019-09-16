@@ -112,3 +112,6 @@ _build/
 setup/jlab/start-jlab
 
 .vscode/
+data/*.csv
+data/*.nc
+*.zarr

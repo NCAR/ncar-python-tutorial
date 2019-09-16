@@ -73,6 +73,7 @@ dependencies:
 - scipy
 - seaborn
 - seawater
+- siphon
 - snakeviz
 - sparse
 - statsmodels

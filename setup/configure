@@ -7,6 +7,7 @@ import os
 from datetime import datetime
 import argparse
 import sys
+from download_data import ftp_download
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -89,23 +90,18 @@ def prepare_env(args):
         plat = detect_platform()
         if plat["system"] in installers:
             my_env["INSTALLER"] = installers[plat["system"]]
-            if plat["node"].startswith("casper") or plat["node"].startswith("cheyenne"):
-                install_dir = "/glade/work/{}/miniconda3".format(my_env["USER"])
-            else:
-                install_dir = "{}/miniconda3".format(my_env["HOME"])
+            my_env["INSTALL_DIR"] = args.prefix
 
-            my_env["INSTALL_DIR"] = install_dir
-
-            install_script = os.path.join(here, "install_conda")
+            install_script = os.path.join(here, "conda/install_conda")
             run_script(install_script, my_env)
 
         else:
             raise RuntimeError("Unsupported Platform...")
 
     print("*** {} Step 2/6: Updating `base` environment".format(get_current_time()))
-    run_script(os.path.join(here, "update_base_env"), my_env)
+    run_script(os.path.join(here, "conda/update_base_env"), my_env)
     print(("*** {} Step 3/6: Checking for environment name conflict").format(get_current_time()))
-    output = run_script(os.path.join(here, "check_env_conflict"), my_env, return_output=True)
+    output = run_script(os.path.join(here, "conda/check_env_conflict"), my_env, return_output=True)
     env_exist = check_env_name_conflict(output, "python-tutorial")
 
     if env_exist and args.clobber:
@@ -115,13 +111,13 @@ def prepare_env(args):
                 "(this can take several minutes)"
             ).format(get_current_time())
         )
-        run_script(os.path.join(here, "update_tutorial_env"), my_env)
+        run_script(os.path.join(here, "conda/update_tutorial_env"), my_env)
 
     elif env_exist and not args.clobber:
         print(
-            "\n\nUnable to proceed to next steps because of an existing",
+            "\n\nUnable to proceed to the next steps because of an existing",
             "`python-tutorial` environment",
-            "and clobber is set to {}".format(args.clobber),
+            "with clobber set to {}.".format(args.clobber),
         )
 
         print("\nTo address this issue, please try one of the following options:")
@@ -140,14 +136,14 @@ def prepare_env(args):
                 "(this can take several minutes)"
             ).format(get_current_time())
         )
-        run_script(os.path.join(here, "update_tutorial_env"), my_env)
+        run_script(os.path.join(here, "conda/update_tutorial_env"), my_env)
 
     print(
         "*** {} Step 5/6: Running post build script for `base` environment".format(
             get_current_time()
         )
     )
-    run_script(os.path.join(here, "post_build_base"), my_env)
+    run_script(os.path.join(here, "conda/post_build_base"), my_env)
     print(
         (
             "*** {} Step 6/6: Running post build script for `python-tutorial` environment "
@@ -155,14 +151,77 @@ def prepare_env(args):
         ).format(get_current_time())
     )
     my_env["CARTOPY_ASSET_SCRIPT"] = os.path.join(here, "download_cartopy_assets.py")
-    run_script(os.path.join(here, "post_build_tutorial"), my_env)
+    run_script(os.path.join(here, "conda/post_build_tutorial"), my_env)
 
     print("*** {} Setup completed successfully.".format(get_current_time()))
     print("==> For changes to take effect, close and re-open your current shell. <==")
 
 
+def download_data():
+    output_dir = os.path.abspath(os.path.join(os.path.dirname(here), "data"))
+    local_data_locations = {
+        "glade": "/glade/work/abanihi/aletheia-data/tutorial-data",
+        "hobart": "/ftp/archive/aletheia-data/tutorial-data",
+    }
+    plat = detect_platform()
+
+    def create_symlink(local_data_location):
+        print(
+            "Creating symlink to existing/local tutorial data directory: {}".format(
+                local_data_location
+            )
+        )
+        dst = output_dir + "/"
+        src = os.path.join(local_data_location, "*")
+        cmd = " ".join(["ln", "-sf", src, dst])
+        print(cmd)
+        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        proc.wait()
+
+    if plat["node"].startswith("casper") or plat["node"].startswith("cheyenne"):
+        local_data_location = local_data_locations["glade"]
+        create_symlink(local_data_location)
+
+    elif plat["node"].startswith("hobart"):
+        local_data_location = local_data_locations["hobart"]
+        create_symlink(local_data_location)
+
+    else:
+        ftp_download(directory="archive/aletheia-data/tutorial-data", output_dir=output_dir)
+
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Set up tutorial environment.")
-    parser.add_argument("--clobber", "-c", help="Clobber existing environment", action="store_true")
+    plat = detect_platform()
+    if plat["node"].startswith("casper") or plat["node"].startswith("cheyenne"):
+        default_install_dir = "/glade/work/{}/miniconda3".format(os.environ["USER"])
+    else:
+        default_install_dir = "{}/miniconda3".format(os.environ["HOME"])
+
+    parser = argparse.ArgumentParser(
+        description="Set up tutorial environment.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--clobber",
+        "-c",
+        help="Whether to clobber existing environment",
+        default=False,
+        action="store_true",
+    )
+    parser.add_argument(
+        "--download",
+        "-d",
+        default=False,
+        help="Download tutorial data without setting environment up",
+        action="store_true",
+    )
+    parser.add_argument(
+        "--prefix", "-p", default=default_install_dir, help="Miniconda3 install location"
+    )
+
     args = parser.parse_args()
-    prepare_env(args)
+    if args.download:
+        download_data()
+    else:
+        prepare_env(args)
+        download_data()

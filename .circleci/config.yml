@@ -14,13 +14,6 @@ jobs:
             ./setup/configure
 
       - run:
-          name: Clobber existing environment
-          command: |
-            export PATH="$HOME/miniconda3/bin:$PATH"
-            conda info
-            ./setup/configure --clobber
-
-      - run:
           name: Running Tests
           command: |
             export PATH="$HOME/miniconda3/bin:$PATH"
@@ -37,24 +30,37 @@ jobs:
       - run:
           name: Fresh conda install without existing environments
           command: |
-            ./setup/configure
+            ./setup/configure -p $HOME/conda
+
 
       - run:
-          name: Clobber existing environment
+          name: Running Tests
           command: |
-            export PATH="$HOME/miniconda3/bin:$PATH"
+            export PATH="$HOME/conda/bin:$PATH"
+            conda info
+            source activate python-tutorial
+            ./setup/check_setup
+
+  test-conda:
+    docker:
+      - image: continuumio/miniconda3:latest
+
+
+    steps:
+      - checkout
+
+      - run:
+          name: Create env with existing conda installation
+          command: |
             conda info
             ./setup/configure --clobber
 
       - run:
           name: Running Tests
           command: |
-            export PATH="$HOME/miniconda3/bin:$PATH"
             conda info
             source activate python-tutorial
             ./setup/check_setup
-
-
 
 workflows:
   version: 2
@@ -62,3 +68,4 @@ workflows:
     jobs:
       - test-py3
       - test-py2
+      - test-conda
