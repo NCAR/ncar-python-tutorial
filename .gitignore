@@ -114,4 +114,5 @@ setup/jlab/start-jlab
 .vscode/
 data/*.csv
 data/*.nc
+data/*.gz
 *.zarr
