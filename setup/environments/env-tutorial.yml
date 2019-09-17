@@ -13,6 +13,7 @@ dependencies:
 - cmocean
 - cython
 - dask
+- distributed==2.3
 - dask-jobqueue
 - dask-mpi
 - datashader

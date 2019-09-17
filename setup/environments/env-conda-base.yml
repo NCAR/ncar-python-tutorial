@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - dask
+  - distributed==2.3
   - dask-labextension
   - ipywidgets
   - jupyter_contrib_nbextensions
