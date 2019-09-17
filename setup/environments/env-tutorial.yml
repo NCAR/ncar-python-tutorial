@@ -12,7 +12,8 @@ dependencies:
 - cftime
 - cmocean
 - cython
-- dask==2.3
+- dask
+- distributed==2.3
 - dask-jobqueue
 - dask-mpi
 - datashader
