@@ -26,11 +26,14 @@ def check_data():
         "moc.nc",
     ]
     canary_filepaths = [os.path.join(data_dir, f) for f in canary_files]
-    files = list(Path(data_dir).rglob("*.nc")) + canary_filepaths
+    files = list(Path(data_dir).rglob("*"))
 
-    for f in files:
+    for f in canary_filepaths:
         dset = xr.open_dataset(f)
         assert isinstance(dset, xr.Dataset)
+
+    for f in files:
+        assert f.exists()
 
 
 def verify_extensions(extensions):
