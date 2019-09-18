@@ -1,6 +1,6 @@
 import esmlab
 import numpy as np
-
+import xarray as xr
 
 def clean_ds(ds, keep_vars):
     ds.attrs = {}
