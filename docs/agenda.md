@@ -16,16 +16,12 @@ The bulk of this tutorial will be held in the NCAR Mesa Laboratory's Main Semina
 | 8:00  | _Questions & Setup_                   |
 | 8:30  | Welcome!                              |
 | 9:00  | Getting Started with Jupyter & Python |
-| 9:30  | Real World Example: OHC Part 1        |
 | 10:00 | _Coffee Break_                        |
-| 10:30 | Real World Example: OHC Part 2        |
-| 11:00 | Real World Example: OHC Part 3        |
-| 11:30 | Real World Example: OHC Part 4        |
+| 10:30 | Real World Example: OHC Part 1        |
 | 12:00 | _Lunch_                               |
-| 13:00 | Real World Example: ENSO index        |
-| 13:30 | Real World Example: Gmet              |
-| 14:00 | Real World Example: MetPy             |
-| 14:30 | _Optional: Oxygen Trends_             |
+| 13:00 | Real World Example: OHC Part 2        |
+| 14:00 | Real World Example: ENSO index        |
+| 14:30 | Real World Example: MetPy             |
 | 15:00 | _Break_                               |
 | 15:30 | Sprint Pitches                        |
 | 16:00 | _Discussion, Questions & Planning_    |
@@ -41,7 +37,6 @@ Participants are encouraged to work on their Sprint projects all day, but are we
 | 9:30  | Git & GitHub                       |
 | 10:30 | _Coffee Break_                     |
 | 11:00 | Visualization                      |
-| 12:00 | _Visualization Office Hours_       |
 | 12:30 | _Lunch_                            |
 | 13:30 | Object Oriented Programming        |
 | 14:30 | Unit Testing                       |
@@ -57,9 +52,9 @@ Participants are encouraged to work on their Sprint projects in the morning but 
 | 9:00  | MetPy                                          |
 | 10:00 | _Coffee Break_                                 |
 | 11:00 | More with Dask                                 |
-| 12:00 | _Lunch_                                        |
-| 13:00 | Conda & Conda Forge                            |
-| 13:30 | Update on GeoCAT (new NCL)                     |
-| 14:00 | Sprint Project Presentations (Lightning Talks) |
-| 15:30 | _Break_                                        |
-| 16:00 | Discussion & Closing Comments                  |
+| 12:30 | _Lunch_                                        |
+| 13:30 | Conda & Conda Forge                            |
+| 14:00 | Update on GeoCAT (new NCL)                     |
+| 14:30 | Sprint Project Presentations (Lightning Talks) |
+| 15:00 | _Break_                                        |
+| 15:30 | Discussion & Closing Comments                  |
