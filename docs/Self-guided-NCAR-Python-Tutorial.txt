@@ -1,0 +1,56 @@
+﻿Self-guided NCAR Python Tutorial
+
+
+This document is intended to serve as a guide for those who want to go through the information in this repo outside of a scheduled NCAR tutorial.
+
+
+First, follow the set-up instructions. Found in the Read-Me [here](https://github.com/NCAR/ncar-python-tutorial)
+
+
+-If set up on Cheyenne/Casper navigate to https://jupyterhub.ucar.edu/, enter your account key, and voila you can use Jupyter notebooks on Cheyenne/Casper. 
+
+
+-If set up on your personal computer, either launch Jupyter from the terminal or from your Anaconda Navigator.
+
+
+Open `notebooks/welcome.ipynb` to begin.
+
+
+Then go through the Curriculum:
+
+
+Getting started
+1. Intro to Jupyter Lab --- `notebooks/welcome.ipynb`
+2. Python basics lectures --- `notebooks/bytopic/python-basics/`
+3. Numpy --- `notebooks/bytopic/numpy/`
+4. Data Visualization with Matplotlib and Cartopy  --- `notebooks/bytopic/data-visualization/`
+
+
+Introduction to  Xarray
+1. Xarray: Python’s Approach to Multi-Dimensional Datasets  --- `notebooks/bytopic/xarray/`
+2. Motivating Example Workflow -- Calculating Ocean Heat Content  --- `notebooks/workflows/ocean_heat_content/`
+
+
+Introduction to Dask
+1. Dask: Automatic Parallel Processing in Python  --- `notebooks/bytopic/dask/`
+
+
+More Python language
+1. Object Oriented Programming  --- `notebooks/bytopic/ObjectOrientedProgramming/`
+2. Jupyter Again --- awaiting material
+
+
+Package Management and Environments
+1. Conda         --- `notebooks/bytopic/conda/`
+
+
+Effective collaborative development
+1. Github and Git Workflows  --- `notebooks/bytopic/git-workflows/`
+2. Testing and Unit Testing Frameworks  --- `notebooks/bytopic/TestingInPython`
+3. Test Driven Development  --- `notebooks/bytopic/test-driven-development`
+
+
+Example workflows
+1. CESM trends  --- `notebooks/workflows/cesm/oxygen-trend-computation`
+2. NOAA ERSST Variability  --- `notebooks/workflows/noaa-ersst-variability`
+3. Analysis of Gridden Ensemble Precip and Temp Estimate  --- `notebooks/workflows/gmet`
