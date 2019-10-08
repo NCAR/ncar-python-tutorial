@@ -89,6 +89,7 @@ s=$(qsub << EOF
 #PBS -r n
 #PBS -q ${queue}
 #PBS -l nodes=${NODES}:ppn=${PPN}
+#PBS -l walltime=${walltime}
 #PBS -o ${WORKDIR}/
 #PBS -e ${WORKDIR}/
 #PBS -j oe
