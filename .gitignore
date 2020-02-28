@@ -115,3 +115,8 @@ slurm-*
 dask-work*
 worker-*
 *.lock
+
+# Nikola site
+site/output
+site/cache
+site/.doit.db.db
