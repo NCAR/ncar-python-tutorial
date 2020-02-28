@@ -49,7 +49,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "06:38:2d:9a:28:b2:fb:54:1d:eb:6c:fb:8a:19:db:d9"
+            - "2f:46:d4:bf:53:bd:96:3c:e6:b3:aa:68:5e:42:0b:b9"
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "site/conf.py" }}
       - run:
@@ -74,7 +74,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "06:38:2d:9a:28:b2:fb:54:1d:eb:6c:fb:8a:19:db:d9"
+            - "2f:46:d4:bf:53:bd:96:3c:e6:b3:aa:68:5e:42:0b:b9"
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "site/conf.py" }}
       - run:
