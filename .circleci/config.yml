@@ -1,10 +1,11 @@
 version: 2.1
 
 jobs:
-  test-py3:
+
+  test_config:
+
     docker:
       - image: circleci/python:3.7
-
 
     steps:
       - checkout
@@ -12,7 +13,6 @@ jobs:
           name: Fresh conda install without existing environments
           command: |
             ./setup/configure
-
       - run:
           name: Running Tests
           command: |
@@ -21,40 +21,18 @@ jobs:
             source activate python-tutorial
             ./setup/check_setup
 
-  test-py2:
-    docker:
-      - image: circleci/python:2.7
+  test_config_clobber:
 
-    steps:
-      - checkout
-      - run:
-          name: Fresh conda install without existing environments
-          command: |
-            ./setup/configure -p $HOME/conda
-
-
-      - run:
-          name: Running Tests
-          command: |
-            export PATH="$HOME/conda/bin:$PATH"
-            conda info
-            source activate python-tutorial
-            ./setup/check_setup
-
-  test-conda:
     docker:
       - image: continuumio/miniconda3:latest
 
-
     steps:
       - checkout
-
       - run:
           name: Create env with existing conda installation
           command: |
             conda info
             ./setup/configure --clobber
-
       - run:
           name: Running Tests
           command: |
@@ -62,10 +40,78 @@ jobs:
             source activate python-tutorial
             ./setup/check_setup
 
+  build_site:
+
+    docker:
+      - image: circleci/python:latest
+
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "be:0d:dc:08:a7:cd:87:ae:84:ca:02:81:73:56:82:07"
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "site/conf.py" }}
+      - run:
+          name: Install Nikola
+          command: sudo pip install nikola[extras]
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "site/conf.py" }}
+          paths:
+            - "$HOME/.cache/pip"
+      - run:
+          name: Build site with Nikola
+          command: cd site && nikola build
+      - store_artifacts:
+          path: ./site/output/
+
+  deploy_site:
+
+    docker:
+      - image: circleci/python:latest
+
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "be:0d:dc:08:a7:cd:87:ae:84:ca:02:81:73:56:82:07"
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "site/conf.py" }}
+      - run:
+          name: Install Nikola
+          command: sudo pip install nikola[extras]
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "site/conf.py" }}
+          paths:
+            - "$HOME/.cache/pip"
+      - run:
+          name: Build site with Nikola and deploy to GitHub Pages
+          command: |
+            git config --global user.name 'Xdev Bot'
+            git config --global user.email '47308153+xdev-bot@users.noreply.github.com'
+            cd site
+            nikola build
+            nikola github_deploy -m '[ci skip] Nikola auto deploy'
+
 workflows:
   version: 2
   default:
     jobs:
-      - test-py3
-      - test-py2
-      - test-conda
+      - test-config
+      - test-config-clobber
+  build:
+    jobs:
+      - build_site:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - master
+
+      - deploy_site:
+          filters:
+            branches:
+              only:
+                - master
+              ignore:
+                - gh-pages
