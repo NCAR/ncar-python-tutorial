@@ -1,0 +1,15 @@
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #c3d7ee;
+    background-image: url(../img/background.png)!important;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+a.u-url {
+    color: #212529;
+}
+
+.bg-dark {
+    background-color: #00797c!important;
+}
