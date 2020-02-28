@@ -1,0 +1,115 @@
+<h2>Setup</h2>
+<p>This tutorial covers the installation and setup of a Python environment on:</p>
+<ul>
+<li>Cheyenne</li>
+<li>Casper</li>
+<li>CGD's Hobart</li>
+<li>Personal laptop/desktop with a UNIX-variant Operating System</li>
+</ul>
+<p><strong>NOTE:</strong> For windows users, setup scripts provided in this repository don't work on Windows machines for the time being.</p>
+<h3>Step 1: Clone NCAR Python Tutorial Repository</h3>
+<p>Run the following commmand to clone this repo to your system(e.g. cheyenne, casper, your laptop, etc...):</p>
+<pre class="code literal-block"><span></span><code>git clone https://github.com/NCAR/ncar-python-tutorial.git
+</code></pre>
+
+
+<h3>Step 2: Install Miniconda and Create Environments</h3>
+<ul>
+<li>Change directory to the cloned repository</li>
+</ul>
+<p><code>bash
+  cd ncar-python-tutorial</code></p>
+<ul>
+<li>Run the <a href="./setup/configure"><code>configure</code></a> script:</li>
+</ul>
+<p><strong>NOTE</strong>: Be prepared for the script to take up to 15 minutes to complete.</p>
+<p><code>bash
+  ./setup/configure</code></p>
+<pre class="code literal-block"><span></span><code>$ ./setup/configure --help
+usage: configure <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--clobber<span class="o">]</span> <span class="o">[</span>--download<span class="o">]</span> <span class="o">[</span>--prefix PREFIX<span class="o">]</span>
+
+Set up tutorial environment.
+
+optional arguments:
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  --clobber, -c         Whether to clobber existing environment <span class="o">(</span>default:
+                        False<span class="o">)</span>
+  --download, -d        Download tutorial data without setting environment up
+                        <span class="o">(</span>default: False<span class="o">)</span>
+  --prefix PREFIX, -p PREFIX
+                        Miniconda3 install location<span class="o">)</span>
+</code></pre>
+
+
+<p>Default values for <code>--prefix</code> argument are:</p>
+<ul>
+<li>Personal laptop / Hobart: <code>$HOME/miniconda3</code></li>
+<li>Cheyenne or Casper: <code>/glade/work/$USER/miniconda3</code></li>
+</ul>
+<p><strong>NOTE</strong>:
+In case the default <code>prefix</code> is not appropriate for you (due to limited storage), feel free to specify a different miniconda install location. For instance, this install location may be a <code>project</code> workspace on a shared filesystem like GLADE or Hobart's filesystem.</p>
+<p>The <code>configure</code> script does the following:</p>
+<ul>
+<li>Install <code>conda</code> package manager if it is unable to find an existing installation. Otherwise, it will update the <code>base</code> environment</li>
+<li>Create or Update <code>python-tutorial</code> conda environment.</li>
+<li>Download data if not on Cheyenne or Casper or Hobart. If on Cheyenne or Casper or Hobart, create soft-links to an existing/local data repository.</li>
+</ul>
+<h3>Step 3: Close and re-open your current shell</h3>
+<p>For changes to take effect, close and re-open your current shell.</p>
+<h3>Step 4: Run the Setup Verification Script</h3>
+<ul>
+<li>Check that <em>conda info</em> runs successfully:</li>
+</ul>
+<p><code>bash
+  conda info</code></p>
+<ul>
+<li>From the <code>ncar-python-tutorial</code> directory, activate <code>python-tutorial</code> conda environment:</li>
+</ul>
+<p><code>bash
+  conda activate python-tutorial</code></p>
+<ul>
+<li>Run the setup verification script to confirm that everything is working as expected:</li>
+</ul>
+<p><code>bash
+  cd ncar-python-tutorial
+  ./setup/check_setup</code></p>
+<p>This step should print <strong>"Everything looks good!"</strong>.</p>
+<hr>
+<h2>Launch Jupyter Lab</h2>
+<h3>1. Cheyenne or DAV via JupyterHub (Recommended)</h3>
+<ul>
+<li>JupyterHub link: https://jupyterhub.ucar.edu/</li>
+</ul>
+<p>To use the Cheyenne or DAV compute nodes,we recommend using JupyterLab via NCAR's JupyterHub deployment.</p>
+<p>Open your preferred browser (Chrome, Firefox, Safari, etc...) on your <code>local machine</code>, and head over to https://jupyterhub.ucar.edu/.</p>
+<p><strong>You will need to authenticate with either your <em>yubikey</em> or your <em>DUO</em> mobile app</strong></p>
+<h3>2. Cheyenne or DAV via SSH Tunneling</h3>
+<p>In case you are having issues with jupyterhub.ucar.edu, we've provided utility scripts for launching JupyterLab on both Cheyenne and Casper via SSH Tunneling:</p>
+<pre class="code literal-block"><span></span><code>conda activate base
+./setup/jlab/jlab-ch <span class="c1"># on Cheyenne</span>
+./setup/jlab/jlab-dav <span class="c1"># on Casper</span>
+</code></pre>
+
+
+<h3>3. Hobart via SSH Tunneling</h3>
+<p>For those interested in running JupyterLab on CGD's Hobart, you will need to use SSH tunneling script provided in <a href="./setup/jlab/jlab-hobart"><code>setup/jlab/jlab-hobart</code></a></p>
+<pre class="code literal-block"><span></span><code>conda activate base
+./setup/jlab/jlab-hobart
+</code></pre>
+
+
+<pre class="code literal-block"><span></span><code>$ ./setup/jlab/jlab-hobart --help
+Usage: launch dask
+Possible options are:
+ -w,--walltime: walltime <span class="o">[</span>default: <span class="m">08</span>:00:00<span class="o">]</span>
+ -q,--queue: queue <span class="o">[</span>default: medium<span class="o">]</span>
+ -d,--directory: notebook directory
+ -p,--port: <span class="o">[</span>default: <span class="m">8888</span><span class="o">]</span>
+</code></pre>
+
+
+<h3>4. Personal Laptop</h3>
+<p>For those interested in running JupyterLab on their local machine, you can simply run the following command, and follow the printed instructions on the console:</p>
+<pre class="code literal-block"><span></span><code>conda activate base
+jupyter lab
+</code></pre>
