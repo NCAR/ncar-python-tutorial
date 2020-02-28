@@ -97,8 +97,8 @@ workflows:
   version: 2
   default:
     jobs:
-      - test-config
-      - test-config-clobber
+      - test_config
+      - test_config_clobber
   build:
     jobs:
       - build_site:
