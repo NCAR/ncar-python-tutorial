@@ -1,4 +1,4 @@
-Sitemap: https://ncar.github.io/ncar-python-tutorials/sitemapindex.xml
+Sitemap: https://ncar.github.io/ncar-python-tutorial/sitemapindex.xml
 
 User-Agent: *
 Host: ncar.github.io
