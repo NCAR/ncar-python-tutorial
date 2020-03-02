@@ -25,6 +25,9 @@ wheels/
 *.egg
 MANIFEST
 
+# Mac Files
+.DS_Store
+
 # Jupyter Notebooks
 .ipynb_checkpoints
 
