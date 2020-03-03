@@ -1,8 +1,0 @@
-name: py2
-channels:
-- conda-forge
-- defaults
-dependencies:
-- python=2.7
-- pip
-- pyyaml
