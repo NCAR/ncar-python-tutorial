@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Beautiful Jekyll | MIT license | Copyright Dean Attali 2016 -->
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+  />
+
+  <title>
+    NCAR Python Tutorial
+  </title>
+
+  <meta name="author" content="NCAR XDev Team" />
+
+  
+
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="NCAR Python Tutorial - Instructional material for the NCAR Python tutorial"
+    href="/feed.xml"
+  />
+
+   
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+     
+  <link
+    rel="stylesheet"
+    href="/css/bootstrap.min.css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/css/bootstrap-social.css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/css/main.css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/css/recon.css"
+  />
+     
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+      
+
+  <!-- Facebook OpenGraph tags -->
+  <meta
+    property="og:title"
+    content="NCAR Python Tutorial"
+  />
+  <meta property="og:type" content="website" />
+  
+  <meta
+    property="og:url"
+    content="http://0.0.0.0:4000/instructions/"
+  />
+   
+  <meta property="og:image" content="" />
+  
+
+  <!-- Twitter summary cards -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@NCARXDev" />
+  <meta name="twitter:creator" content="@NCARXDev" />
+  <meta
+    name="twitter:title"
+    content="NCAR Python Tutorial"
+  />
+  <meta
+    name="twitter:description"
+    content="![https://circleci.com/gh/NCAR/ncar-python-tutorial/tree/master](https://img.shields.io/circleci/project/github/NCAR/ncar-python-tutorial/master.svg?style=for-the-badge&amp;logo=circleci) # NCAR Python Tutorial - [NCAR Python Tutorial](#ncar-python-tutorial) - [Setup](#setup) - [Step 1: Clone NCAR Python Tutorial Repository](#step-1-clone-ncar-python-tutorial-repository) - [Step 2: Install miniconda and create environments](#step-2-install-miniconda-and-create-environments) - [Step 3: Close and re-open your current shell](#step-3-close-and-re-open-your-current-shell) - [Step 4: Run the setup verification script](#step-4-run-the-setup-verification-script) - [Launch Jupyter Lab](#launch-jupyter-lab) - [1...."
+  />
+  
+</head>
+
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle"
+        data-toggle="collapse"
+        data-target="#main-navbar"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://0.0.0.0:4000">NCAR Python Tutorial</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div>
+
+    
+  </div>
+</nav>
+ <!-- TODO this file has become a mess, refactor it -->
+
+
+<div class="intro-header"></div>
+
+
+
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <p><img src="https://img.shields.io/circleci/project/github/NCAR/ncar-python-tutorial/master.svg?style=for-the-badge&amp;logo=circleci" alt="https://circleci.com/gh/NCAR/ncar-python-tutorial/tree/master" /></p>
+
+<h1 id="ncar-python-tutorial">NCAR Python Tutorial</h1>
+
+<ul>
+  <li><a href="#ncar-python-tutorial">NCAR Python Tutorial</a>
+    <ul>
+      <li><a href="#setup">Setup</a>
+        <ul>
+          <li><a href="#step-1-clone-ncar-python-tutorial-repository">Step 1: Clone NCAR Python Tutorial Repository</a></li>
+          <li><a href="#step-2-install-miniconda-and-create-environments">Step 2: Install miniconda and create environments</a></li>
+          <li><a href="#step-3-close-and-re-open-your-current-shell">Step 3: Close and re-open your current shell</a></li>
+          <li><a href="#step-4-run-the-setup-verification-script">Step 4: Run the setup verification script</a></li>
+        </ul>
+      </li>
+      <li><a href="#launch-jupyter-lab">Launch Jupyter Lab</a>
+        <ul>
+          <li><a href="#1-cheyenne-or-dav-via-jupyterhub-httpsjupyterhubucaredu">1. Cheyenne or DAV via JupyterHub: https://jupyterhub.ucar.edu/</a></li>
+          <li><a href="#2-cheyenne-or-dav-via-ssh-tunneling">2. Cheyenne or DAV via SSH Tunneling</a></li>
+          <li><a href="#3-hobart-via-ssh-tunneling">3. Hobart via SSH Tunneling</a></li>
+          <li><a href="#4-personal-laptop">4. Personal Laptop</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="setup">Setup</h2>
+
+<p>This tutorial covers the installation and setup of a Python environment on:</p>
+
+<ul>
+  <li>Cheyenne</li>
+  <li>Casper</li>
+  <li>CGD’s Hobart</li>
+  <li>Personal laptop/desktop with a UNIX-variant Operating System</li>
+</ul>
+
+<p><strong>NOTE:</strong> For windows users, setup scripts provided in this repository don’t work on Windows machines for the time being. You may want to follow the instructions available <a href="https://conda.io/projects/conda/en/latest/user-guide/install/windows.html">here</a>.</p>
+
+<h3 id="step-1-clone-ncar-python-tutorial-repository">Step 1: Clone NCAR Python Tutorial Repository</h3>
+
+<p>Run the following commmand to clone this repo to your system(e.g. cheyenne, casper, your laptop, etc…):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/NCAR/ncar-python-tutorial.git
+</code></pre></div></div>
+
+<h3 id="step-2-install-miniconda-and-create-environments">Step 2: Install miniconda and create environments</h3>
+
+<ul>
+  <li>
+    <p>Change directory to the cloned repository</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>ncar-python-tutorial
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the <a href="./setup/configure"><code class="highlighter-rouge">configure</code></a> script:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./setup/configure
+</code></pre></div>    </div>
+
+    <p>This script will install <code class="highlighter-rouge">conda</code> package manager if it is unable to find an existing installation. Otherwise, it will update the <code class="highlighter-rouge">base</code> environment, create an <code class="highlighter-rouge">python-tutorial</code> environment.</p>
+  </li>
+</ul>
+
+<p><strong>NOTE</strong>: Be prepared for the script to take up to 15 minutes to complete.</p>
+
+<h3 id="step-3-close-and-re-open-your-current-shell">Step 3: Close and re-open your current shell</h3>
+
+<p>For changes to take effect, close and re-open your current shell.</p>
+
+<h3 id="step-4-run-the-setup-verification-script">Step 4: Run the setup verification script</h3>
+
+<ul>
+  <li>
+    <p>Check that <em>conda info</em> runs successfully:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda info
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>From the <code class="highlighter-rouge">ncar-python-tutorial</code> directory, activate the newly created analysis enviroment:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate python-tutorial
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run the setup verification script to confirm that everything is working as expected:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>ncar-python-tutorial
+./setup/check_setup
+</code></pre></div>    </div>
+
+    <p>This step should print <strong>“Everything looks good!”</strong>.</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="launch-jupyter-lab">Launch Jupyter Lab</h2>
+
+<h3 id="1-cheyenne-or-dav-via-jupyterhub-httpsjupyterhubucaredu">1. Cheyenne or DAV via JupyterHub: https://jupyterhub.ucar.edu/</h3>
+
+<p>(Recommended)</p>
+
+<p>To use the Cheyenne or DAV compute nodes, we recommend using JupyterLab via NCAR’s JupyterHub deployment.</p>
+
+<p>Open your preferred browser (Chrome, Firefox, Safari, etc…) on your <code class="highlighter-rouge">local machine</code>, and head over to https://jupyterhub.ucar.edu/.</p>
+
+<p><strong>You will need to authenticate with either your <em>yubikey</em> or your <em>DUO</em> mobile app</strong></p>
+
+<h3 id="2-cheyenne-or-dav-via-ssh-tunneling">2. Cheyenne or DAV via SSH Tunneling</h3>
+
+<p>In case you are having issues with jupyterhub.ucar.edu, we’ve provided utility scripts for launching JupyterLab on both Cheyenne and Casper via SSH Tunneling:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate base
+./setup/jlab/jlab-ch <span class="c"># on Cheyenne</span>
+./setup/jlab/jlab-dav <span class="c"># on Casper</span>
+</code></pre></div></div>
+
+<h3 id="3-hobart-via-ssh-tunneling">3. Hobart via SSH Tunneling</h3>
+
+<p>For those interested in running JupyterLab on CGD’s Hobart, you will need to use SSH tunneling script provided in <a href="./setup/jlab/jlab-hobart"><code class="highlighter-rouge">setup/jlab/jlab-hobart</code></a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate base
+./setup/jlab/jlab-hobart
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./setup/jlab/jlab-hobart <span class="nt">--help</span>
+Usage: launch dask
+Possible options are:
+ <span class="nt">-w</span>,--walltime: walltime <span class="o">[</span>default: 08:00:00]
+ <span class="nt">-q</span>,--queue: queue <span class="o">[</span>default: medium]
+ <span class="nt">-d</span>,--directory: notebook directory
+ <span class="nt">-p</span>,--port: <span class="o">[</span>default: 8888]
+</code></pre></div></div>
+
+<h3 id="4-personal-laptop">4. Personal Laptop</h3>
+
+<p>For those interested in running JupyterLab on their local machine, you can simply run the following command, and follow the printed instructions on the console:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate base
+jupyter lab
+</code></pre></div></div>
+ 
+    </div>
+  </div>
+</div>
+ <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          <li>
+            <a href="mailto:xdev@ucar.edu" title="Email me">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+           
+          <li>
+            <a
+              href="https://github.com/ncar/ncar-python-tutorial"
+              title="GitHub"
+            >
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+            
+          <li>
+            <a
+              href="https://twitter.com/NCARXDev"
+              title="Twitter"
+            >
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+            
+        </ul>
+        <p class="copyright text-muted">
+          NCAR XDev Team &nbsp;&bull;&nbsp; 2019
+        </p>
+        <p class="theme-by text-muted">
+          Theme by
+          <a href="http://deanattali.com/">Dean Attali</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+     
+<!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+
+<script>
+  if (typeof jQuery == "undefined") {
+    document.write(
+      '<script src="/js/jquery-1.11.2.min.js"></scr' +
+        "ipt>"
+    );
+  }
+</script>
+ 
+<!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+
+<script src="/js/bootstrap.min.js"></script>
+ 
+<!-- doing something a bit funky here because I want to be careful not to include JQuery twice! -->
+
+<script src="/js/main.js"></script>
+   
+
+
+  </body>
+</html>
