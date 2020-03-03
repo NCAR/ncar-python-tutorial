@@ -273,9 +273,8 @@ If anyone has any questions, speak up know. We just covered a lot of Python nuan
    print(data[9])
    print(data[-1])
    ```
-   
-   **NOTE:** Introduces `[index]` (i.e., `getitem`) notation, zero-based
-   indexing, and negative indexes.  Also, note that each row is a `list`!
+
+To pull out the first, 10th, and last row from data, you can index your list by adding the number of your index in square brackets after the name of the list. Python is 0-indexed so data[0] refers to the first index, [-1] refers to the last index. Let's print this in our debugging section to see what this looks like.
 
 1. [python] Now, we'll get the first 10 rows in `data`.  
    Change the `DEBUG` section of our `mysci.py` script to:
