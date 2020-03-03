@@ -55,9 +55,7 @@ A conda environment is a directory that contains a collection of packages or lib
    $ git init .
    ```
    
-We are going to make a git repository of our "mysci" directory. Git is a program that tracks changes made to files. This makes it easy to maintain access to multiple versions of your code as you improve it, and revert your code back to a previous version if you've made any mistakes. I will show you how to do these as we need to.
-
-   **Note** Will have to check that everyone has a github account and git installed.
+We are going to make a git repository of our "mysci" directory. Does everyone has a github account and git installed? **If not, how to help** Git is a program that tracks changes made to files. This makes it easy to maintain access to multiple versions of your code as you improve it, and revert your code back to a previous version if you've made any mistakes. I will show you how to do these as we need to.
    
 5. [bash] Create a data directory:
 
@@ -129,17 +127,18 @@ And now that we've set up our workspace, we'll create a blank Python script, cal
    ```python
    print("Hello, world!")
    ```
-   
-1. [python] Try testing the script:
+
+Our classic first command will be to print "Hello World".
+
+14. [python] Try testing the script:
 
    ```bash
    $ python mysci.py
    ```
    
-   **NOTE:**  Yay!  You've just created your first Python script.
-   We'll repeat this step to test our script regularly.
+And let's test it with "python mysci.py" Yay!  You've just created your first Python script. We'll repeat this step to test our script regularly.
    
-1. [python] Now delete the `print("Hello, world!")` line
+15. [python] Now delete the `print("Hello, world!")` line
    from the `mysci.py` file, and let's read our sample data file.
    Change the `mysci.py` script to read:
    
@@ -152,51 +151,63 @@ And now that we've set up our workspace, we'll create a blank Python script, cal
    # DEBUG
    print(data)
    ```
-   
-   **NOTE:** Introduces code comments, strings (single- and double-quote),
-   `open` (for text files), context managers (i.e., `with`), Python
-   indentation.  Also note the format of the data file!
+You probably won't need to run your Hello World script again, so let's delete it and start over with something more useful. Let's open the .txt file we downloaded earlier. First we'll create a variable for our file name, which is a string - this can be in single or double quotes. Then type "with open" and in parenthesis your filename, 'r' indicating you want to open this file to 'read' it, and "as datafile:" on the next line type "data = datafile.read()" With these two lines of code you are saying that with the file opened, you'd like to read it. 
 
-1. [python] What did we just see?  What is the `data` object?  What
+The "with" statement is a context manager that procides clean-up and assures that the file is automatically closed after you've read it. Other input arguments for "open" include "w", for example, if you wanted to write to the file.
+
+And to test that this worked. We'll print "data"
+
+Let's add some comments to our script to parse out the two sections. Comments in Python are indicated with a hash.
+
+And execute with "python mysci.py"
+
+16. [python] What did we just see?  What is the `data` object?  What
    type is `data`?  How do we find out?  Add the following to the
    `DEBUG` section of our script:
    
    ```python
    print(type(data))
    ```
-   
-   **NOTE:** Introduces `type`
 
-1. [python] Try testing the script, again.
+What did we just see?  What is the `data` object?  In the 'DEBUG' section of our script let's find out the type of our data object. Object types refer to 'float' 'integer' 'string' or other types that you can create. Python is a dynamically typed language, which means you don't have to explicitly specify the datatype when you name a variable, Python will automatically figure it out by the nature of the data.
 
-   **NOTE:** We see that `data` is a string.
+17. [python] Try testing the script, again.
+
+And let's test it with "python mysci.py" We see that `data` is a string.
    
-1. [git] Now, clean up the script by removing the `DEBUG`
+18. [git] Now, clean up the script by removing the `DEBUG`
    section, before we commit this to git.
 
-1. [git] Let's check the status of our git repository
+Remove the 'debug' section to clean up the script.
+
+19. [git] Let's check the status of our git repository
 
    ```bash
    $ git status
    ```
    
-   Note what files have been changed in the repository.
+Let's check the status of our git repository. Note what files have been changed in the repository.
 
-1. [git] Stage these changes:
+20. [git] Stage these changes:
 
    ```bash
    $ git add mysci.py
    ```
 
-1. [git] Let's check the status of our git repository,
+As before, let's stage the changes to our file with "git add"
+
+21. [git] Let's check the status of our git repository,
    again.  What's different from the last time we 
    checked the status?
 
-1. [git] Commit these changes:
+Again with "git status" let's now check the status of our repository. What is different since our last status check?
+
+22. [git] Commit these changes:
 
    ```bash
    $ git commit -m "Adding script file"
    ```
+Commit the changes with "git commit -m for message, and the message "Adding script file"
 
 1. [git] Let's check the status of our git repository,
    now.  It should tell you that there are no changes
