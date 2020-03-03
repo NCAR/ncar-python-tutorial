@@ -287,7 +287,7 @@ To pull out the first, 10th, and last row from data, you can index your list by 
 
 Now we're going to introduce slice indexing. Using a colon between two index integers a and b, you get all indexes between a and b. See what happens when you type `data[:10]`, `data[0:10:2]`, and `data[slice(0,10,2)]`.  What's the difference?
 
-1. [python] Exercise: Try getting the 5th, first 5, and every other *column*
+28. [python] Exercise: Try getting the 5th, first 5, and every other *column*
    of rows `8` in `data`.
    
    Solution: Change the `DEBUG` section of the `mysci.py` script to:
@@ -305,10 +305,10 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    Also, what happens when you try something like `data[5:8][4]`?  You should
    get an error!  Why?
 
-1. [git] Clean up the file (remove `DEBUG` section), stage the changes, and
+29. [git] Clean up the file (remove `DEBUG` section), stage the changes, and
    commit. (i.e., `git add mysci.py` and `git commit -m "Parsing file"`)
 
-1. [python] Can you remember which column is which?  Is time the first
+30. [python] Can you remember which column is which?  Is time the first
    column or the second?  Which column is the temperature?
    
    Each column is a time-series of data.  We would ideally like each
@@ -349,10 +349,10 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    disadvantages of `dict`s and `lists`.  Note that the output
    is a `list` of `str`s.
 
-1. [git] Clean up (remove `DEBUG` section), stage, and commit
+31. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Parsing select time-series"`)
 
-1. [python] Now it's easy to get the time-series information
+32. [python] Now it's easy to get the time-series information
    for each column that we are interested in grabbing, and we
    can get each column by name.  However, everything read from
    the text file is a `str`.  What if we want to do math on this
@@ -373,14 +373,14 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    
    **NOTE:** Should also introduce `int`.
 
-1. [python] Add a `DEBUG` section at the end and see what
+33. [python] Add a `DEBUG` section at the end and see what
    `data['tempout']` now looks like.  Do you see a difference?
    It should now be a `list` of `float`s.
 
-1. [git] Clean up (remove `DEBUG` section), stage, and commit
+34. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Converting tempout to floats"`)
 
-1. [python] This seems great, so far!  But what if we want to
+35. [python] This seems great, so far!  But what if we want to
    read more columns to our data later?  We will have to change
    the initialization of the `data` variable (at the top of 
    `mysci.py`) *and* we will have to add the appropriate line
@@ -439,10 +439,10 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    key-value pairs to a `dict` via assignment, and the
    `dict.get()` method (to avoid key-not-found errors)
 
-1. [git] Clean up (remove `DEBUG` section), stage, and commit
+36. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Refactoring data parsing code"`)
 
-1. [python] Okay, now that we've read the data in a way that
+37. [python] Okay, now that we've read the data in a way that
    is easy to modify later, let's actually do something with
    the data.
    
@@ -461,10 +461,10 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    types = {'tempout': float, 'windspeed': float}
    ```
    
-1. [git] Great!  Let's save this in our git repo.  Stage and
+38. [git] Great!  Let's save this in our git repo.  Stage and
    commit (`git commit -m "Reading windspeed as well"`).
 
-1. [python] Now, let's write our first function to compute
+39. [python] Now, let's write our first function to compute
    the wind chill factor.  We'll add this function to the
    bottom of the file.
    
@@ -502,9 +502,9 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    
    Test this out and see the results.
    
-1. [git] Clean up, stage, and commit (`git commit -m "Compute wind chill factor"`)
+40. [git] Clean up, stage, and commit (`git commit -m "Compute wind chill factor"`)
 
-1. [python] Now, the wind chill factor is actually in the data file,
+41. [python] Now, the wind chill factor is actually in the data file,
    so we can read it from the file and compare that value to our computed
    values.  To do this, we need to read the `windchill` column as a `float`:
    
@@ -537,9 +537,9 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    is it?
 
 
-1. [git] Clean up, stage, and commit (`git commit -m "Compare wind chill factors"`)
+42. [git] Clean up, stage, and commit (`git commit -m "Compare wind chill factors"`)
 
-1. [python] Now, let's format the output so that it's easy to understand and
+43. [python] Now, let's format the output so that it's easy to understand and
    rename this script to something indicative of what it actually does.
    
    To the end of the file, let's add:
@@ -558,10 +558,10 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    
    You now have your first complete Python script!  Let's write another...
    
-1. [git] DON'T CLEAN UP!  Just stage and commit
+44. [git] DON'T CLEAN UP!  Just stage and commit
    (`git commit -m "Output formatting comparison data"`)
 
-1. [git] Let's rename this script to something meaningful.
+45. [git] Let's rename this script to something meaningful.
 
    ```bash
    $ git mv mysci.py windchillcomp.py
