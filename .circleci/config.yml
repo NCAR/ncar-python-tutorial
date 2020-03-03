@@ -2,44 +2,6 @@ version: 2.1
 
 jobs:
 
-  test_config:
-
-    docker:
-      - image: circleci/python:3.7
-
-    steps:
-      - checkout
-      - run:
-          name: Fresh conda install without existing environments
-          command: |
-            ./setup/configure
-      - run:
-          name: Running Tests
-          command: |
-            export PATH="$HOME/miniconda3/bin:$PATH"
-            conda info
-            source activate python-tutorial
-            ./setup/check_setup
-
-  test_config_clobber:
-
-    docker:
-      - image: continuumio/miniconda3:latest
-
-    steps:
-      - checkout
-      - run:
-          name: Create env with existing conda installation
-          command: |
-            conda info
-            ./setup/configure --clobber
-      - run:
-          name: Running Tests
-          command: |
-            conda info
-            source activate python-tutorial
-            ./setup/check_setup
-
   build_site:
 
     docker:
@@ -95,10 +57,6 @@ jobs:
 
 workflows:
   version: 2
-  default:
-    jobs:
-      - test_config
-      - test_config_clobber
   build:
     jobs:
       - build_site:
