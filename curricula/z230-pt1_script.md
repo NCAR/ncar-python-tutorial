@@ -276,7 +276,7 @@ If anyone has any questions, speak up know. We just covered a lot of Python nuan
 
 To pull out the first, 10th, and last row from data, you can index your list by adding the number of your index in square brackets after the name of the list. Python is 0-indexed so data[0] refers to the first index, [-1] refers to the last index. Let's print this in our debugging section to see what this looks like.
 
-1. [python] Now, we'll get the first 10 rows in `data`.  
+27. [python] Now, we'll get the first 10 rows in `data`.  
    Change the `DEBUG` section of our `mysci.py` script to:
    
    ```python
@@ -284,10 +284,8 @@ To pull out the first, 10th, and last row from data, you can index your list by 
    for datum in data[0:10]:
        print(datum)
    ```
-   
-   **NOTE:** Introduces `slice` indexing.  Have students see what happens
-   with `data[:10]`, `data[0:10:2]`, and `data[slice(0,10,2)]`.  What's the
-   difference?  Explain `slice`.
+
+Now we're going to introduce slice indexing. Using a colon between two index integers a and b, you get all indexes between a and b. See what happens when you type `data[:10]`, `data[0:10:2]`, and `data[slice(0,10,2)]`.  What's the difference?
 
 1. [python] Exercise: Try getting the 5th, first 5, and every other *column*
    of rows `8` in `data`.
