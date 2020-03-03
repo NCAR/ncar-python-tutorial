@@ -25,6 +25,9 @@ wheels/
 *.egg
 MANIFEST
 
+# Mac Files
+.DS_Store
+
 # Jupyter Notebooks
 .ipynb_checkpoints
 
@@ -40,4 +43,4 @@ data/
 # Nikola site
 site/output
 site/cache
-.doit.db.db
+.doit.*
