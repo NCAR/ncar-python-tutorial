@@ -264,7 +264,7 @@ When we print each datum in data, we'll see that each datum is a list of string 
 
 If anyone has any questions, speak up know. We just covered a lot of Python nuances in a very little bit a code!
 
-1. [python] Now, we'll get the first, 10th, and last row in `data`.  
+26. [python] Now, we'll get the first, 10th, and last row in `data`.  
    Change the `DEBUG` section of our `mysci.py` script to:
    
    ```python
