@@ -209,13 +209,15 @@ Again with "git status" let's now check the status of our repository. What is di
    ```
 Commit the changes with "git commit -m for message, and the message "Adding script file"
 
-1. [git] Let's check the status of our git repository,
+23. [git] Let's check the status of our git repository,
    now.  It should tell you that there are no changes
    made to your repository (i.e., your repository is
    up-to-date with the state of the code in your
-   directory).
+   directory).'
 
-1. [git] Look at the git logs, again:
+Again with "git status" let's now check the status of our repository.
+
+24. [git] Look at the git logs, again:
 
    ```bash
    $ git log
@@ -223,8 +225,9 @@ Commit the changes with "git commit -m for message, and the message "Adding scri
    
    **NOTE:** Explain the changes in the logs.
    Introduce simplified logs with the `--oneline` option.
+When we look at the git logs, we'll notice some changes ...
 
-1. [python] Now, one big string isn't very useful, so let's 
+25. [python] Now, one big string isn't very useful, so let's 
    consider parsing the data file into a data structure we
    can use.  Change the `mysci.py` script to read:
    
@@ -248,13 +251,18 @@ Commit the changes with "git commit -m for message, and the message "Adding scri
    for datum in data:
       print(datum)
    ```
-   **NOTE:** Introduces `File.readline()`, `for` loop, "iterables" (i.e.,
-   `datafile` is "iterable"), the `_` variable, `range`, unassigned function
-   return values (i.e., `datafile.readline()`), `str.split()`, `list` and
-   `list.append()`.  Note that each row in `data` is a list of its own,
-   and that each item in each row is a `str` (i.e., quoted).
-   
-   That's a lot of stuff in a very little bit a code!
+
+We probably don't want our data in the form of one long string, so we're going to write a for-loop that reads the datafile line, by line, splitting the line along columns. 
+
+So first initialize your data variable as an empty list. Lists are denoted by square brackets.
+
+So as before, with, open, filename, for reading capabilities, but now we have 2 for loops. The first reads the header of the file which is the first 3 lines. For loops in Python have the line "for a in b" followed by a colon, then all lines within your loop are indented. In this first loop the the underscore variable is a placeholder, meaning the variable is never called within the loop - we are simply indicating to read the next line of the file by calling datafile.readline(), 3 times.
+
+Then in the rest of the lines in your file, append your data list (so add a new element to the end of your existing list) with the data from that line, with that line split along white space. Other options for split are `/t ` for splitting along tabs, or `,` along commmas - depending on the format of your datafile. So now we have a list of lists for our data variable - a list of the data in each line for multiple lines.
+
+When we print each datum in data, we'll see that each datum is a list of string values.
+
+If anyone has any questions, speak up know. We just covered a lot of Python nuances in a very little bit a code!
 
 1. [python] Now, we'll get the first, 10th, and last row in `data`.  
    Change the `DEBUG` section of our `mysci.py` script to:
