@@ -379,8 +379,12 @@ Now it's easy to get the time-series information for each column that we are int
    `data['tempout']` now looks like.  Do you see a difference?
    It should now be a `list` of `float`s.
 
+Print `data['tempout']` in a `DEBUG` section of your code to show the difference between a list of floats and our previous list of strings.
+
 34. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Converting tempout to floats"`)
+
+Clean up, stage and commit.
 
 35. [python] This seems great, so far!  But what if we want to
    read more columns to our data later?  We will have to change
