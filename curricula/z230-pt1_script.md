@@ -445,6 +445,14 @@ Clean up, stage and commit.
    key-value pairs to a `dict` via assignment, and the
    `dict.get()` method (to avoid key-not-found errors)
 
+This seems great, so far!  But what if we want to read more columns to our data later?  We will have to change the initialization of the `data` variable (at the top of `mysci.py`) *and* we will have to add the appropriate line in the "read and parse" section.  Essentially, that means you need to maintain 2 parts of the code and make sure that both remain consistent with each other.
+   
+This is generally not good practice.  Ideally, you want to be able to change only 1 part of the code and know that the rest of the code will remain consistent.  So, let's fix this by using a `columns` variable.
+
+ Now we only need to modify the `columns` variable to indicate which columns of the data file to read and the `types` variable to indicate to what type to convert the data.
+
+ In this step we have demonstrated passing types as an argument, looping over a dictionary, adding key-value pairs to a dictionary via assignment, and the dict.get() method.
+
 36. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Refactoring data parsing code"`)
 
