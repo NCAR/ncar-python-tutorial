@@ -298,15 +298,12 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    print(data[8][:5])
    print(data[8][::2])
    ```
-   
-   **NOTE:** Introduces nested-`list` indexing.  Note that when printing
-   strings to the screen, the quotation marks are not displayed!  (They
-   are only displayed when you are printing the list containing the strings.)
-   Also, what happens when you try something like `data[5:8][4]`?  You should
-   get an error!  Why?
+Now try changing your `DEBUG section` to print the 5th, first 5, and every other column of day from row 9 in `data`. To do this we will have to understand nested list indexing, where the first index determines the row, and the second determines the element from that row. Also try printing `data[5:8][4]`, why doesn't this work?
 
 29. [git] Clean up the file (remove `DEBUG` section), stage the changes, and
    commit. (i.e., `git add mysci.py` and `git commit -m "Parsing file"`)
+
+Let's clean up the file, stage our changes, and commit.
 
 30. [python] Can you remember which column is which?  Is time the first
    column or the second?  Which column is the temperature?
@@ -343,14 +340,19 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    # DEBUG
    print(data['time'])
    ```
+
+You probably don't remember which column is which?  Is time the first column or the second?  Which column is the temperature?
    
-   **NOTE:** Introduces `dict` and `{}` short-hand; talk about
-   `list` vs `dict`, why use one over another?  Advantages and
-   disadvantages of `dict`s and `lists`.  Note that the output
-   is a `list` of `str`s.
+Each column is a time-series of data.  We would ideally like each time-series easily accessible, which is *not* the case when `data` is row-column ordered (like it currently is).  (Remember what happens when you try to do something like `data[:][4]`!)
+   
+Let's get our data into a more convenient named-column format. To do that we have to change `mysci.py` to the following:
+
+First we'll initialize a dictionary, indicated by the curly brackets. This is like our list of lists, but we now have 'keys', rather than positions, that point to lists for specific data variables, each element being a string. We're going to grab date, time, and temperature data, which are currently all themselves empty lists that we will fill with a similar for loop as before.
 
 31. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Parsing select time-series"`)
+
+Again let's clean up, stage, and commit.
 
 32. [python] Now it's easy to get the time-series information
    for each column that we are interested in grabbing, and we
