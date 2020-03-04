@@ -372,8 +372,8 @@ Again let's clean up, stage, and commit.
    ```python
            data['tempout'].append(float(split_line[2]))
    ```
-   
-   **NOTE:** Should also introduce `int`.
+
+Now it's easy to get the time-series information for each column that we are interested in grabbing, and we can get each column by name.  However, everything read from the text file is a string.  If we want to do math on this data, then we need it to be a different data type! So, let's convert the `tempout` time-series to be a `float` by changing each element into a float before we append it to the list for our temperature data. You could also change it 'int', which will round the values down to the closest full integer.
 
 33. [python] Add a `DEBUG` section at the end and see what
    `data['tempout']` now looks like.  Do you see a difference?
