@@ -599,9 +599,13 @@ Clean up, stage, and commit.
    and more `float` formating options.
    
    You now have your first complete Python script!  Let's write another...
-   
+
+Now, let's format the output via print statements so that it's easy to understand. Here we'll use f-string formatting with more `float` formatting options.
+
 44. [git] DON'T CLEAN UP!  Just stage and commit
    (`git commit -m "Output formatting comparison data"`)
+
+Stage and commit.
 
 45. [git] Let's rename this script to something meaningful.
 
@@ -609,3 +613,7 @@ Clean up, stage, and commit.
    $ git mv mysci.py windchillcomp.py
    $ git commit -m "Renaming first script"
    ```
+
+Let's rename the script to something more meaningful using `git mv`
+Contrats you have your first Python script!
+Tomorrow we'll write another.
