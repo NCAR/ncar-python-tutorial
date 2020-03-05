@@ -570,6 +570,12 @@ Clean up, stage, and commit.
    Test the results.  What do you see?  Our computation isn't very good
    is it?
 
+Now, the wind chill factor is actually in the data file, so we can read it from the file and compare that value to our computed values.  To do this, we need to read the `windchill` column from column 12 as a `float`. Edit the columns and types dictionaries.
+
+In the `DEBUG` section let's print our calculated values, the data provided, and the difference between the two. 
+If we use f-strings with `float` formatting we can determine how many decimal places we want to print our answer to.
+
+How do our values compare?
 
 42. [git] Clean up, stage, and commit (`git commit -m "Compare wind chill factors"`)
 
