@@ -456,6 +456,8 @@ This is generally not good practice.  Ideally, you want to be able to change onl
 36. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Refactoring data parsing code"`)
 
+Clean up, stage and commit.
+
 37. [python] Okay, now that we've read the data in a way that
    is easy to modify later, let's actually do something with
    the data.
@@ -474,9 +476,13 @@ This is generally not good practice.  Ideally, you want to be able to change onl
    ```python
    types = {'tempout': float, 'windspeed': float}
    ```
-   
+
+Okay, now that we've read the data in a way that is easy to modify later, let's actually do something withmthe data. Let's compute the *wind chill* factor.  We've read the temperature data into the `tempout` variable, but we need to modify the `columns` variable to include reading `windspeed` variable from column `7`
+
 38. [git] Great!  Let's save this in our git repo.  Stage and
    commit (`git commit -m "Reading windspeed as well"`).
+
+Clean up, stage and commit.
 
 39. [python] Now, let's write our first function to compute
    the wind chill factor.  We'll add this function to the
@@ -515,8 +521,22 @@ This is generally not good practice.  Ideally, you want to be able to change onl
    ```
    
    Test this out and see the results.
-   
+
+
+Now, let's write our first function to compute the wind chill factor.  We'll add this function to the bottom of the file. (put the formula in a ppt).
+
+To indicate a function in python you type `def` for define, the name of your function, and then in parenthesis the input arguments of that function, followed by a colon. On the next lines tab-indented is the code of your function, and your return value.
+
+Here we are also going to have to introduce math operators in Python. Addition, subtraction, and multiplication look much like you'd expect. A double astericks indicates an exponential. A backslash is for dicision, and a double backslash for integer division.
+
+Now we'll call our function. Initialize a list for wind chill with empty square brackets. And in a for-loop, loop through our temperature and wind speed data, applying the function to each tuple data pair. Tuples are ordered like lists, but they use parenthesis instead of square brackets and cannot be changed or appended. We use the zip function in Python to automatically unravel the tuples. Take a look at `zip([1,2], [3,4,5])`.  What is the result?
+
+And finally in `DEBUG` section, let's take a look at our new windchill variable.
+
+
 40. [git] Clean up, stage, and commit (`git commit -m "Compute wind chill factor"`)
+
+Clean up, stage, and commit. 
 
 41. [python] Now, the wind chill factor is actually in the data file,
    so we can read it from the file and compare that value to our computed
@@ -552,6 +572,8 @@ This is generally not good practice.  Ideally, you want to be able to change onl
 
 
 42. [git] Clean up, stage, and commit (`git commit -m "Compare wind chill factors"`)
+
+Clean up, stage, and commit.
 
 43. [python] Now, let's format the output so that it's easy to understand and
    rename this script to something indicative of what it actually does.
