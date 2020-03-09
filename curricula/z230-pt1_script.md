@@ -16,7 +16,7 @@ There are many many different libraries of code you can import and use. We are o
 Requirements & Installation
 --------------------------
 
-But first, let'd double check - Everyone should have conda or miniconda installed on their linux or mac OS at this point. If you have an old version of conda installed, update it. Raise your hand if you had any trouble with this.
+But first, let'd double check - Everyone should have conda or miniconda installed on their linux or mac OS at this point. If you have an old version of conda installed, update it. Raise your hand if you had any trouble with this. You'll also need Git.
 
 
 Outline - Part 1 - First Python Script
@@ -123,7 +123,7 @@ If you type "git log" you will show a log of the commits, or changes made to you
 And now that we've set up our workspace, we'll create a blank Python script, called "mysci.py"
 
 13. [python] Edit the `mysci.py` file:
-
+nano mysci.py  ---> (cntrl X)
    ```python
    print("Hello, world!")
    ```
@@ -153,7 +153,7 @@ And let's test it with "python mysci.py" Yay!  You've just created your first Py
    ```
 You probably won't need to run your Hello World script again, so let's delete it and start over with something more useful. Let's open the .txt file we downloaded earlier. First we'll create a variable for our file name, which is a string - this can be in single or double quotes. Then type "with open" and in parenthesis your filename, 'r' indicating you want to open this file to 'read' it, and "as datafile:" on the next line type "data = datafile.read()" With these two lines of code you are saying that with the file opened, you'd like to read it. 
 
-The "with" statement is a context manager that procides clean-up and assures that the file is automatically closed after you've read it. Other input arguments for "open" include "w", for example, if you wanted to write to the file.
+The "with" statement is a context manager that provides clean-up and assures that the file is automatically closed after you've read it. Other input arguments for "open" include "w", for example, if you wanted to write to the file.
 
 And to test that this worked. We'll print "data"
 
@@ -199,8 +199,12 @@ As before, let's stage the changes to our file with "git add"
 21. [git] Let's check the status of our git repository,
    again.  What's different from the last time we 
    checked the status?
-
+ 
 Again with "git status" let's now check the status of our repository. What is different since our last status check?
+
+git reset discards unwanted changes
+git checkout .
+git clean - fdx
 
 22. [git] Commit these changes:
 
@@ -504,7 +508,7 @@ Clean up, stage and commit.
    ```python
    # Let's actually compute the wind chill factor
    windchill = []
-   for temp, windspeed in zip(data['temp'], data['windspeed']):
+   for temp, windspeed in zip(data['tempout'], data['windspeed']):
        windchill.append(compute_windchill(temp, windspeed))
    ```
    
