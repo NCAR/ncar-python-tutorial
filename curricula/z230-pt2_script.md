@@ -11,9 +11,12 @@ Welcome back everyone. Today we are going to continue learning Python, introduci
    ```bash
    $ cp windchillcomp.py heatindexcomp.py
    ```
+First let's make a copy of our first script, but with the name heatindexcomp.py. You guessed it today we will compute heat index.
 
 2. [git] And add and commit this new file.
    (`git commit -m "Copying first script to start second"`)
+
+Let's add and commit this file,
 
 3. [python] Now, we want to compute the Heat Index, which we
    will do by replacing the `compute_windchill` function with
@@ -64,8 +67,14 @@ Welcome back everyone. Today we are going to continue learning Python, introduci
    
    **NOTE:** This computation is not too bad!  Pretty close.
 
+Change the core calculation, the columns we are extracting, calculate it, and pring the results.
+
+Maybe change this to dew point temperature so that we introduce numpy.
+
 4. [git] Stage and commit this new script.
    (`git commit -m "Updating new heat index script"`)
+
+Stage and commit.
 
 5. [bash] Now, we have two scripts that do very similar things.
    In fact, all of the data reading and parsing code is duplicated!
@@ -115,6 +124,12 @@ Welcome back everyone. Today we are going to continue learning Python, introduci
    docstrings!  Might also want to mention what `help(read_data)`
    will do with the docstring.
 
+So we've moved our common code, the function for reading the file, from both the windchill and heatindex file to its own file.
+
+And we've made some changes to the function, most notably we've introduced keyword arguments - when you see types={} it means that types is presumed to be an empty dictionary if you don't specify it (and so you don't have to specify it every time you call the function when this keyword isn't relevant). Similarly we've specified a filename that is used as long as the user doesn't specify a different file.
+
+We have also added docstrings to the function. The "Read data from CU Boulder Weather Station data file" purpose of the function and list of parameters are standard information included in a docstring.
+
 6. [git] Stage and commit this new file
    (`git commit -m "Adding new readdata module"`)
 
@@ -139,6 +154,8 @@ Welcome back everyone. Today we are going to continue learning Python, introduci
    
    **NOTE:** Introduces *modules*, the `import` statement
    
+In python you can call up functionality from scripts outside of your active script using the 'import' statement. Here we import our read_data function from the readdata file. And now we can call up the function from these scripts.
+
 8. [git] Do a `git status` now.  Do you notice something new?  Running
    our new scripts created the `__pycache__` directory.  We *don't*
    want to add this directory to our project repository, so before we
@@ -164,6 +181,8 @@ Welcome back everyone. Today we are going to continue learning Python, introduci
    the project repository!  Because we never staged them before our last
    commit.
    
+When you run a python program the interpreter compiles your scripts to bytecode and stores them in a cache, making your scripts run a little faster. This is a simplification, but you as a user can for the most part ignore this new folder. If you change or delete your scripts they will be recompiled and reappear in this folder.
+
 9. [git] Stage *both files* and commit all new changes in one commit
    (`git commit -m "Refactor scripts to use new module"`)
 
@@ -212,6 +231,7 @@ Welcome back everyone. Today we are going to continue learning Python, introduci
    ```python
    print_comparison('HEAT INDX', data['date'], data['time'], data['heatindex'], heatindex)
    ```
+string.upper() capitalzes all lower case letters in a string
 
 11. [git] Stage all changes and commit (`git commit -m "Creating printing module"`)
 
