@@ -4,16 +4,18 @@ Python 0-30
 Outline - Part 2 - First Python Package
 ---------------------------------------
 
+Welcome back everyone. Today we are going to continue learning Python, introducing the concepts of packages which will make your complicated analysis methods much much easier.
+
 1. [bash] Let's make a copy of our first script.
    
    ```bash
    $ cp windchillcomp.py heatindexcomp.py
    ```
 
-1. [git] And add and commit this new file.
+2. [git] And add and commit this new file.
    (`git commit -m "Copying first script to start second"`)
 
-1. [python] Now, we want to compute the Heat Index, which we
+3. [python] Now, we want to compute the Heat Index, which we
    will do by replacing the `compute_windchill` function with
    a `compute_heatindex` function:
    
@@ -62,10 +64,10 @@ Outline - Part 2 - First Python Package
    
    **NOTE:** This computation is not too bad!  Pretty close.
 
-1. [git] Stage and commit this new script.
+4. [git] Stage and commit this new script.
    (`git commit -m "Updating new heat index script"`)
 
-1. [bash] Now, we have two scripts that do very similar things.
+5. [bash] Now, we have two scripts that do very similar things.
    In fact, all of the data reading and parsing code is duplicated!
    And the output is similarly formatted, too.  So, let's fix this
    by creating a *module*.
@@ -113,10 +115,10 @@ Outline - Part 2 - First Python Package
    docstrings!  Might also want to mention what `help(read_data)`
    will do with the docstring.
 
-1. [git] Stage and commit this new file
+6. [git] Stage and commit this new file
    (`git commit -m "Adding new readdata module"`)
 
-1. [python] Now, let's amend our two Python scripts by *first* deleting
+7. [python] Now, let's amend our two Python scripts by *first* deleting
    the equivalent code in them.
    
    Then, add the following import statement to the top of each script:
@@ -137,7 +139,7 @@ Outline - Part 2 - First Python Package
    
    **NOTE:** Introduces *modules*, the `import` statement
    
-1. [git] Do a `git status` now.  Do you notice something new?  Running
+8. [git] Do a `git status` now.  Do you notice something new?  Running
    our new scripts created the `__pycache__` directory.  We *don't*
    want to add this directory to our project repository, so before we
    commit anything, let's tell git to ignore it!
@@ -162,10 +164,10 @@ Outline - Part 2 - First Python Package
    the project repository!  Because we never staged them before our last
    commit.
    
-1. [git] Stage *both files* and commit all new changes in one commit
+9. [git] Stage *both files* and commit all new changes in one commit
    (`git commit -m "Refactor scripts to use new module"`)
 
-1. [python] We still have some duplicated code in our scripts.  Namely, the
+10. [python] We still have some duplicated code in our scripts.  Namely, the
    final output code is mostly the same.  All we need to do is functionalize
    this code.
    
@@ -211,9 +213,9 @@ Outline - Part 2 - First Python Package
    print_comparison('HEAT INDX', data['date'], data['time'], data['heatindex'], heatindex)
    ```
 
-1. [git] Stage all changes and commit (`git commit -m "Creating printing module"`)
+11. [git] Stage all changes and commit (`git commit -m "Creating printing module"`)
 
-1. [python] We now have 2 different modules related to the same project.  We could
+12. [python] We now have 2 different modules related to the same project.  We could
    have put all of these new functions into the same module, but it is best practice
    to separate different functions into different modules depending upon the kind of
    functionality they represent.  In this case, we've separated out the concepts of
@@ -264,9 +266,9 @@ Outline - Part 2 - First Python Package
    
    And then modified the scripts accordingly.
 
-1. [git] Stage and commit everything (`git commit -m "Creating computation module"`)
+13. [git] Stage and commit everything (`git commit -m "Creating computation module"`)
 
-1. [python] Now, we've got quite a few Python files in our main directory.
+14. [python] Now, we've got quite a few Python files in our main directory.
    Which ones are scripts?  Which ones are modules meant to be imported?
    
    Typically, we group all of the modules meant for import only into another
@@ -303,7 +305,7 @@ Outline - Part 2 - First Python Package
    **NOTE:** Obviously introduces packages.  Should also talk about the
    fact that the `__init__.py` file is run when the package is imported.
 
-1. [git] Stage everything (don't forget the `__init__.py` file!) and
+15. [git] Stage everything (don't forget the `__init__.py` file!) and
    commit (`git commit -m "Creating mysci package"`)
    
    **NOTE:** Our commits are getting bigger, but that's okay.  Each commit
@@ -328,7 +330,7 @@ Outline - Part 2 - First Python Package
        windchillcomp.py
    ```
 
-1. [python] Let's take a brief aside and look at the use of the computation
+16. [python] Let's take a brief aside and look at the use of the computation
    functions in our scripts.  In the case of the wind chill factor computation,
    it looks like this:
    
@@ -360,4 +362,4 @@ Outline - Part 2 - First Python Package
    **NOTE:** Introduces list comprehensions.  Should also mention dict comprehensions.
    Should also mention *conditional* comprehensions (i.e., `for ... in ... if` statements)
 
-1. [git] Stage and commit changes (`git commit -m "Using list comprehensions"`)
+17. [git] Stage and commit changes (`git commit -m "Using list comprehensions"`)
