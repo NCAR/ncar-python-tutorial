@@ -383,3 +383,12 @@ string.upper() capitalzes all lower case letters in a string
    Should also mention *conditional* comprehensions (i.e., `for ... in ... if` statements)
 
 17. [git] Stage and commit changes (`git commit -m "Using list comprehensions"`)
+
+18. [bash] [bash] Let's make a copy of our first script.
+   
+   ```bash
+   $ cp windchillcomp.py dewpointtempcomp.py
+   ```
+
+19. [git] And add and commit this new file.
+   (`git commit -m "Copying first script to start a third"`)
