@@ -392,3 +392,5 @@ string.upper() capitalzes all lower case letters in a string
 
 19. [git] And add and commit this new file.
    (`git commit -m "Copying first script to start a third"`)
+
+   20. 

@@ -621,3 +621,5 @@ Stage and commit.
 Let's rename the script to something more meaningful using `git mv`
 Contrats you have your first Python script!
 Tomorrow we'll write another.
+
+46. [git] Let's push to GitHub!
