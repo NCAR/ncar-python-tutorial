@@ -393,4 +393,51 @@ string.upper() capitalzes all lower case letters in a string
 19. [git] And add and commit this new file.
    (`git commit -m "Copying first script to start a third"`)
 
-   20. 
+20. Write function for computing dew point and change columns and types dictionaries 
+    ```python
+    import numpy
+    
+    #columns names and column indices to read
+    columns = {'date':0 , 'time':1, 'tempout':2, 'humout':5, 'dewpt':6}
+
+    #data types for each column (only if non-string)
+    types = {'tempout':float, 'humout':float, 'dewpt':float}
+
+    def compute_dewpoint(temp, rel_humidity):
+        T = (temp - 32) * 5 / 9 #F to C
+        H = rel_humidity / 100
+        a = 6.112 #mbar
+        b = 18.678
+        c = 257.14 #degC
+        gamma = numpy.log(H) + (b * T) / (c + T)
+        tdp = c * gamma / (b - gamma)
+        tdp_F = 9 / 5 * tdp + 32
+        return tdp_F
+        ```
+
+21. add and commit
+    git commit -m "  Computed dew point temperature"
+
+22. refactor to mysci.compute and add docstring
+def compute_dewpoint(temp, hum):
+        """
+        Compute the dew point temperature given the temperature and humidity
+
+        Parameters:
+                temp: The temperature in units of F
+                humL: The relative humidity in units of %
+        """
+
+        T = (temp - 32) * 5 / 9 #F to C
+        H = rel_humidity / 100
+        a = 6.112 #mbar
+        b = 18.678
+        c = 257.14 #degC
+
+        gamma = numpy.log(H) + (b * T) / (c + T)
+        tdp = c * gamma / (b - gamma)
+        tdp_F = 9 / 5 * tdp + 32
+        return tdp_F
+
+23. add and commit
+    commit -m "Moved dew point fx to computation.py"
