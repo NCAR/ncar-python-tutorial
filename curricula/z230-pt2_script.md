@@ -126,7 +126,7 @@ Stage and commit.
 
 So we've moved our common code, the function for reading the file, from both the windchill and heatindex file to its own file.
 
-And we've made some changes to the function, most notably we've introduced keyword arguments - when you see types={} it means that types is presumed to be an empty dictionary if you don't specify it (and so you don't have to specify it every time you call the function when this keyword isn't relevant). Similarly we've specified a filename that is used as long as the user doesn't specify a different file.
+And we've made some changes to the function, most notably we've introduced keyword arguments - when you see types={} it means that types is presumed to be an empty dictionary if you don't specify it (and so you don't have to specify it every time you call the function when this keyword isn't relevant). Similarly we've specified a filename that is used as long as the user doesn't specify a different file. Let's them be in any order.
 
 We have also added docstrings to the function. The "Read data from CU Boulder Weather Station data file" purpose of the function and list of parameters are standard information included in a docstring.
 
@@ -181,7 +181,7 @@ In python you can call up functionality from scripts outside of your active scri
    the project repository!  Because we never staged them before our last
    commit.
    
-When you run a python program the interpreter compiles your scripts to bytecode and stores them in a cache, making your scripts run a little faster. This is a simplification, but you as a user can for the most part ignore this new folder. If you change or delete your scripts they will be recompiled and reappear in this folder.
+When you run a python program the interpreter compiles your scripts to bytecode and stores them in a cache, making your scripts run a little faster. This is a simplification, but you as a user can for the most part ignore this new folder. If you change or delete your scripts they will be recompiled and reappear in this folder. Created when you use an import.
 
 9. [git] Stage *both files* and commit all new changes in one commit
    (`git commit -m "Refactor scripts to use new module"`)
@@ -395,7 +395,7 @@ string.upper() capitalzes all lower case letters in a string
 
 20. Write function for computing dew point and change columns and types dictionaries 
     ```python
-    import numpy
+    import math
     
     #columns names and column indices to read
     columns = {'date':0 , 'time':1, 'tempout':2, 'humout':5, 'dewpt':6}
@@ -404,12 +404,12 @@ string.upper() capitalzes all lower case letters in a string
     types = {'tempout':float, 'humout':float, 'dewpt':float}
 
     def compute_dewpoint(temp, rel_humidity):
-        T = (temp - 32) * 5 / 9 #F to C
+        T = (temp - 32) * 5 / 9 #F to C   #have a function for this
         H = rel_humidity / 100
         a = 6.112 #mbar
         b = 18.678
         c = 257.14 #degC
-        gamma = numpy.log(H) + (b * T) / (c + T)
+        gamma = math.log(H) + (b * T) / (c + T)
         tdp = c * gamma / (b - gamma)
         tdp_F = 9 / 5 * tdp + 32
         return tdp_F
@@ -439,5 +439,26 @@ def compute_dewpoint(temp, hum):
         tdp_F = 9 / 5 * tdp + 32
         return tdp_F
 
+#calculate windchill
+dewpointtemp = [compute_dewpoint(t, h) for t, h in zip(data['tempout'], data['humout'])]
+
 23. add and commit
     commit -m "Moved dew point fx to computation.py"
+
+
+#-------------------------------------------------
+
+24. move to numpy
+    
+    Conda install numpy
+    And use numpy so you can pass in a list without having to do for loops and zip
+    convert all 3 scripts to work well with numpy
+
+25. plot time vs dpt, time vs humidity, etc in matplotlib
+    conda install matplotlib    
+    
+26.     contours of dewpoint, axis of temperature and humidity.
+    but they'd need mapping of dewpoint to 2d (or use numpy to generate a new table of temp and humiity that we compute on)
+
+27. get a different data set - satellite data LENS data
+        take something from the geocat examples (great way to show gallery to recovering NCL users)
