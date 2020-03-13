@@ -35,7 +35,9 @@ At the time of writing this, the latest version of conda is 4.6. If you have an 
    $ conda update
    ```
 
-If you don't have conda installed at all, please install it. Using the instructions at https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html 
+If you don't have conda installed at all, please install it. 
+
+Use the instructions at https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html 
 
 ***NOTE** If you have a REALLY old version of conda it might be easier to delete it and then reinstall it. But before doing this you have to check your env-list to see if there are any environments you created and want to save.
 
@@ -43,46 +45,47 @@ If you don't have conda installed at all, please install it. Using the instructi
 
 4. Install git
 
-Follopw instructions at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+Git is a program that tracks changes made to files. This makes it easy to maintain access to multiple versions of your code as you improve it, and revert your code back to a previous version if you've made any mistakes.
+
+Follow instructions at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 
-Outline - Part 1 - First Python Script
+Part 1 - First Python Script
 --------------------------------------
 
-Okay, let's build our first Python script. I will teach you about syntax and the reasoning behind why things are done the way they are as we go.
+Okay, let's build your first Python script. You will learn about syntax and the reasoning behind why things are done the way they along the way.
+
+Open a terminal to begin.
 
 1. [bash] Create a directory:
 
    ```bash
-   $ mkdir mysci
+   $ mkdir NCAR_python_tutorial_2020
    ```
 
-The first thing we have to do is create a directory to store our work. So open a terminal and type "mkdir". Let's call it "mysci".
+The first thing we have to do is create a directory to store our work. Let's call it "NCAR_python_tutorial_2020".
    
 2. [bash] Go into the directory:
 
    ```bash
-   $ cd mysci
+   $ cd NCAR_python_tutorial_2020
    ```
-"cd" into your new directory.
 
 3. [conda] Create a virtual environment for this project:
 
    ```bash
-   $ conda create --name mysci python
+   $ conda create --name NCAR_python_tutorial_2020 python
    ```
 
-We are going to use conda to create a virtual environment for this project. Type "conda create --name", the name of your project, here that is "mysci," and then specify that we are using python. 
+A conda environment is a directory that contains a collection of packages or libraries that you would like installed and accessible for this workflow. Type "conda create --name", the name of your project, here that is "NCAR_python_tutorial_2020," and then specify that you are using python to create a virtual environment for this project.
 
-A conda environment is a directory that contains a collection of packages or libraries that you would like installed and accessible for this work. It is a good idea to create new environments for different projects in this way because since Python is open source, new versions of tools you may use become available. You would hate for your script to no longer work because, for example, a function you called before now has slightly different input arguments. This is a way of guaranteeing that your script will use the same versions of packages and libraries and should run the same as you expect it to.
+ It is a good idea to create new environments for different projects because since Python is open source, new versions of the tools you use  may become available. This is a way of guaranteeing that your script will use the same versions of packages and libraries and should run the same as you expect it to.
 
 4. [git] Make the directory a git repository:
 
    ```bash
    $ git init .
    ```
-   
-We are going to make a git repository of our "mysci" directory. Does everyone has a github account and git installed? **If not, how to help** Git is a program that tracks changes made to files. This makes it easy to maintain access to multiple versions of your code as you improve it, and revert your code back to a previous version if you've made any mistakes. I will show you how to do these as we need to.
    
 5. [bash] Create a data directory:
 
@@ -115,7 +118,7 @@ This weather station is a Davis Instruments wireless Vantage Pro2 located on the
    $ git add wxobs20170821.txt
    ```
    
-By adding this datafile to our directory, we have made a change that is not yet reflected in our Github repository. Type "git add" and then the name of the altered file to stage your change.
+By adding this datafile to your directory, you have made a change that is not yet reflected in our Github repository. Type "git add" and then the name of the altered file to stage your change.
    
 9. [git] Commit the file to the *git repository*:
 
@@ -123,7 +126,7 @@ By adding this datafile to our directory, we have made a change that is not yet 
    $ git commit -m "Adding sample data file"
    ```
    
- And then with "git commit" we update our repository by all the changes we staged, in this case just one file. Let's take a look at our repositories to check this.
+ And then with "git commit", update your repository with all the changes you staged, in this case just one file. Let's take a look at our repositories to check this.
 
 10. [git] Look at the git logs:
 
@@ -131,15 +134,13 @@ By adding this datafile to our directory, we have made a change that is not yet 
    $ git log
    ```
    
-If you type "git log" you will show a log of the commits, or changes made to your repository.
+If you type "git log" you will show a log of all the commits, or changes made to your repository.
 
 11. [bash] Go back to the top-level directory:
 
    ```bash
    $ cd ..
    ```
-   
-"cd" up a level.
 
 12. [bash] Create a blank Python script:
 
@@ -147,7 +148,7 @@ If you type "git log" you will show a log of the commits, or changes made to you
    $ touch mysci.py
    ```
 
-And now that we've set up our workspace, we'll create a blank Python script, called "mysci.py"
+And now that you've set up our workspace, create a blank Python script, called "mysci.py"
 
 13. [python] Edit the `mysci.py` file:
 nano mysci.py  ---> (cntrl X)
@@ -155,7 +156,7 @@ nano mysci.py  ---> (cntrl X)
    print("Hello, world!")
    ```
 
-Our classic first command will be to print "Hello World".
+Your classic first command will be to print "Hello World".
 
 14. [python] Try testing the script:
 
@@ -163,10 +164,11 @@ Our classic first command will be to print "Hello World".
    $ python mysci.py
    ```
    
-And let's test it with "python mysci.py" Yay!  You've just created your first Python script. We'll repeat this step to test our script regularly.
+And test that the script works by typing "python" and then the name of your script. Yay!  You've just created your first Python script. 
    
 15. [python] Now delete the `print("Hello, world!")` line
-   from the `mysci.py` file, and let's read our sample data file.
+   from the `mysci.py` file, and read your sample data file.
+
    Change the `mysci.py` script to read:
    
    ```python
@@ -178,7 +180,9 @@ And let's test it with "python mysci.py" Yay!  You've just created your first Py
    # DEBUG
    print(data)
    ```
-You probably won't need to run your Hello World script again, so let's delete it and start over with something more useful. Let's open the .txt file we downloaded earlier. First we'll create a variable for our file name, which is a string - this can be in single or double quotes. Then type "with open" and in parenthesis your filename, 'r' indicating you want to open this file to 'read' it, and "as datafile:" on the next line type "data = datafile.read()" With these two lines of code you are saying that with the file opened, you'd like to read it. 
+You probably won't need to run your Hello World script again, so delete it and start over with something more useful. 
+ 
+First to open the .txt file you downloaded earlier, create a variable for your datafile name, which is a string - this can be in single or double quotes. Then type "with open" and in parenthesis your filename, 'r' indicating you want to open this file to 'read' it, and "as datafile:" on the next line type "data = datafile.read()" With these two lines of code you are saying that with the file opened, you'd like to read it. 
 
 The "with" statement is a context manager that provides clean-up and assures that the file is automatically closed after you've read it. Other input arguments for "open" include "w", for example, if you wanted to write to the file.
 
