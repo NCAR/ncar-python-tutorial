@@ -1,22 +1,49 @@
 Python 0-30 for Scientists
 ==========================
 
-Welcome to the Python 0 to 30 for Scientists tutorial. Today you will learn how to write Python code using Python best practices. This will be done live so that you can see how each step of using Python fits together, without us skipping over steps that are fundamental to using Python outside of this tutorial. We will develop scripts together and we will be using git and GitHub to save and organize our work after each lesson, or natural stopping point. My hope is that at the end of this tutorial you will have a grasp of how to begin building your own library of Python tools for your analysis workflows.
+Welcome to the Python 0 to 30 for Scientists tutorial. In this self-paced course you will learn how to write Python code using Python best practices. Part 1 was designed to take one work day, but you may move through the content much slower or more quickly. Through these instructions you will develop scripts and use git and GitHub to save and organize your work. At the end of this tutorial you will have a grasp of how to begin building your own library of Python tools for your scientific analysis workflows.
 
 
 Why Python?
 -----------
-You're all here because you want to learn to use Python for your data analysis and visualizations. Python can be compared to other interpreted object-oriented languages, but is especially great because it is free and open source! 
+You're already here because you want to learn to use Python for your data analysis and visualizations. Python can be compared to other interpreted object-oriented languages, but is especially great because it is free and open source! 
 
-Being open source means that when people have identified gaps in Python's abilitlies, they have built libraries of code that make those tasks easier. There are libraries specifically for improved mathmatics, statistics, plotting, etc -  collections of code bases that you can pull in and use without having to start from scratch. Perhaps you are familiar with importing libraries into your workflow already, I know in IDL often people pass around files that contain unique user-written IDL functions for this same purpose of reducing redundant work between scientists. Matlab has packages that you can pay extra money to install and use. Again Python is free, so when there are improvements to be made, you can take advantage of other people's efforts to make these improvements.
+Being open source means that when people have identified gaps in Python's abilitlies, they have built libraries of code that make those tasks easier. There are libraries specifically for improved mathmatics, statistics, plotting, etc -  collections of code that you can use without having to build yourself. 
 
-There are many many different libraries of code you can import and use. We are only going to teach you the most commonly used libraries, and one at a time, to reduce any confusion you may have about what each library offers.
+Perhaps you are already familiar with importing libraries into your workflow. In IDL people pass around files that contain unique user-written functions -  which achieves this same purpose of reducing the amount of redundant work between scientists, but in Python package managers help you know what version of those functions you are using. Matlab has packages that you can pay extra money to install and use - again Python is free! 
+
+There are many many different libraries of code you can import and use. We are only going to teach you the most commonly used libraries, and one at a time in order to reduce any confusion you may have about what each library offers.
+
+Part 1 will focus on teaching fundamental git and Python, without any external libraries.
 
 
 Requirements & Installation
 --------------------------
 
-But first, let'd double check - Everyone should have conda or miniconda installed on their linux or mac OS at this point. If you have an old version of conda installed, update it. Raise your hand if you had any trouble with this. You'll also need Git.
+But first, check that you have conda or miniconda installed on your OS. 
+
+1. [bash] Check your conda version:
+
+   ```bash
+   $ conda list anaconda
+   ```
+At the time of writing this, the latest version of conda is 4.6. If you have an old version of conda installed, update it.
+
+2. [bash] If necessary, update:
+
+   ```bash
+   $ conda update
+   ```
+
+If you don't have conda installed at all, please install it. Using the instructions at https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html 
+
+***NOTE** If you have a REALLY old version of conda it might be easier to delete it and then reinstall it. But before doing this you have to check your env-list to see if there are any environments you created and want to save.
+
+3. Check your conda version again.
+
+4. Install git
+
+Follopw instructions at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 
 Outline - Part 1 - First Python Script
