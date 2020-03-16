@@ -244,65 +244,49 @@ And execute with `python mysci.py`
    ```python
    print(type(data))
    ```
+And execute with `python mysci.py`
 
-What did we just see?  What is the `data` object?  In the 'DEBUG' section of our script let's find out the type of our data object. Object types refer to 'float' 'integer' 'string' or other types that you can create. Python is a dynamically typed language, which means you don't have to explicitly specify the datatype when you name a variable, Python will automatically figure it out by the nature of the data.
+What did we just see?  What is the `data` object?  In the 'DEBUG' section of our script let's find out the type of our data object. Object types refer to 'float' 'integer' 'string' or other types that you can create. 
 
-17. [python] Try testing the script, again.
+Python is a dynamically typed language, which means you don't have to explicitly specify the datatype when you name a variable, Python will automatically figure it out by the nature of the data.
 
-And let's test it with "python mysci.py" We see that `data` is a string.
-   
-18. [git] Now, clean up the script by removing the `DEBUG`
+19. [git] Now, clean up the script by removing the `DEBUG`
    section, before we commit this to git.
 
-Remove the 'debug' section to clean up the script.
-
-19. [git] Let's check the status of our git repository
+20. [git] Let's check the status of our git repository
 
    ```bash
    $ git status
    ```
    
-Let's check the status of our git repository. Note what files have been changed in the repository.
+Note what files have been changed in the repository.
 
-20. [git] Stage these changes:
+21. [git] Stage these changes:
 
    ```bash
    $ git add mysci.py
    ```
 
-As before, let's stage the changes to our file with "git add"
-
-21. [git] Let's check the status of our git repository,
+22. [git] Let's check the status of our git repository,
    again.  What's different from the last time we 
    checked the status?
- 
-Again with "git status" let's now check the status of our repository. What is different since our last status check?
 
-git reset discards unwanted changes
-git checkout .
-git clean - fdx
-
-22. [git] Commit these changes:
+23. [git] Commit these changes:
 
    ```bash
    $ git commit -m "Adding script file"
    ```
-Commit the changes with "git commit -m for message, and the message "Adding script file"
+Here a good commit message `-m` for our changes would be "Adding script file"
 
-23. [git] Let's check the status of our git repository,
+24. [git] Let's check the status of our git repository,
    now.  It should tell you that there are no changes
    made to your repository (i.e., your repository is
    up-to-date with the state of the code in your
    directory).'
 
-Again with "git status" let's now check the status of our repository.
-
-24. [git] Look at the git logs, again:
+25. [git] Look at the git logs, again:
 
    ```bash
    $ git log
    ```
-   
-   **NOTE:** Explain the changes in the logs.
-   Introduce simplified logs with the `--oneline` option.
-When we look at the git logs, we'll notice some changes ...
+You can also print simplified logs with the `--oneline` option.
