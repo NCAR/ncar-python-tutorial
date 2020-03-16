@@ -290,3 +290,9 @@ Here a good commit message `-m` for our changes would be "Adding script file"
    $ git log
    ```
 You can also print simplified logs with the `--oneline` option.
+
+==========================
+
+Okay that concludes the first lesson of this virtual tutorial. You should now be familiar with git, basic python commands (print and open), and the string datatype. 
+
+Please continue to part 1b.
