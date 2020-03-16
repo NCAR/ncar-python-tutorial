@@ -167,32 +167,77 @@ Your classic first command will be to print "Hello World".
 And test that the script works by typing "python" and then the name of your script. Yay!  You've just created your first Python script. 
    
 15. [python] Now delete the `print("Hello, world!")` line
-   from the `mysci.py` file, and read your sample data file.
+   from the `mysci.py` file, and read the first 4 lines from data file.
 
    Change the `mysci.py` script to read:
    
    ```python
    # Read the data file
    filename = "data/wxobs20170821.txt"
+   datafile = open(filename, 'r')
+
+   print(datafile.readline())
+   print(datafile.readline())
+   print(datafile.readline())
+   print(datafile.readline())
+
+   datafile.close()
+   ```
+
+   And test your script again by typing:
+
+   ```bash
+   $ python mysci.py
+   ```
+
+You probably won't need to run your Hello World script again, so delete it and start over with something more useful - we'll read the first 4 lines from our datafile.
+ 
+First to open the .txt file you downloaded earlier, create a variable for your datafile name, which is a string - this can be in single or double quotes.
+
+Then create a variable associated with the opened file, here it is called `datafile`. The `'r'` argument in the `open` command indicates that we are opening the file for reading capabilities. Other input arguments for "open" include `'w'`, for example, if you wanted to write to the file.
+
+The `readline` command moves through the open file, always reading the next line.
+
+And remember to `close` your datafile.
+
+Comments in Python are indicated with a hash, as you can see in the first line `# Read the data file`. Comments are ignored by the interpreter.
+
+Testing of your script with `python mysci.py` should be done every time you wish to execute the script. This will no longer be specified  as a unique step in between every change to our script.
+
+16. [python] Change the `mysci.py` script to read your whole data file:
+
+   ```python
+   # Read the data file
+   filename = "data/wxobs20170821.txt"
+   datafile = open(filename, 'r')
+   data = datafile.read()
+   datafile.close()
+
+   # DEBUG
+   print(data)
+   print('data')
+   ```
+
+Our code is similar to the before, but now we've read the entire file. To test that this worked. We'll `print(data)`. Print statements in python require parenthesis around the object you wish to print, here it is data. Try `print('data')` as well, now Python will print the string `'data'`, as it did for the hello world function, instead of the information stored in the variable `data`.
+
+Don't forget to execute with `python mysci.py`
+
+17. [python] Change the `mysci.py` script to read your whole data file using a context manager `with`:
+
+   ```python
+   # Read the data file
+   filename = "data/wxobs20170821.txt"
    with open(filename, 'r') as datafile:
-       data = datafile.read()
+      data = datafile.read()
    
    # DEBUG
    print(data)
    ```
-You probably won't need to run your Hello World script again, so delete it and start over with something more useful. 
- 
-First to open the .txt file you downloaded earlier, create a variable for your datafile name, which is a string - this can be in single or double quotes. Then type "with open" and in parenthesis your filename, 'r' indicating you want to open this file to 'read' it, and "as datafile:" on the next line type "data = datafile.read()" With these two lines of code you are saying that with the file opened, you'd like to read it. 
+Again this is a similar method of opening the datafile, but we now use `with open`. The `with` statement is a context manager that provides clean-up and assures that the file is automatically closed after you've read it. The tab indendation of the line `data = datafile.read()` is very important. Python is sensitive to white space and will not work if you combine spaces and tabs. Combined these two lines mean: with the datafile opened, I'd like to read it.
 
-The "with" statement is a context manager that provides clean-up and assures that the file is automatically closed after you've read it. Other input arguments for "open" include "w", for example, if you wanted to write to the file.
+And execute with `python mysci.py`
 
-And to test that this worked. We'll print "data"
-
-Let's add some comments to our script to parse out the two sections. Comments in Python are indicated with a hash.
-
-And execute with "python mysci.py"
-
-16. [python] What did we just see?  What is the `data` object?  What
+18. [python] What did we just see?  What is the `data` object?  What
    type is `data`?  How do we find out?  Add the following to the
    `DEBUG` section of our script:
    
