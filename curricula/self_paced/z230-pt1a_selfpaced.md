@@ -50,7 +50,7 @@ Git is a program that tracks changes made to files. This makes it easy to mainta
 Follow instructions at https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 
-Part 1 - First Python Script
+Part 1a - First Python Script
 --------------------------------------
 
 Okay, let's build your first Python script. You will learn about syntax and the reasoning behind why things are done the way they along the way.
