@@ -24,7 +24,7 @@ Part 1c - First Python Script Cont
            data['tempout'].append(float(split_line[2]))
    ```
 
-You could also change the datatype to `int`, which will round the values down to the closest full integer.
+The `float` datatype refers to floating point real values - the datatype of any numbers with values after a decimal point. You could also change the datatype to `int`, which will round the values down to the closest full integer.
 
 34. [python] Add a `DEBUG` section at the end and see what
    `data['tempout']` now looks like.  Do you see a difference?
