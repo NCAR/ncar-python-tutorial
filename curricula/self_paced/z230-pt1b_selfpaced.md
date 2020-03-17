@@ -31,7 +31,7 @@ Part 1b - First Python Script Cont
       print(datum)
    ```
 
-The first thing that is different in this script is an initialized data variable; `data = []` creates the variable `data` as an empty `list` which we will populate as we read the file. Python `lists` are a collection data type that are ordered and changeable - meaning you can call information out of the `list` by its index and you can add or delete elements to your `list`. Lists are denoted by square brackets.
+The first thing that is different in this script is an initialized data variable; `data = []` creates the variable `data` as an empty `list` which we will populate as we read the file. Python `lists` are a collection data type that are ordered and changeable - meaning you can call information out of the `list` by its index and you can add or delete elements to your `list`. Lists are denoted by square brackets, `[]`.
 
 Then with the datafile open for reading capabilities, we are going to write two separate `for` loops. A `for` loop is used for iterating over a sequence (such as a `list`). It is important to note the syntax of Python `for` loops: the `:` at the end of for `for` line, the tab-indentation of all lines within the `for` loop, and perhaps the absence of an `end for` that is found in languages such as Matlab.
 
@@ -89,12 +89,13 @@ Using a colon, `:`, between two index integers a and b, you get all indexes betw
    print(data[8][:5])
    print(data[8][::2])
    ```
+
 In nested list indexing, the first index determines the row, and the second determines the element from that row. Also try printing `data[5:8][4]`, why doesn't this work?
 
 30. [git] Clean up the file (remove `DEBUG` section), stage the changes, and
    commit. (i.e., `git add mysci.py` and `git commit -m "Parsing file"`)
 
-30. [python] Can you remember which column is which?  Is time the first
+31. [python] Can you remember which column is which?  Is time the first
    column or the second?  Which column is the temperature?
    
    Each column is a time-series of data.  We would ideally like each
@@ -130,15 +131,9 @@ In nested list indexing, the first index determines the row, and the second dete
    print(data['time'])
    ```
 
-You probably don't remember which column is which?  Is time the first column or the second?  Which column is the temperature?
-   
-Each column is a time-series of data.  We would ideally like each time-series easily accessible, which is *not* the case when `data` is row-column ordered (like it currently is).  (Remember what happens when you try to do something like `data[:][4]`!)
-   
-Let's get our data into a more convenient named-column format. To do that we have to change `mysci.py` to the following:
+First we'll initialize a `dictionary`, indicated by the curly brackets, `{}`. Dictionaries, like lists, are changeable, but they are unordered. They have 'keys', rather than positions, to point to their elements. Here you have created 3 elements of your dictionary, all currently empty `lists`, and specified by the keys `date`, `time`, and `tempout`. Keys act similarly to indexes: to pull out the `tempout` element from `data` you would type `data['tempout']`.
 
-First we'll initialize a dictionary, indicated by the curly brackets. This is like our list of lists, but we now have 'keys', rather than positions, that point to lists for specific data variables, each element being a string. We're going to grab date, time, and temperature data, which are currently all themselves empty lists that we will fill with a similar for loop as before.
+Grab date (the first column of each line), time (the second column of each line), and temperature data (the third column), from each line and `append` it to the list associated with each of these data variables.
 
-31. [git] Clean up (remove `DEBUG` section), stage, and commit
+32. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Parsing select time-series"`)
-
-Again let's clean up, stage, and commit.
