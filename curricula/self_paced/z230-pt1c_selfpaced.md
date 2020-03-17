@@ -1,7 +1,11 @@
 Python 0-30 for Scientists
 ==========================
 
-32. [python] Now it's easy to get the time-series information
+This is intended to pick off right where part 1b left off- you had just commited your new script that reads the file, saving the variables of date, time, and tempout in a data dictionary.
+
+Part 1c - First Python Script Cont
+--------------------------------------
+33. [python] Now it's easy to get the time-series information
    for each column that we are interested in grabbing, and we
    can get each column by name.  However, everything read from
    the text file is a `str`.  What if we want to do math on this
@@ -20,20 +24,16 @@ Python 0-30 for Scientists
            data['tempout'].append(float(split_line[2]))
    ```
 
-Now it's easy to get the time-series information for each column that we are interested in grabbing, and we can get each column by name.  However, everything read from the text file is a string.  If we want to do math on this data, then we need it to be a different data type! So, let's convert the `tempout` time-series to be a `float` by changing each element into a float before we append it to the list for our temperature data. You could also change it 'int', which will round the values down to the closest full integer.
+You could also change the datatype to `int`, which will round the values down to the closest full integer.
 
-33. [python] Add a `DEBUG` section at the end and see what
+34. [python] Add a `DEBUG` section at the end and see what
    `data['tempout']` now looks like.  Do you see a difference?
    It should now be a `list` of `float`s.
 
-Print `data['tempout']` in a `DEBUG` section of your code to show the difference between a list of floats and our previous list of strings.
-
-34. [git] Clean up (remove `DEBUG` section), stage, and commit
+35. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Converting tempout to floats"`)
 
-Clean up, stage and commit.
-
-35. [python] This seems great, so far!  But what if we want to
+36. [python] This seems great, so far!  But what if we want to
    read more columns to our data later?  We will have to change
    the initialization of the `data` variable (at the top of 
    `mysci.py`) *and* we will have to add the appropriate line
