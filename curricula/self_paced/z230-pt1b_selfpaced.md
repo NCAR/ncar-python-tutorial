@@ -137,3 +137,9 @@ Grab date (the first column of each line), time (the second column of each line)
 
 32. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Parsing select time-series"`)
+
+==========================
+
+That concludes the second lesson of this virtual tutorial. You should now be familiar with lists and list indexing, dictionaries and their keys, ranges, for-loops, and the Python commands split and append. 
+
+Please continue to part 1c.
