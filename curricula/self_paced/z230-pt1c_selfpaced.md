@@ -33,10 +33,10 @@ The `float` datatype refers to floating point real values - the datatype of any 
 35. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Converting tempout to floats"`)
 
-36. [python] This seems great, so far!  But what if we want to
-   read more columns to our data later?  We will have to change
+36. [python] This seems great, so far!  But what if you want to
+   read more columns to our data later?  You would have to change
    the initialization of the `data` variable (at the top of 
-   `mysci.py`) *and* we will have to add the appropriate line
+   `mysci.py`) *and* have to add the appropriate line
    in the "read and parse" section.  Essentially, that means
    you need to maintain 2 parts of the code and make sure that
    both remain consistent with each other.
@@ -80,32 +80,16 @@ The `float` datatype refers to floating point real values - the datatype of any 
    # DEBUG
    print(data['tempout'])
    ```
-   
-   Now we only need to modify the `columns` variable
-   to indicate which columns of the data file to read
-   and the `types` variable to indicate to what type to
-   convert the data.
-   
-   **NOTE:** Introduces passing types/functions as arguments
-   (or holding pointers to types/functions in a variable,
-   namely the `types` variable), looping over `dict`s, adding
-   key-value pairs to a `dict` via assignment, and the
-   `dict.get()` method (to avoid key-not-found errors)
+You have now created a `columns` dictionary that points each data variable to its column-index. And a `types` dictionary, that indicates what type to convert the data when necessary. When you want new variables pulled out of the datafile, change these two variables.
 
-This seems great, so far!  But what if we want to read more columns to our data later?  We will have to change the initialization of the `data` variable (at the top of `mysci.py`) *and* we will have to add the appropriate line in the "read and parse" section.  Essentially, that means you need to maintain 2 parts of the code and make sure that both remain consistent with each other.
-   
-This is generally not good practice.  Ideally, you want to be able to change only 1 part of the code and know that the rest of the code will remain consistent.  So, let's fix this by using a `columns` variable.
+Initializing the `data` dictionary now includes a `for` loop, where for each variable specified in `columns` that key is initialized pointing to an empty list. This is the first time you have looped over a `dict` and added key-value pairs toa `dict` via assignment.
 
- Now we only need to modify the `columns` variable to indicate which columns of the data file to read and the `types` variable to indicate to what type to convert the data.
+When reading and parsing the file, you created your first nested `for` loop. For every line of the datafile, split that line - and then for every desired variable in the `columns` dictionary (`date`, `time`, `tempout`): grab the datum from the current split line with the specified index (`0`, `1`, `2`), use the `dict.get()` method to find the desired datatype if specired (avoiding key-not-found errors and defaulting to `str` if unspecified), convert the datum to the desired datatype, and append the datum to the `list` associated with each `column` key within the `data` dictionary.
 
- In this step we have demonstrated passing types as an argument, looping over a dictionary, adding key-value pairs to a dictionary via assignment, and the dict.get() method.
-
-36. [git] Clean up (remove `DEBUG` section), stage, and commit
+37. [git] Clean up (remove `DEBUG` section), stage, and commit
    (`git commit -m "Refactoring data parsing code"`)
 
-Clean up, stage and commit.
-
-37. [python] Okay, now that we've read the data in a way that
+38. [python] Okay, now that we've read the data in a way that
    is easy to modify later, let's actually do something with
    the data.
    
