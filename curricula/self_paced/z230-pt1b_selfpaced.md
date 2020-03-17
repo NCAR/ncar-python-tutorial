@@ -49,11 +49,12 @@ Then in a second `for` loop, you loop through lines in the remainder of your `da
 
 Then you `append` this split line list to the end of your `data` list. The list `append()` method adds a single item to the end of your list. After every `line` in your `for` loop iteration, the `data` list that was empty is one element longer. Now we have a list of lists for our data variable - a list of the data in each line for multiple lines.
 
-When we print each datum in data, we'll see that each datum is a list of string values.
+When you print each datum in data, you'll see that each datum is a list of string values.
 
 We just covered a lot of Python nuances in a very little bit a code! So please reach out if you are confused at this step.
 
-26. [python] Now, we'll get the first, 10th, and last row in `data`.  
+27. [python] Now, to practice list indexing, 
+   get the first, 10th, and last row in `data`.  
    Change the `DEBUG` section of our `mysci.py` script to:
    
    ```python
@@ -63,9 +64,10 @@ We just covered a lot of Python nuances in a very little bit a code! So please r
    print(data[-1])
    ```
 
-To pull out the first, 10th, and last row from data, you can index your list by adding the number of your index in square brackets after the name of the list. Python is 0-indexed so data[0] refers to the first index, [-1] refers to the last index. Let's print this in our debugging section to see what this looks like.
+Index your `list` by adding the number of your index in square brackets after the name of the `list`. Python is 0-indexed so data[0] refers to the first index, [-1] refers to the last index. 
 
-27. [python] Now, we'll get the first 10 rows in `data`.  
+28. [python] Now, to practice slice indexing,
+   get the first 10 rows in `data`.  
    Change the `DEBUG` section of our `mysci.py` script to:
    
    ```python
@@ -74,12 +76,12 @@ To pull out the first, 10th, and last row from data, you can index your list by 
        print(datum)
    ```
 
-Now we're going to introduce slice indexing. Using a colon between two index integers a and b, you get all indexes between a and b. See what happens when you type `data[:10]`, `data[0:10:2]`, and `data[slice(0,10,2)]`.  What's the difference?
+Using a colon, `:`, between two index integers a and b, you get all indexes between a and b. See what happens when you print `data[:10]`, `data[0:10:2]`, and `data[slice(0,10,2)]`.  What's the difference?
 
-28. [python] Exercise: Try getting the 5th, first 5, and every other *column*
+29. [python] Now, to practice nested indexing,
+   get the 5th, first 5, and every other *column*
    of rows `8` in `data`.
-   
-   Solution: Change the `DEBUG` section of the `mysci.py` script to:
+   Change the `DEBUG` section of the `mysci.py` script to:
    
    ```python
    # DEBUG
@@ -87,12 +89,10 @@ Now we're going to introduce slice indexing. Using a colon between two index int
    print(data[8][:5])
    print(data[8][::2])
    ```
-Now try changing your `DEBUG section` to print the 5th, first 5, and every other column of day from row 9 in `data`. To do this we will have to understand nested list indexing, where the first index determines the row, and the second determines the element from that row. Also try printing `data[5:8][4]`, why doesn't this work?
+In nested list indexing, the first index determines the row, and the second determines the element from that row. Also try printing `data[5:8][4]`, why doesn't this work?
 
-29. [git] Clean up the file (remove `DEBUG` section), stage the changes, and
+30. [git] Clean up the file (remove `DEBUG` section), stage the changes, and
    commit. (i.e., `git add mysci.py` and `git commit -m "Parsing file"`)
-
-Let's clean up the file, stage our changes, and commit.
 
 30. [python] Can you remember which column is which?  Is time the first
    column or the second?  Which column is the temperature?
