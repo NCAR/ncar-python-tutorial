@@ -5,6 +5,7 @@ This is intended to pick off right where part 1a left off- you had just commited
 
 Part 1b - First Python Script Cont
 --------------------------------------
+
 26. [python] One big string isn't very useful, so parse
    the data file into a data structure you can use.  
    Change the `mysci.py` script to read:
