@@ -25,16 +25,24 @@ Zero to Thirty Beginner
                 - `git commit`
                 - `git logs`
         1b. Creating a Data Dictionary -- part_1/z230-1b.md
-            - Python Concepts: 
-                - Data Structures
-                    - `list` 
-                        - `list.append()`
-                        - `list` indexing
-                        - nested `list`s
-                    - `range`
-                    - `dict` 
-                        - key/value pairs
-                        - `dict.get()`
-                - initializing data variables
-                - `str.split()`
-                - the `float` datatype.
+            -  Python Data Structures
+                - `list` 
+                    - `list.append()`
+                    - `list` indexing
+                    - nested `list`s
+                - `range`
+                - `dict` 
+                    - key/value pairs
+                    - `dict.get()`
+            - initializing data variables
+            - `str.split()`
+            - the `float` datatype.
+        1c. Writing a Function to Compute Wind Chill Index -- part_1/z230-1c.md
+            - Python Concepts:
+                - functions
+                - math operators
+                - `zip()`
+                - the `tuple` data structure
+                - f-string formatting
+            - Git:
+                - pushing a local repository to GitHub

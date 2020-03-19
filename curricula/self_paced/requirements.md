@@ -1,7 +1,7 @@
 Requirements & Installation
 --------------------------
 
-But first, check that you have conda or miniconda installed 
+First, check that you have conda or miniconda installed 
 on your OS. 
 
 1. [bash] Check your conda version:
