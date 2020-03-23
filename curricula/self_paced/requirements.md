@@ -7,7 +7,7 @@ on your OS.
 1. [bash] Check your conda version:
 
    ```bash
-   $ conda list anaconda
+   $ conda --version
    ```
    At the time of writing this, the latest version of conda is 
    4.6. If you have an old version of conda installed, update 
