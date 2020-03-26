@@ -3,159 +3,119 @@
 # NCAR Python Tutorial
 
 - [NCAR Python Tutorial](#ncar-python-tutorial)
-  - [Setup](#setup)
-    - [Step 1: Clone NCAR Python Tutorial Repository](#step-1-clone-ncar-python-tutorial-repository)
-    - [Step 2: Install Miniconda and Create Environments](#step-2-install-miniconda-and-create-environments)
-    - [Step 3: Close and re-open your current shell](#step-3-close-and-re-open-your-current-shell)
-    - [Step 4: Run the Setup Verification Script](#step-4-run-the-setup-verification-script)
-  - [Launch Jupyter Lab](#launch-jupyter-lab)
-    - [1. Cheyenne or DAV via JupyterHub (Recommended)](#1-cheyenne-or-dav-via-jupyterhub-recommended)
-    - [2. Cheyenne or DAV via SSH Tunneling](#2-cheyenne-or-dav-via-ssh-tunneling)
-    - [3. Hobart via SSH Tunneling](#3-hobart-via-ssh-tunneling)
-    - [4. Personal Laptop](#4-personal-laptop)
+  - [Setup: Installing Miniconda](#setup-installing-miniconda)
+    - [Linux](#linux)
+    - [Mac OS X](#mac-os-x)
+    - [Windows](#windows)
 
 ----
 
-## Setup
+## Setup: Installing Miniconda
 
 This tutorial covers the installation and setup of a Python environment on:
 
 - Cheyenne
 - Casper
-- CGD's Hobart
-- Personal laptop/desktop with a UNIX-variant Operating System
+- Personal laptop/desktop or any other machine
 
-**NOTE:** For windows users, setup scripts provided in this repository don't work on Windows machines for the time being.
+### Linux
 
-### Step 1: Clone NCAR Python Tutorial Repository
+After you have logged into Cheyenne, Casper or any machine running linux, download and install Miniconda:
 
-Run the following commmand to clone this repo to your system(e.g. cheyenne, casper, your laptop, etc...):
+1. Open your shell/terminal program
 
-```bash
-git clone https://github.com/NCAR/ncar-python-tutorial.git
-```
+2. Download the linux installer
 
-### Step 2: Install Miniconda and Create Environments
+   ```bash
+   $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+   $ chmod +x Miniconda3-latest-Linux-x86_64.sh
+   $ ./Miniconda3-latest-Linux-x86_64.sh
+   ```
 
-- Change directory to the cloned repository
+3. Scroll through the license (press the space bar to move through quickly), type **yes** to approve the terms, and then accept all the installation defaults (on Cheyenne and Casper it is recommended to install miniconda in your work space (e.g. `/glade/work/username/miniconda3`) to avoid using up your home space).
 
-  ```bash
-  cd ncar-python-tutorial
-  ```
+4. Close the terminal/shell program. Then, restart it (log back in).
+5. Initialize conda for shell interaction by replacing `YOUR_SHELL` with your default/preferred shell. Currently compatible shells are `{bash, fish, powershell, tcsh, xonsh, zsh}`:
 
-- Run the [`configure`](./setup/configure) script:
+   ```bash
+   conda init YOUR_SHELL
+   ```
 
-  **NOTE**: Be prepared for the script to take up to 15 minutes to complete.
+6. Within the terminal, type:
 
-  ```bash
-  ./setup/configure
-  ```
+   ```bash
+   conda update --all
+   ```
 
-```bash
-$ ./setup/configure --help
-usage: configure [-h] [--clobber] [--download] [--prefix PREFIX]
+7. To verify that the setup completed successfully, check conda version with:
 
-Set up tutorial environment.
+   ```console
+   conda --version
+   ```
 
-optional arguments:
-  -h, --help            show this help message and exit
-  --clobber, -c         Whether to clobber existing environment (default:
-                        False)
-  --download, -d        Download tutorial data without setting environment up
-                        (default: False)
-  --prefix PREFIX, -p PREFIX
-                        Miniconda3 install location)
-```
+### Mac OS X
 
-Default values for ``--prefix`` argument are:
+1. Open your shell/terminal program
 
-- Personal laptop / Hobart: `$HOME/miniconda3`
-- Cheyenne or Casper: `/glade/work/$USER/miniconda3`
+2. Download the linux installer
 
-**NOTE**:
-In case the default `prefix` is not appropriate for you (due to limited storage), feel free to specify a different miniconda install location. For instance, this install location may be a `project` workspace on a shared filesystem like GLADE or Hobart's filesystem.
+   ```bash
+   $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+   $ # OR
+   $ # curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+   $ chmod +x Miniconda3-latest-MacOSX-x86_64.sh
+   $ ./Miniconda3-latest-MacOSX-x86_64.sh
+   ```
 
-The `configure` script does the following:
+3. Scroll through the license (press the space bar to move through quickly), type **yes** to approve the terms, and then accept all the installation defaults.
+4. Close the terminal/shell program. Then, restart it (log back in).
 
-- Install `conda` package manager if it is unable to find an existing installation. Otherwise, it will update the `base` environment
-- Create or Update `python-tutorial` conda environment.
-- Download data if not on Cheyenne or Casper or Hobart. If on Cheyenne or Casper or Hobart, create soft-links to an existing/local data repository.
+5. Initialize conda for shell interaction by replacing `YOUR_SHELL` with your default/preferred shell. Currently compatible shells are `{bash, fish, powershell, tcsh, xonsh, zsh}`:
 
-### Step 3: Close and re-open your current shell
+   ```bash
+   conda init YOUR_SHELL
+   ```
 
-For changes to take effect, close and re-open your current shell.
+6. Within the terminal, type:
 
-### Step 4: Run the Setup Verification Script
+   ```bash
+   conda update --all
+   ```
 
-- Check that *conda info* runs successfully:
+7. To verify that the setup completed successfully, check conda version with:
 
-  ```bash
-  conda info
-  ```
+   ```console
+   conda --version
+   ```
 
-- From the `ncar-python-tutorial` directory, activate `python-tutorial` conda environment:
+### Windows
 
-  ```bash
-  conda activate python-tutorial
-  ```
+1. Click on https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe
+   1. Wait for it to download. It will place a file called `Miniconda3-latest-Windows-x86_64.exe` in your downloads folder.
 
-- Run the setup verification script to confirm that everything is working as expected:
+2. Click on the downloaded file to start the installation. When the     installer window appears:
+   - Click Next to get started,
+   - Click `I Agree` to accept the     license terms, and
+   - Then click Next to accept the defaults for the next several screens.
+   - When you reach the screen with the Install button, verify the the two Advanced Options checkboxes to Add Miniconda to my `PATH environment` variable and to Register Miniconda as my default Python 3.7 are both checked. Then click Install.
+   - When the install finishes, click Next then Finish. You can ignore the window that pops up in your browser.
 
-  ```bash
-  cd ncar-python-tutorial
-  ./setup/check_setup
-  ```
+3. Press `Windows + R` keys together on the keyboard to open the Run box. Type `powershell` and hit Enter.
 
-  This step should print **"Everything looks good!"**.
+4. Initialize conda for shell interaction by replacing `YOUR_SHELL` with your default/preferred shell. Currently compatible shells are `{bash, fish, powershell, tcsh, xonsh, zsh}`
 
-----
+   ```console
+   conda init YOUR_SHELL
+   ```
 
-## Launch Jupyter Lab
+5. Within the terminal, type:
 
-### 1. Cheyenne or DAV via JupyterHub (Recommended)
+   ```bash
+   conda update --all
+   ```
 
-- JupyterHub link: https://jupyterhub.ucar.edu/
+6. To verify that the setup completed successfully, check conda version with:
 
-To use the Cheyenne or DAV compute nodes,we recommend using JupyterLab via NCAR's JupyterHub deployment.
-
-Open your preferred browser (Chrome, Firefox, Safari, etc...) on your ``local machine``, and head over to https://jupyterhub.ucar.edu/.
-
-**You will need to authenticate with either your _yubikey_ or your _DUO_ mobile app**
-
-### 2. Cheyenne or DAV via SSH Tunneling
-
-In case you are having issues with jupyterhub.ucar.edu, we've provided utility scripts for launching JupyterLab on both Cheyenne and Casper via SSH Tunneling:
-
-```bash
-conda activate base
-./setup/jlab/jlab-ch # on Cheyenne
-./setup/jlab/jlab-dav # on Casper
-```
-
-### 3. Hobart via SSH Tunneling
-
-For those interested in running JupyterLab on CGD's Hobart, you will need to use SSH tunneling script provided in [``setup/jlab/jlab-hobart``](./setup/jlab/jlab-hobart)
-
-```bash
-conda activate base
-./setup/jlab/jlab-hobart
-```
-
-```bash
-$ ./setup/jlab/jlab-hobart --help
-Usage: launch dask
-Possible options are:
- -w,--walltime: walltime [default: 08:00:00]
- -q,--queue: queue [default: medium]
- -d,--directory: notebook directory
- -p,--port: [default: 8888]
-```
-
-### 4. Personal Laptop
-
-For those interested in running JupyterLab on their local machine, you can simply run the following command, and follow the printed instructions on the console:
-
-```bash
-conda activate base
-jupyter lab
-```
+   ```console
+   conda --version
+   ```
